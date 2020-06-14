@@ -1,11 +1,13 @@
 # Credits
-The Midnight is developed by members of the Cryptic Mushroom modding group. Below is a list of members who participated in the development of the Midnight.
+This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past. Below is a list of members who participated in the development of The Midnight.
 
-## Active Developers  
+## The Midnight Development Team  
 [Cipher_Zero_X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
 [RedGalaxySW](https://github.com/RedGalaxySW) - Lead Programmer  
 [Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer  
-[Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician
+
+## Active Collaborators  
+[Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician  
 
 ## Former and Inactive Developers  
 [bagu_chan](https://github.com/pentantan) - Programmer  
