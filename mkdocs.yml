@@ -1,7 +1,11 @@
 site_name: The Midnight Wiki
 docs_dir: 'docs'
 side_dir: 'site'
-theme: readthedocs
+theme:
+    name: null
+    custom_dir: 'cinder'
+markdown_extensions:
+    - admonition
 
 nav:
     - Home: index.md
