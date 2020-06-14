@@ -2,3 +2,7 @@ site_name: The Midnight Wiki
 docs_dir: 'docs'
 side_dir: 'site'
 theme: readthedocs
+
+nav:
+    - Home: index.md
+    - Credits: credits.md
