@@ -1,3 +1,4 @@
-site_name: My Docs
+site_name: The Midnight Wiki
 docs_dir: 'docs'
 side_dir: 'site'
+theme: readthedocs
