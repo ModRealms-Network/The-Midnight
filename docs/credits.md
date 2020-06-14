@@ -1,4 +1,5 @@
 # Credits
+The Midnight is developed by members of the Cryptic Mushroom modding group. Below is a list of members who participated in the development of the Midnight.
 
 ## Active Developers  
 [Cipher_Zero_X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
