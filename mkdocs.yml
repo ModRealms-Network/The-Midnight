@@ -10,6 +10,6 @@ markdown_extensions:
 nav:
     - Home: index.md
     - About:
-        - What is The Midnight?: about/about.md
+        - What is The Midnight?: about.md
         - Contributing to the Wiki: about/contribution.md
         - Credits: about/credits.md
