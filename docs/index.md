@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/the-midnight/badge/?version=latest)](https://readthedocs.org/projects/the-midnight/builds/) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Cryptic-Mushroom/The-Midnight/The Midnight for Minecraft 1.15.2)](https://github.com/Cryptic-Mushroom/The-Midnight/actions) [![https://cf.way2muchnoise.eu/the-midnight.svg](https://cf.way2muchnoise.eu/the-midnight.svg)](https://www.curseforge.com/minecraft/mc-mods/the-midnight)
+
 ![The Midnight](https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/1.15.2/curseforge/front-page-poster.jpg)
 
 # The Midnight Wiki
