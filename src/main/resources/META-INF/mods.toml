@@ -36,12 +36,12 @@ Five (Paradiscal) - Texturer
 MCVinnyq - Texturer, Modeler
 
 The Midnight is still in active development and we'd love to hear your feedback! Click the link near the top of this page to view information on our Discord server, active developers, and plans for the future of this mod.
-'''
+''' #mandatory
 
 [[dependencies.midnight]]
     modId="forge"
     mandatory=true
-    versionRange="[32.0.1,)"
+    versionRange="[32.0.7,)"
     ordering="NONE"
     side="BOTH"
 
