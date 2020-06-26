@@ -2,6 +2,7 @@ package midnight;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,8 +20,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.Collectors;
 
 @Mod("midnight")
-public class Midnight
-{
+public class Midnight {
     // TODO: Make a better logger later in development.
     private static final Logger LOGGER = LogManager.getLogger("The Midnight");
 
@@ -38,31 +38,32 @@ public class Midnight
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("Pre-Initialization");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
+    private void doClientStuff(FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+    private void enqueueIMC(InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("midnight", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("midnight", "helloworld", () -> {
+            LOGGER.info("Hello world from the MDK");
+            return "Hello world";
+        });
     }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
+    private void processIMC(InterModProcessEvent event) {
         // some example code to receive and process InterModComms from other mods
         LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
+                map(m -> m.getMessageSupplier().get()).
                 collect(Collectors.toList()));
     }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
@@ -72,10 +73,13 @@ public class Midnight
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static final class RegistryEvents {
+        private RegistryEvents() {
+        }
+
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+        public static void onBlocksRegistry(RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
         }
