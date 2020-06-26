@@ -15,6 +15,9 @@ import org.apache.logging.log4j.Logger;
 public final class ClientEventHandler {
     private static final Logger LOGGER = LogManager.getLogger("The Midnight");
 
+    private static final String WARNING = "The Midnight for Minecraft 1.16.1 is still under active development. " +
+            "Many features will be missing and/or completely unusable. You have been warned!";
+
     private ClientEventHandler() {
     }
 
@@ -28,10 +31,8 @@ public final class ClientEventHandler {
         ClientPlayerEntity player = event.getPlayer();
 
         if (player != null) {
-            LOGGER.warn("The Midnight for Minecraft 1.16.1 is still under active development. " +
-                    "Many features will be missing and/or completely unusable. You have been warned!");
-            event.getPlayer().sendMessage(new TranslationTextComponent("The Midnight for Minecraft 1.16.1 is still under active development. " +
-                    "Many features will be missing and/or completely unusable. You have been warned!").func_240699_a_(TextFormatting.RED), event.getPlayer().getUniqueID());
+            LOGGER.warn(WARNING);
+            event.getPlayer().sendMessage(new TranslationTextComponent(WARNING).func_240699_a_(TextFormatting.RED), event.getPlayer().getUniqueID());
         }
     }
 }
