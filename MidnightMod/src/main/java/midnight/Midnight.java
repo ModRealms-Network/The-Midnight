@@ -25,7 +25,7 @@ public class Midnight {
     public static final String MODID = "midnight";
 
     // TODO: Make a better logger later in development.
-    private static final Logger LOGGER = LogManager.getLogger(Midnight.NAME);
+    private static final Logger LOGGER = LogManager.getLogger(Midnight.class);
 
     public Midnight() {
         // Register the setup method for modloading
