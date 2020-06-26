@@ -7,6 +7,9 @@ If you want to discuss the mod, we have a [Discord server](https://discord.gg/Rd
 We have other mods we like to work on, too! You can view them by visiting our [GitHub page](https://github.com/Cryptic-Mushroom) and [Cipher_Zero_X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
 If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).
 
+## Gradle
+For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
+
 ## The Midnight Team  
 ### Active Developers  
 [Cipher_Zero_X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
