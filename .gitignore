@@ -11,7 +11,10 @@ out
 *.ipr
 *.iws
 *.iml
-.idea
+# CM: we include the .idea directory itself to include code styles and inspection profiles.
+.idea/*.xml
+.idea/modules
+
 
 # gradle
 build
