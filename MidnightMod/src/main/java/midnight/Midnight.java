@@ -19,10 +19,13 @@ import net.minecraft.block.Blocks;
 
 import java.util.stream.Collectors;
 
-@Mod("midnight")
+@Mod(Midnight.MODID)
 public class Midnight {
+    public static final String NAME = "The Midnight";
+    public static final String MODID = "midnight";
+
     // TODO: Make a better logger later in development.
-    private static final Logger LOGGER = LogManager.getLogger("The Midnight");
+    private static final Logger LOGGER = LogManager.getLogger(Midnight.NAME);
 
     public Midnight() {
         // Register the setup method for modloading
