@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 @Mod("midnight")
 public class Midnight
 {
-    // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    // TODO: Make a better logger later in development.
+    private static final Logger LOGGER = LogManager.getLogger("The Midnight");
 
     public Midnight() {
         // Register the setup method for modloading
@@ -41,7 +41,7 @@ public class Midnight
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
+        LOGGER.info("Pre-Initialization");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
