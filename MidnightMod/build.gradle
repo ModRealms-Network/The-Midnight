@@ -1,0 +1,28 @@
+dependencies {
+    embed( project( ':MidnightAPI' ) ) {
+        transitive false
+    }
+    embed( project( ':MidnightCore' ) ) {
+        transitive false
+    }
+}
+
+apply from: 'universal.gradle'
+apply from: 'client.gradle'
+apply from: 'server.gradle'
+
+project.ext.implName = "The Midnight"
+
+build {
+    dependsOn 'signJar'
+    dependsOn 'signClientJar'
+    dependsOn 'signServerJar'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += "src/generated/resources"
+        }
+    }
+}

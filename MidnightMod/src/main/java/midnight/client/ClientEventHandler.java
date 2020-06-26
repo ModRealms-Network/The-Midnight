@@ -1,15 +1,15 @@
 package midnight.client;
 
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public final class ClientEventHandler {

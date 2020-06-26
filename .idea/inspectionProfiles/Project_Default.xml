@@ -1638,7 +1638,7 @@
     <inspection_tool class="NullChecksToSafeCall" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="NullThrown" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NullableBooleanElvis" enabled="true" level="INFO" enabled_by_default="true" />
-    <inspection_tool class="NullableProblems" enabled="true" level="WARNING" enabled_by_default="true">
+    <inspection_tool class="NullableProblems" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="REPORT_NULLABLE_METHOD_OVERRIDES_NOTNULL" value="true" />
       <option name="REPORT_NOT_ANNOTATED_METHOD_OVERRIDES_NOTNULL" value="true" />
       <option name="REPORT_NOTNULL_PARAMETER_OVERRIDES_NULLABLE" value="true" />
@@ -2346,7 +2346,7 @@
     <inspection_tool class="UnsafeReturnStatementVisitor" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnsafeVfsRecursion" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="UnsecureRandomNumberGeneration" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="UnstableApiUsage" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UnstableApiUsage" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="UnstableTypeUsedInSignature" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="UnusedAssignment" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="REPORT_PREFIX_EXPRESSIONS" value="false" />
@@ -2472,8 +2472,6 @@
       <option name="ADD_APPLET_TO_ENTRIES" value="true" />
       <option name="ADD_SERVLET_TO_ENTRIES" value="true" />
       <option name="ADD_NONJAVA_TO_ENTRIES" value="true" />
-      <option name="selected" value="true" />
-      <option name="MIXIN_ENTRY_POINT" value="true" />
     </inspection_tool>
   </profile>
 </component>

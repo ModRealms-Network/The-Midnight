@@ -1,0 +1,2 @@
+archivesBaseName = project.ext.getVariable("midnight.apiname")
+project.ext.implName = "The Midnight API"

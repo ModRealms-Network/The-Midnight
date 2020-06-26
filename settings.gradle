@@ -1,0 +1,5 @@
+rootProject.name = 'The-Midnight'
+
+include 'MidnightAPI'
+include 'MidnightCore'
+include 'MidnightMod'

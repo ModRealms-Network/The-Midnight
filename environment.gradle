@@ -1,0 +1,65 @@
+// @formatter:off
+version = getVariable("midnight.version")
+group = getVariable("midnight.group")
+archivesBaseName = getVariable("midnight.modname")
+
+sourceCompatibility                          \
+     = targetCompatibility                    \
+     = tasks.compileJava.sourceCompatibility  \
+     = tasks.compileJava.targetCompatibility  \
+     = '1.8'
+
+ext {
+    SYSENV = System.getenv()
+    modid = getVariable("midnight.modname")
+    versionName = getVariable("midnight.version.name")
+    isIDE = isIDE()
+}
+
+def canJarBeSigned() {
+    return getVariable('mnKeyStore') != null && !project.ext.isIDE
+}
+
+// Returns the public fingerprint, may be empty ("")
+def getProjectFingerprint() {
+    if (canJarBeSigned()) {
+        return getVariable('mnSignSHA1').replaceAll(':', '').toLowerCase()
+    }
+    return ''
+}
+
+// Attempts to get a project variable and if none is found it tries to read from a system environment variable
+String getVariable(String key) {
+    return rootProject.hasProperty(key) ? rootProject.property(key) : project.ext.SYSENV.containsKey(key) ? project.ext.SYSENV[key] : System.getProperty(key)
+}
+
+boolean isIDE() {
+    return project.ext.SYSENV.containsKey("IDE")
+            ? Boolean.parseBoolean(project.ext.SYSENV["IDE"] as String)
+            : true
+}
+
+// Signs a jar file
+def sign(File jar) {
+    if (canJarBeSigned()) {
+        ant.signjar(
+                destDir: "${jar.parentFile}",
+                jar: "${jar}",
+                alias: getVariable('mnKeyStoreAlias'),
+                storetype: "jks",
+                keystore: getVariable("mnKeyStore"),
+                storepass: getVariable('mnKeyStorePass'),
+                keypass: getVariable('mnKeyStoreKeyPass'),
+                verbose: true,
+                preservelastmodified: "true"
+        )
+        println "Jar signed: ${jar}"
+    } else {
+        println "No keystore property found, jar will not be signed"
+    }
+}
+
+project.ext.getVariable = { String key -> return getVariable(key) }
+project.ext.canJarBeSigned = { return canJarBeSigned() }
+project.ext.getProjectFingerprint = { return getProjectFingerprint() }
+project.ext.sign = { File jar -> return sign(jar) }

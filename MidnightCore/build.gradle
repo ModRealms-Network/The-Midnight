@@ -1,0 +1,9 @@
+dependencies {
+    embed( project( ':MidnightAPI' ) ) {
+        transitive false
+    }
+}
+
+archivesBaseName = project.ext.getVariable( "midnight.corename" )
+
+project.ext.implName = "The Midnight Core"
