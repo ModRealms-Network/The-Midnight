@@ -40,10 +40,26 @@ jobs:
         gradle-version: 4.10.3
         arguments: build
 
-    - name: Upload the Build Output to GitHub
+    - name: Upload The Midnight API to GitHub
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
-        name: build-output-${{ github.sha }}
+        name: midnight-api-${{ github.sha }}
         # A file, directory or wildcard pattern that describes what to upload
-        path: build/libs/*.jar
+        path: MidnightAPI/build/libs/*.jar
+
+    - name: Upload The Midnight Core to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        # Artifact name
+        name: midnight-core-${{ github.sha }}
+        # A file, directory or wildcard pattern that describes what to upload
+        path: MidnightCore/build/libs/*.jar
+
+    - name: Upload The Midnight to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        # Artifact name
+        name: midnight-core-${{ github.sha }}
+        # A file, directory or wildcard pattern that describes what to upload
+        path: MidnightMod/build/libs/*.jar
