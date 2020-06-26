@@ -60,6 +60,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
-        name: midnight-core-${{ github.sha }}
+        name: midnight-mod-${{ github.sha }}
         # A file, directory or wildcard pattern that describes what to upload
         path: MidnightMod/build/libs/*.jar
