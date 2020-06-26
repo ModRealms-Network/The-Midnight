@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="runData" type="Application" factoryName="Application" singleton="false">
+  <configuration default="false" name="Generate Data" type="Application" factoryName="Application" singleton="false">
     <envs>
       <env name="MOD_CLASSES" value="midnight%%$PROJECT_DIR$/build/resources/main:midnight%%$PROJECT_DIR$/build/classes/java/main" />
       <env name="MCP_MAPPINGS" value="snapshot_20200514-1.16" />
@@ -13,7 +13,7 @@
     <module name="The-Midnight.main" />
     <option name="PROGRAM_PARAMETERS" value="--mod midnight --all --output $PROJECT_DIR$/src/generated/resources" />
     <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=info -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run/data" />
     <method v="2">
       <option name="Gradle.BeforeRunTask" enabled="true" tasks=":prepareRunData" externalProjectPath="$PROJECT_DIR$" />
     </method>

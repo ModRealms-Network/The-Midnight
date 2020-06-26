@@ -1,3 +1,6 @@
+// To all contributors
+// PLEASE REFRAIN FROM EDITING THIS build.gradle FILE UNLESS ABSOLUTELY NEEDED!!!
+
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
@@ -135,7 +138,7 @@ build {
 minecraft {
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/client')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -148,10 +151,12 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/server')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
+
+            args 'nogui'
 
             mods {
                 midnight {
@@ -161,7 +166,7 @@ minecraft {
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/data')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
