@@ -50,7 +50,7 @@ allprojects {
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
         constant('sha1') {
-            project.isIDE && project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
+            ! project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
         }
     }
 
