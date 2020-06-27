@@ -13,7 +13,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public final class WarningMessageHandler {
-    private static final Logger LOGGER = LogManager.getLogger("The Midnight");
+    private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
 
     private static final String WARNING = "The Midnight for Minecraft 1.16.1 is still under active development. " +
             "Many features will be missing and/or completely unusable. You have been warned!";
