@@ -3,11 +3,13 @@ package midnight.gradle;
 import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace;
 import org.gradle.api.*;
 import org.gradle.api.tasks.bundling.Jar;
+import org.gradle.internal.Pair;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class MidnightPlugin implements Plugin<Project> {
     @Override
@@ -76,5 +78,17 @@ public class MidnightPlugin implements Plugin<Project> {
             return task;
         });
         project.getExtensions().add("shade", shade);
+
+        ConstantInjectionTask injectConstants = project.getTasks().create("injectConstants", ConstantInjectionTask.class, task -> {
+            task.from(project.getBuildDir() + "/classes/java/main/");
+            task.into(project.getBuildDir() + "/classes/java/main/");
+            task.annotation("midnight.DynamicConstant");
+            project.afterEvaluate(p -> {
+                List<Pair<Object, Object>> consts = ext.getConstants();
+                consts.forEach(pair -> task.constant(pair.left, pair.right));
+            });
+        });
+
+        project.getTasks().getByName("compileJava").finalizedBy(injectConstants);
     }
 }

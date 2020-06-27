@@ -27,7 +27,7 @@ eclipse
 run
 # Exclude the root sources directory as we don't use this...
 # IntelliJ may automatically generate them though...
-src
+/src
 
 # Files from Forge MDK
 forge*changelog.txt

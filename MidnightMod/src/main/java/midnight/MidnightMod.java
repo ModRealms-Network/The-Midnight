@@ -19,15 +19,14 @@ import net.minecraft.block.Blocks;
 
 import java.util.stream.Collectors;
 
-@Mod(Midnight.MODID)
-public class Midnight {
-    public static final String NAME = "The Midnight";
-    public static final String MODID = "midnight";
-
+@Mod(MidnightInfo.MODID)
+public class MidnightMod {
     // TODO: Make a better logger later in development.
-    private static final Logger LOGGER = LogManager.getLogger(Midnight.class);
+    private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
 
-    public Midnight() {
+    public MidnightMod() {
+        printVersion();
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -39,6 +38,15 @@ public class Midnight {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void printVersion() {
+        LOGGER.info("Initializing The Midnight");
+        LOGGER.info(" - Version: " + MidnightInfo.VERSION);
+        LOGGER.info(" - Build Date: " + MidnightInfo.BUILD_DATE);
+        if (MidnightInfo.IDE) {
+            LOGGER.info(" - Running in IDE");
+        }
     }
 
     private void setup(FMLCommonSetupEvent event) {

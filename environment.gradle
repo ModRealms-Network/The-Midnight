@@ -13,7 +13,7 @@ ext {
     SYSENV = System.getenv()
     modid = getVariable("midnight.modname")
     versionName = getVariable("midnight.version.name")
-    isIDE = isIDE()
+    timeOfExecution = rootProject.ext.timeOfExecution
 }
 
 def canJarBeSigned() {
@@ -31,12 +31,6 @@ def getProjectFingerprint() {
 // Attempts to get a project variable and if none is found it tries to read from a system environment variable
 String getVariable(String key) {
     return rootProject.hasProperty(key) ? rootProject.property(key) : project.ext.SYSENV.containsKey(key) ? project.ext.SYSENV[key] : System.getProperty(key)
-}
-
-boolean isIDE() {
-    return project.ext.SYSENV.containsKey("IDE")
-            ? Boolean.parseBoolean(project.ext.SYSENV["IDE"] as String)
-            : true
 }
 
 // Signs a jar file
