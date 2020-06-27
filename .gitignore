@@ -14,6 +14,8 @@ out
 # CM: we include the .idea directory itself to include code styles and inspection profiles.
 .idea/*.xml
 .idea/modules
+.idea/.name
+.idea/runConfigurations/*
 
 
 # gradle
@@ -23,10 +25,9 @@ build
 # other
 eclipse
 run
+# Exclude the root sources directory as we don't use this...
+# IntelliJ may automatically generate them though...
+src
 
 # Files from Forge MDK
 forge*changelog.txt
-
-.idea/.name
-
-.idea/runConfigurations/*
