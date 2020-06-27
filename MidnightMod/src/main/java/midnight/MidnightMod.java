@@ -3,6 +3,7 @@ package midnight;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -16,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import midnight.client.MidnightClient;
+import midnight.common.Midnight;
 
 import java.util.stream.Collectors;
 
@@ -23,6 +26,8 @@ import java.util.stream.Collectors;
 public class MidnightMod {
     // TODO: Make a better logger later in development.
     private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
+
+    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> Midnight::new, () -> MidnightClient::new);
 
     public MidnightMod() {
         printVersion();

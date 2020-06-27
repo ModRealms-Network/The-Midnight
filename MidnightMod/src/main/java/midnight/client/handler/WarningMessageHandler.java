@@ -1,4 +1,4 @@
-package midnight.client;
+package midnight.client.handler;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
@@ -12,13 +12,13 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
-public final class ClientEventHandler {
+public final class WarningMessageHandler {
     private static final Logger LOGGER = LogManager.getLogger("The Midnight");
 
     private static final String WARNING = "The Midnight for Minecraft 1.16.1 is still under active development. " +
             "Many features will be missing and/or completely unusable. You have been warned!";
 
-    private ClientEventHandler() {
+    private WarningMessageHandler() {
     }
 
     /*
