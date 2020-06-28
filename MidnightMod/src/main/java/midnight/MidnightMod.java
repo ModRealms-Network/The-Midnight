@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Mod(MidnightInfo.MODID)
 public class MidnightMod {
     // TODO: Make a better logger later in development.
-    private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
+    private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
     public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> Midnight::new, () -> MidnightClient::new);
 
