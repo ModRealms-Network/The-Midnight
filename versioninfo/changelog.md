@@ -2,7 +2,7 @@
 
 **For Minecraft 1.16.1**
 
-The Midnight, rewritten from ground up for better stability and performance.
+The Midnight, rewritten from the ground up for better stability and performance.
 
 #### Changelog
 
