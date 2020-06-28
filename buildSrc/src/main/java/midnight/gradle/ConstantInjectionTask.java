@@ -4,6 +4,8 @@ import groovy.lang.Closure;
 import org.gradle.api.InvalidUserDataException;
 import org.gradle.api.internal.file.copy.CopyAction;
 import org.gradle.api.tasks.Copy;
+import org.jboss.forge.roaster.model.source.AnnotationSource;
+import org.jboss.forge.roaster.model.source.JavaClassSource;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AnnotationNode;
@@ -14,10 +16,11 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class ConstantInjectionTask extends Copy {
-    private Type annotation;
+    private String annotation;
     private String annotArgument = "value";
     private Map<Object, Object> constants = new HashMap<>();
 
@@ -31,7 +34,7 @@ public class ConstantInjectionTask extends Copy {
         if (destinationDir == null) {
             throw new InvalidUserDataException("No copy destination directory has been specified, use 'into' to specify a target directory.");
         } else {
-            return new ASMCopyAction(getFileLookup().getFileResolver(destinationDir), this::transform);
+            return new RoasterCopyAction(getFileLookup().getFileResolver(destinationDir), this::modify);
         }
     }
 
@@ -40,11 +43,52 @@ public class ConstantInjectionTask extends Copy {
     }
 
     public void annotation(String annotation) {
-        this.annotation = Type.getObjectType(annotation.replace('.', '/'));
+        this.annotation = annotation;
     }
 
     public void argument(String argument) {
         this.annotArgument = argument;
+    }
+
+    private JavaClassSource modify(JavaClassSource src) {
+        src.getFields()
+           .stream()
+           .filter(field -> field.isStatic() && field.isFinal() && field.getLiteralInitializer() != null)
+           .forEach(
+                   field -> {
+                       Optional<AnnotationSource<JavaClassSource>> annotation
+                               = field.getAnnotations()
+                                      .stream()
+                                      .filter(annot -> annot.getQualifiedName().equals(this.annotation))
+                                      .findFirst();
+
+                       annotation.ifPresent(annot -> {
+                           String value = annot.getStringValue(annotArgument);
+                           Object fv = constants.get(value);
+                           if (fv instanceof Supplier<?>) {
+                               fv = ((Supplier<?>) fv).get();
+                           }
+                           if (fv instanceof Closure<?>) {
+                               Closure<?> cl = (Closure<?>) fv;
+                               fv = cl.call();
+                           }
+                           if (fv instanceof String)
+                               field.setStringInitializer((String) fv);
+                           else {
+                               if (fv instanceof Integer) {
+                                   field.setLiteralInitializer(fv + "");
+                               } else if (fv instanceof Long) {
+                                   field.setLiteralInitializer(fv + "L");
+                               } else if (fv instanceof Float) {
+                                   field.setLiteralInitializer(fv + "F");
+                               } else if (fv instanceof Double) {
+                                   field.setLiteralInitializer(fv + "D");
+                               }
+                           }
+                       });
+                   }
+           );
+        return src;
     }
 
     private ClassNode transform(ClassNode cls) {

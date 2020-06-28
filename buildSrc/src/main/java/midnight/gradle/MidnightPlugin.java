@@ -2,7 +2,9 @@ package midnight.gradle;
 
 import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace;
 import org.gradle.api.*;
+import org.gradle.api.plugins.JavaPluginConvention;
 import org.gradle.api.tasks.bundling.Jar;
+import org.gradle.api.tasks.compile.JavaCompile;
 import org.gradle.internal.Pair;
 
 import java.io.File;
@@ -79,9 +81,15 @@ public class MidnightPlugin implements Plugin<Project> {
         });
         project.getExtensions().add("shade", shade);
 
+        JavaPluginConvention java = (JavaPluginConvention) project.getConvention().getPlugins().get("java");
+
+        // TODO:
+        //  - Inject constants in resources
+        //  - Use constants from gradle.properties directly
+
         ConstantInjectionTask injectConstants = project.getTasks().create("injectConstants", ConstantInjectionTask.class, task -> {
-            task.from(project.getBuildDir() + "/classes/java/main/");
-            task.into(project.getBuildDir() + "/classes/java/main/");
+            task.from(java.getSourceSets().getByName("main").getAllSource());
+            task.into(project.getBuildDir() + "/sources/java/main");
             task.annotation("midnight.DynamicConstant");
             project.afterEvaluate(p -> {
                 List<Pair<Object, Object>> consts = ext.getConstants();
@@ -89,6 +97,8 @@ public class MidnightPlugin implements Plugin<Project> {
             });
         });
 
-        project.getTasks().getByName("compileJava").finalizedBy(injectConstants);
+        JavaCompile compileJava = (JavaCompile) project.getTasks().getByName("compileJava");
+        compileJava.setSource(project.getBuildDir() + "/sources/java/main/");
+        compileJava.dependsOn(injectConstants);
     }
 }

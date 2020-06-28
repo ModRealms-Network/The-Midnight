@@ -1,25 +1,3 @@
-//task generateSources( type: Copy ) {
-//    doFirst {
-//        delete "$buildDir/generatedSrc"
-//    }
-//    outputs.upToDateWhen { false }
-//
-//    from( 'src/main/java' ) {
-//        exclude 'runs/**'
-//    }
-//    into "$buildDir/generatedSrc"
-//    filter { line ->
-//        line.replaceAll( 'DynamicConstants\\.ide()', "$project.isIDE" )
-//                .replaceAll( 'DynamicConstants\\.SIGNED', "${ project.canJarBeSigned() && !project.isIDE }" )
-//                .replaceAll( 'DynamicConstants\\.VERSION_NAME', "\"${ project.version }\"" )
-//                .replaceAll( 'DynamicConstants\\.VERSION', "\"${ project.version }\"" )
-//                .replaceAll( 'DynamicConstants\\.SHA1', "\"${ project.isIDE ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint() }\"" )
-//    }
-//    doLast {
-//        println "Generated sources, IDE: $project.isIDE"
-//    }
-//}
-
 processResources {
     doFirst {
         delete "$buildDir/resources" // Delete resources to fully clean up unused items
@@ -41,9 +19,4 @@ processResources {
 
     exclude '**/unused/**'
     exclude 'src/main/resources/templates/**'
-}
-
-compileJava {
-//    setSource( "$buildDir/generatedSrc" )
-//    dependsOn generateSources
 }
