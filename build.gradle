@@ -203,7 +203,8 @@ minecraft {
 
 midnight {
     updateJson file('versioninfo/update.json')
-    markdownChangelog file('versioninfo/changelog.md')
+    markdownChangelog file('versioninfo/latest_changelog.md')
+    markdownChangelog file("versioninfo/${changelogInfo.versionNumber}_changelog.md")
 }
 
 

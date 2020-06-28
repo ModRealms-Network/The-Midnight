@@ -21,7 +21,7 @@ public class MidnightExtension extends GroovyObjectSupport {
     protected final List<Function<String, Object>> constants = new ArrayList<>();
     protected ChangelogInfo info;
     protected File updateJson;
-    protected File markdownOutput;
+    protected final List<File> markdownOutput = new ArrayList<>();
 
     public MidnightExtension(Project project) {
         this.project = project;
@@ -93,10 +93,10 @@ public class MidnightExtension extends GroovyObjectSupport {
     }
 
     public void markdownChangelog(File out) {
-        markdownOutput = out;
+        markdownOutput.add(out);
     }
 
-    public File getMarkdownChangelog() {
+    public List<File> getMarkdownChangelog() {
         return markdownOutput;
     }
 }

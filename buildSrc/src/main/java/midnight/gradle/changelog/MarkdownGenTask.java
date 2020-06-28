@@ -6,29 +6,37 @@ import org.gradle.api.tasks.TaskAction;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MarkdownGenTask extends DefaultTask {
     private ChangelogInfo info;
-    private File markdownOut;
+    private final List<File> markdownOut = new ArrayList<>();
 
     public void setInfo(ChangelogInfo info) {
         this.info = info;
     }
 
     public void setMarkdownOut(File markdownOut) {
-        this.markdownOut = markdownOut;
+        this.markdownOut.clear();
+        this.markdownOut.add(markdownOut);
+    }
+
+    public void setMarkdownOut(List<File> markdownOut) {
+        this.markdownOut.clear();
+        this.markdownOut.addAll(markdownOut);
     }
 
     public ChangelogInfo getInfo() {
         return info;
     }
 
-    public File getMarkdownOut() {
+    public List<File> getMarkdownOut() {
         return markdownOut;
     }
 
     public void markdown(File out) {
-        setMarkdownOut(out);
+        this.markdownOut.add(out);
     }
 
     public void changelog(ChangelogInfo info) {
@@ -37,12 +45,14 @@ public class MarkdownGenTask extends DefaultTask {
 
     @TaskAction
     private void invoke() {
-        MarkdownChangelogGenerator gen = new MarkdownChangelogGenerator(info, markdownOut);
-        try {
-            gen.generate();
-        } catch (IOException exc) {
-            exc.printStackTrace();
-            throw new UncheckedIOException(exc);
+        for (File out : markdownOut) {
+            MarkdownChangelogGenerator gen = new MarkdownChangelogGenerator(info, out);
+            try {
+                gen.generate();
+            } catch (IOException exc) {
+                exc.printStackTrace();
+                throw new UncheckedIOException(exc);
+            }
         }
     }
 }
