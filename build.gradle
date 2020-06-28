@@ -43,10 +43,12 @@ allprojects {
     midnight {
         shade('net.rgsw.ptg', 'midnight.internal.net.rgsw.ptg')
 
-        constant('version', project.version)
-        constant('version_name', project.ext.versionName)
-        constant('implementation_name', project.ext.implName)
-        constant('modid', project.ext.modid)
+        changelogJson file("$rootDir/changelog.json")
+
+        constant('mod_id', project.ext.modid)
+        constant('mod_name', project.ext.implName)
+        constant('version', changelogInfo.versionNumber)
+        constant('version_name', changelogInfo.versionName)
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
         constant('sha1') {
@@ -199,6 +201,11 @@ minecraft {
     }
 }
 
+midnight {
+    updateJson file('versioninfo/update.json')
+    markdownChangelog file('versioninfo/changelog.md')
+}
+
 
 // Depend on all subprojects
 dependencies {
@@ -334,4 +341,9 @@ jar {
 
 injectConstants {
     enabled false
+}
+
+task makeVersionInfo() {
+    dependsOn updateVersionJson
+    dependsOn genChangelogMarkdown
 }

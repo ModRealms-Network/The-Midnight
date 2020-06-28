@@ -1,0 +1,9 @@
+{
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/the-midnight",
+  "1.16.1": {
+    "0.6.0": "0.6.0 - The Midnight: Rewritten: The Midnight, rewritten from ground up for better stability and performance."
+  },
+  "promos": {
+    "1.16.1-latest": "0.6.0"
+  }
+}

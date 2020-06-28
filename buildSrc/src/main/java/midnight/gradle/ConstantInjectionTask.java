@@ -6,23 +6,21 @@ import org.gradle.api.internal.file.copy.CopyAction;
 import org.gradle.api.tasks.Copy;
 import org.jboss.forge.roaster.model.source.AnnotationSource;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
-import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AnnotationNode;
-import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ConstantInjectionTask extends Copy {
     private String annotation;
     private String annotArgument = "value";
-    private Map<Object, Object> constants = new HashMap<>();
+    private Function<String, Object> constants;
 
     public ConstantInjectionTask() {
 
@@ -38,8 +36,16 @@ public class ConstantInjectionTask extends Copy {
         }
     }
 
-    public void constant(Object val, Object constant) {
-        constants.put(val, constant);
+    public void constants(Function<String, Object> constants) {
+        this.constants = constants;
+    }
+
+    public void constants(Map<String, Object> constants) {
+        this.constants = constants::get;
+    }
+
+    public void constants(Closure<Object> constants) {
+        this.constants = constants::call;
     }
 
     public void annotation(String annotation) {
@@ -64,7 +70,7 @@ public class ConstantInjectionTask extends Copy {
 
                        annotation.ifPresent(annot -> {
                            String value = annot.getStringValue(annotArgument);
-                           Object fv = constants.get(value);
+                           Object fv = constants.apply(value);
                            if (fv instanceof Supplier<?>) {
                                fv = ((Supplier<?>) fv).get();
                            }
@@ -89,39 +95,6 @@ public class ConstantInjectionTask extends Copy {
                    }
            );
         return src;
-    }
-
-    private ClassNode transform(ClassNode cls) {
-        if (annotation != null) {
-            for (FieldNode field : cls.fields) {
-                if ((field.access & Opcodes.ACC_STATIC) != 0 && (field.access & Opcodes.ACC_FINAL) != 0 && field.value != null) {
-                    AnnotationNode annot = getAnnotation(field);
-                    if (annot != null) {
-                        Object value = getValue(annot);
-                        Object fv = constants.get(value);
-                        if (fv instanceof Supplier<?>) {
-                            fv = ((Supplier<?>) fv).get();
-                        }
-                        if (fv instanceof Closure<?>) {
-                            Closure<?> cl = (Closure<?>) fv;
-                            fv = cl.call();
-                        }
-                        if (fv != null) {
-                            if (fv instanceof Integer || fv instanceof Float || fv instanceof Long || fv instanceof Double || fv instanceof String) {
-                                field.value = fv;
-                            } else if (fv instanceof Boolean) {
-                                field.value = (boolean) fv ? 1 : 0;
-                            } else if (fv instanceof Number) {
-                                field.value = ((Number) fv).intValue();
-                            } else {
-                                field.value = fv.toString();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return cls;
     }
 
     private AnnotationNode getAnnotation(FieldNode field) {
