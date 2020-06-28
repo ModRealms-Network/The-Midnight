@@ -52,7 +52,7 @@ public class MidnightMod {
         LOGGER.info(" - Version: " + MidnightInfo.VERSION);
         LOGGER.info(" - Build Date: " + MidnightInfo.BUILD_DATE);
         if (MidnightInfo.IDE) {
-            LOGGER.info(" - Running in IDE");
+            LOGGER.info(" - Running in an IDE or via Gradle");
         }
     }
 

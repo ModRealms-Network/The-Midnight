@@ -29,7 +29,7 @@ public class BuildTestHandler {
         File testServerProof = new File("./TESTSERVER.txt");
         boolean isTestServer = testServerProof.exists();
 
-        if (isTestServer) {
+        if (isTestServer && MidnightInfo.IDE) {
             testServerProof.delete();
             File testServerSuccess = new File("./TESTSERVER.txt");
 
