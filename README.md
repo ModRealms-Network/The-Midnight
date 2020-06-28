@@ -10,11 +10,13 @@ If you would like to support our work, consider donating to our [Patreon](https:
 ## Gradle
 For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
 
-## The Midnight Team  
-### Active Developers  
+## Credits  
+### The Midnight Development Team  
 [Cipher_Zero_X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
 [RedGalaxySW](https://github.com/RedGalaxySW) - Lead Programmer  
-[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer  
+[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer
+
+### Active Collaborators  
 [Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician
 
 ### Former and Inactive Developers  
@@ -28,4 +30,4 @@ For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
 [MCVinnyq](https://github.com/MCVinnyq) - Texturer, Modeler  
 
 ## Additional Thanks  
-Contributors: [ZombieEnderman5](https://github.com/ZombieEnderman5), [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir), 123wdog, [Terenx](https://github.com/Terenx), [KingPhygieBoo](https://gitlab.com/KingPhygieBoo)
+Contributors (1.12.2 - 1.15.2): [ZombieEnderman5](https://github.com/ZombieEnderman5), [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir), 123wdog, [Terenx](https://github.com/Terenx), [KingPhygieBoo](https://gitlab.com/KingPhygieBoo)

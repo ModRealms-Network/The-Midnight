@@ -81,7 +81,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.1-32.0.23'
+        minecraft 'net.minecraftforge:forge:1.16.1-32.0.24'
 
         embed("net.rgsw:noise:1.0.5") {
             // The only dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't need to
@@ -89,13 +89,14 @@ allprojects {
             transitive false
         }
 
-        // TODO Add these dependencies for 1.16.1
-        // compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.4:api")
-        // runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.4")
+        compileOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.2:api")
+        runtimeOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.2")
 
+        // TODO Add TerraForged API dependency for 1.16.1
         // compileOnly "com.terraforged:TerraForgedAPI:1.15.2-0.0.1"
         // runtimeOnly fg.deobf("local:TerraForged:1.15.2-0.0.13")
 
+        // TODO Add Biomes O' Plenty dependency for 1.16.1
         // compileOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.345:api")
         // runtimeOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.345:universal")
     }
