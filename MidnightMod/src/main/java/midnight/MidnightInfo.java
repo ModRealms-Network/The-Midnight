@@ -1,6 +1,10 @@
 package midnight;
 
-public final class MidnightInfo {
+import midnight.api.IMidnightInfo;
+
+public final class MidnightInfo implements IMidnightInfo {
+    public static final MidnightInfo INSTANCE = new MidnightInfo();
+
     public static final String MODID = "midnight";
     public static final String NAME = "The Midnight";
 
@@ -24,5 +28,35 @@ public final class MidnightInfo {
     private static boolean isRunningFromIDE() {
         String p = System.getProperty("midnight.iside");
         return Boolean.parseBoolean(p);
+    }
+
+    @Override
+    public String modid() {
+        return MODID;
+    }
+
+    @Override
+    public String name() {
+        return NAME;
+    }
+
+    @Override
+    public String version() {
+        return VERSION;
+    }
+
+    @Override
+    public String versionName() {
+        return VERSION_NAME;
+    }
+
+    @Override
+    public String buildDate() {
+        return BUILD_DATE;
+    }
+
+    @Override
+    public boolean ide() {
+        return IDE;
     }
 }

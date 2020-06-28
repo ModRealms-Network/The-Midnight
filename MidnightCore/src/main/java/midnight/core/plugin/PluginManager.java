@@ -18,7 +18,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Type;
 
-import midnight.api.plugin.IPluginManager;
 import midnight.api.plugin.MidnightEventSubscriber;
 import midnight.api.plugin.MidnightPlugin;
 import midnight.api.plugin.Side;
@@ -27,7 +26,7 @@ import java.lang.annotation.ElementType;
 import java.util.List;
 import java.util.Set;
 
-public final class PluginManager implements IPluginManager {
+public final class PluginManager {
     public static final PluginManager INSTANCE = new PluginManager();
 
     private static final Logger LOGGER = LogManager.getLogger("Midnight Plugin Manager");
@@ -123,7 +122,6 @@ public final class PluginManager implements IPluginManager {
      * @param type The type class
      * @return A list of cast plugin instances.
      */
-    @Override
     public <T> List<T> getAllOfType(Class<T> type) {
         List<T> list = Lists.newArrayList();
 

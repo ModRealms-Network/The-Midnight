@@ -1,4 +1,4 @@
-package midnight.common.handler;
+package midnight.server.handler;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
