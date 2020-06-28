@@ -10,6 +10,7 @@ on:
     paths-ignore:
       - '.github/**'
       - 'curseforge/**'
+      - 'versioninfo/**'
       - 'README.md'
       - 'LICENSE'
       - 'changelog.json'
