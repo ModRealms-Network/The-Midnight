@@ -7,10 +7,10 @@ public final class MidnightInfo {
     public static final boolean IDE = isRunningFromIDE();
 
     @DynamicConstant("version")
-    public static final String VERSION = "NOT.A.VERSION";
+    public static final String VERSION = "0.6.0";
 
     @DynamicConstant("version_name")
-    public static final String VERSION_NAME = "Not A Version";
+    public static final String VERSION_NAME = "The Midnight: Rewritten"; // IDEA this is what I think could be the version name. @ me on Discord if you have any objections. - Jonathing
 
     @DynamicConstant("sha1")
     public static final String SHA1 = "SHA1";
