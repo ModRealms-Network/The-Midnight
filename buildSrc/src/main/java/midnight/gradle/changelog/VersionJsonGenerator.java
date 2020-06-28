@@ -43,6 +43,9 @@ public class VersionJsonGenerator {
     }
 
     private String genChangelogString() {
+        if (addChangelog.getDescription() == null) {
+            return String.format("%s - %s", addChangelog.getVersionNumber(), addChangelog.getVersionName());
+        }
         return String.format("%s - %s: %s", addChangelog.getVersionNumber(), addChangelog.getVersionName(), addChangelog.getDescription());
     }
 

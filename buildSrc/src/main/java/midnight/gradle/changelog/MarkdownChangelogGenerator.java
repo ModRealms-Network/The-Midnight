@@ -20,8 +20,10 @@ public class MarkdownChangelogGenerator {
         out.println();
         out.printf("**For Minecraft %s**\n", info.getMcversion());
         out.println();
-        out.println(info.getDescription());
-        out.println();
+        if (info.getDescription() != null) {
+            out.println(info.getDescription());
+            out.println();
+        }
         out.println("#### Changelog");
         out.println();
         for (String changelog : info.getChangelog()) {
