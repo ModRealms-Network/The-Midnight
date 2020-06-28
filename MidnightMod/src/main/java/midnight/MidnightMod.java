@@ -20,6 +20,7 @@ import net.minecraft.block.Blocks;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.core.plugin.PluginManager;
+import midnight.server.MidnightServer;
 
 import java.util.stream.Collectors;
 
@@ -28,7 +29,7 @@ public class MidnightMod {
     // TODO: Make a better logger later in development.
     private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
-    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> Midnight::new, () -> MidnightClient::new);
+    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::new, () -> MidnightServer::new);
 
     public MidnightMod() {
         printVersion();
