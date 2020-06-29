@@ -222,10 +222,20 @@ dependencies {
 }
 
 // Collect classes and resources from other projects so that running includes all classes
+task remakeClassesDir {
+    doFirst {
+        delete "$buildDir/classes/main"
+        file("$buildDir/classes/main").mkdirs()
+    }
+
+    outputs.upToDateWhen { t -> false }
+}
+
 task collectClasses(type: Copy) {
     dependsOn ':MidnightAPI:classes'
     dependsOn ':MidnightCore:classes'
     dependsOn ':MidnightMod:classes'
+    dependsOn ':remakeClassesDir'
 
     outputs.upToDateWhen { t -> false }
 
@@ -246,17 +256,22 @@ task collectClasses(type: Copy) {
     into("$buildDir/classes/java/main")
 }
 
+task remakeTestClassesDir {
+    doFirst {
+        delete "$buildDir/classes/test"
+        file("$buildDir/classes/test").mkdirs()
+    }
+
+    outputs.upToDateWhen { t -> false }
+}
+
 task collectTestClasses(type: Copy) {
     dependsOn ':MidnightAPI:testClasses'
     dependsOn ':MidnightCore:testClasses'
     dependsOn ':MidnightMod:testClasses'
+    dependsOn ':remakeTestClassesDir'
 
     outputs.upToDateWhen { t -> false }
-
-    doFirst {
-        delete "$buildDir/classes/java/test"
-        file("$buildDir/classes/java/test").mkdirs()
-    }
 
     configurations.collectMany {
         it.allDependencies
@@ -278,16 +293,20 @@ compileTestJava {
     dependsOn 'collectTestClasses'
 }
 
+task remakeResourcesDir {
+    doFirst {
+        delete "$buildDir/resources/main"
+        file("$buildDir/resources/main").mkdirs()
+    }
+
+    outputs.upToDateWhen { t -> false }
+}
 
 task collectResources(type: Copy) {
     dependsOn ':MidnightAPI:classes'
     dependsOn ':MidnightCore:classes'
     dependsOn ':MidnightMod:classes'
-
-    doFirst {
-        delete "$buildDir/resources/main"
-        file("$buildDir/resources/main").mkdirs()
-    }
+    dependsOn ':remakeResourcesDir'
 
     outputs.upToDateWhen { t -> false }
 
@@ -303,15 +322,20 @@ task collectResources(type: Copy) {
     into("$buildDir/resources/main")
 }
 
-task collectTestResources(type: Copy) {
-    dependsOn ':MidnightAPI:testClasses'
-    dependsOn ':MidnightCore:testClasses'
-    dependsOn ':MidnightMod:testClasses'
-
+task remakeTestResourcesDir {
     doFirst {
         delete "$buildDir/resources/test"
         file("$buildDir/resources/test").mkdirs()
     }
+
+    outputs.upToDateWhen { t -> false }
+}
+
+task collectTestResources(type: Copy) {
+    dependsOn ':MidnightAPI:testClasses'
+    dependsOn ':MidnightCore:testClasses'
+    dependsOn ':MidnightMod:testClasses'
+    dependsOn ':remakeTestResourcesDir'
 
     outputs.upToDateWhen { t -> false }
 

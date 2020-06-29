@@ -10,6 +10,8 @@ package midnight.core.plugin;
 import net.minecraftforge.api.distmarker.Dist;
 import org.objectweb.asm.Type;
 
+import midnight.api.IMidnight;
+
 class ASMPluginData {
     private final Type classType;
     private final Dist dist;
@@ -35,7 +37,7 @@ class ASMPluginData {
     void registerEventSubscriber() throws Exception {
         try {
             Class<?> cls = Class.forName(classType.getClassName());
-            // TODO
+            IMidnight.EVENT_BUS.register(cls);
         } catch (ClassNotFoundException exc) {
             throw new Exception("Unable to find event subscriber class: " + classType.getClassName());
         }
