@@ -27,8 +27,6 @@ import java.util.List;
 import java.util.Set;
 
 public final class PluginManager {
-    public static final PluginManager INSTANCE = new PluginManager();
-
     private static final Logger LOGGER = LogManager.getLogger("Midnight Plugin Manager");
 
     private static final Type PLUGIN_ANNOTATION = Type.getType(MidnightPlugin.class);
@@ -42,7 +40,7 @@ public final class PluginManager {
     private final List<PluginException> pluginErrors = Lists.newArrayList();
 
 
-    private PluginManager() {
+    public PluginManager() {
     }
 
     /**

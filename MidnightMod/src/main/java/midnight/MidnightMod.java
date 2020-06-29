@@ -9,10 +9,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import midnight.api.IMidnight;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
-import midnight.core.plugin.PluginManager;
 import midnight.server.MidnightServer;
 
 @Mod(MidnightInfo.MODID)
@@ -30,8 +28,6 @@ public class MidnightMod {
         MinecraftForge.EVENT_BUS.register(MIDNIGHT);
         FMLJavaModLoadingContext.get().getModEventBus().register(MIDNIGHT);
 
-        IMidnight.EVENT_BUS.start();
-        PluginManager.INSTANCE.loadPlugins();
         MIDNIGHT.preInit();
         LOGGER.debug("Midnight pre-initialized");
     }
