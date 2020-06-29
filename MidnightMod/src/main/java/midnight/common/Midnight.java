@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import midnight.MidnightInfo;
+import midnight.MidnightMod;
 import midnight.api.IMidnight;
 import midnight.api.IMidnightInfo;
 import midnight.api.event.MidnightInitEvent;
@@ -13,13 +14,8 @@ import midnight.core.plugin.PluginManager;
 
 public abstract class Midnight implements IMidnight {
     public static final Logger LOGGER = LogManager.getLogger();
-    private static Midnight instance;
 
     private final PluginManager pluginManager = new PluginManager();
-
-    public Midnight() {
-        instance = this;
-    }
 
     public void preInit() {
         EVENT_BUS.start();
@@ -47,6 +43,6 @@ public abstract class Midnight implements IMidnight {
     }
 
     public static Midnight get() {
-        return instance;
+        return MidnightMod.MIDNIGHT;
     }
 }
