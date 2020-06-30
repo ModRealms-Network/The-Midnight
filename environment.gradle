@@ -17,7 +17,7 @@ ext {
 }
 
 def canJarBeSigned() {
-    return getVariable('mnKeyStore') != null && !project.ext.isIDE
+    return getVariable('mnKeyStore') != null
 }
 
 // Returns the public fingerprint, may be empty ("")
