@@ -53,7 +53,13 @@ def sign(File jar) {
     }
 }
 
+static def isOsx() {
+    def osProp = System.properties['os.name'].toLowerCase()
+    return osProp.contains('darwin') || osProp.contains('osx') || osProp.contains('mac')
+}
+
 project.ext.getVariable = { String key -> return getVariable(key) }
 project.ext.canJarBeSigned = { return canJarBeSigned() }
 project.ext.getProjectFingerprint = { return getProjectFingerprint() }
 project.ext.sign = { File jar -> return sign(jar) }
+project.ext.isOsx = { return isOsx() }

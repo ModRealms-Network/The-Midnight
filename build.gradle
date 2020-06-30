@@ -149,7 +149,6 @@ build {
     dependsOn ':MidnightMod:build'
 }
 
-
 // Configure run configurations only for root project
 minecraft {
     runs {
@@ -189,6 +188,10 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
             property 'midnight.iside', 'true'
+            if(project.ext.isOsx()) {
+                println("OSX___________________OSX____________OSX")
+                jvmArg("-XstartOnFirstThread")
+            }
 
             args '--mod', 'midnight', '--all', '--output', file('src/generated/resources/')
 
