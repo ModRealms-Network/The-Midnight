@@ -189,7 +189,6 @@ minecraft {
             property 'forge.logging.console.level', 'info'
             property 'midnight.iside', 'true'
             if(project.ext.isOsx()) {
-                println("OSX___________________OSX____________OSX")
                 jvmArg("-XstartOnFirstThread")
             }
 
