@@ -57,13 +57,29 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: MidnightCore/build/libs/*.jar
 
+    - name: Upload The Midnight Client to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        # Artifact name
+        name: midnight-client-${{ github.sha }}
+        # A file, directory or wildcard pattern that describes what to upload
+        path: MidnightMod/build/libs/*client*.jar
+
+    - name: Upload The Midnight Server to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        # Artifact name
+        name: midnight-server-${{ github.sha }}
+        # A file, directory or wildcard pattern that describes what to upload
+        path: MidnightMod/build/libs/*server*.jar
+
     - name: Upload The Midnight to GitHub
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
-        name: midnight-mod-${{ github.sha }}
+        name: midnight-universal-${{ github.sha }}
         # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightMod/build/libs/*.jar
+        path: MidnightMod/build/libs/*universal*.jar
 
   test:
 
