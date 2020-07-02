@@ -14,10 +14,17 @@ import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.server.MidnightServer;
 
+/**
+ * Bootstrap class of the Midnight. This is the first class of the Midnight that is being loaded by Forge. From here we
+ * start interfacing with Minecraft.
+ */
 @Mod(MidnightInfo.MODID)
 public class MidnightMod {
     private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
+    /**
+     * The general {@link Midnight} instance. Don't use - use {@link Midnight#get()} instead.
+     */
     public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
 
     public MidnightMod() {

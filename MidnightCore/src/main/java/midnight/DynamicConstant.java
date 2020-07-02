@@ -6,14 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Replaces a certain constant value with a value generated during Gradle build. Usage
- * <pre>
- * {@literal @DynamicConstant}("version")
- * public static String VERSION = "-uninjected-";
- * </pre>
+ * Replaces a certain constant value with a value generated during Gradle build. Usage:<br><br> {@code
+ * @DynamicConstant("version")}<br> {@code public static String VERSION = "-uninjected-";}
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.CLASS)
 public @interface DynamicConstant {
+    /**
+     * The constant name to inject, set in the Gradle buildscript.
+     */
     String value();
 }

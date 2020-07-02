@@ -1,5 +1,7 @@
 package midnight.common;
 
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,11 +13,33 @@ import midnight.api.IMidnightInfo;
 import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
+import midnight.client.MidnightClient;
 import midnight.common.proxy.BlockItemProxy;
 import midnight.core.plugin.PluginManager;
+import midnight.data.MidnightData;
+import midnight.server.MidnightServer;
 
+/**
+ * Main class of the Midnight. From here the complete mod is controlled. A few subclasses of this class exist, each one
+ * for a different runtime variant of the Midnight:
+ * <ul>
+ * <li>
+ * {@link MidnightClient} is the client-side proxy of this class. It handles additional client-only loading and
+ * delegates certain method calls to appropriate client-only classes.
+ * </li>
+ * <li>
+ * {@link MidnightServer} is the server-side proxy of this class. It does not very much other than existing and
+ * delegating everything to the {@link Midnight} class itself.
+ * </li>
+ * <li>
+ * {@link MidnightData} is the data-generator-only proxy of this class. This is a subclass of {@link MidnightClient}
+ * that is only used when generating data. It prevents the unnecessary initialization of certain client-only things,
+ * such as rendering and the loading of plugins.
+ * </li>
+ * </ul>
+ */
 public abstract class Midnight implements IMidnight {
-    public static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
+    public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();
     private BlockItemProxy blockItemProxy;
@@ -26,6 +50,9 @@ public abstract class Midnight implements IMidnight {
      * INITIALIZATION HANDLERS
      */
 
+    /**
+     * Called on pre-initialization, in the constructor of the {@link MidnightMod} class.
+     */
     public void preInit() {
         blockItemProxy = makeBlockItemProxy();
 
@@ -36,10 +63,16 @@ public abstract class Midnight implements IMidnight {
         }
     }
 
+    /**
+     * Called on initialization, in the {@link FMLCommonSetupEvent} handler.
+     */
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
     }
 
+    /**
+     * Called on post-initialization, in the {@link FMLLoadCompleteEvent} handler.
+     */
     public void postInit() {
         EVENT_BUS.post(new MidnightPostInitEvent(this, getRuntimeDist()));
     }
@@ -50,10 +83,17 @@ public abstract class Midnight implements IMidnight {
      * BLOCK ITEM PROXY
      */
 
+    /**
+     * Makes the {@link BlockItemProxy}.
+     */
     protected BlockItemProxy makeBlockItemProxy() {
         return new BlockItemProxy();
     }
 
+    /**
+     * Returns the {@link BlockItemProxy} instance, for delegating certain block/item-related events to clients or
+     * servers safely without loading unexisting classes.
+     */
     public BlockItemProxy getBlockItemProxy() {
         return blockItemProxy;
     }
@@ -64,6 +104,9 @@ public abstract class Midnight implements IMidnight {
      * PLUGIN MANAGER
      */
 
+    /**
+     * Returns the {@link PluginManager} of the current Midnight runtime.
+     */
     public PluginManager getPluginManager() {
         return pluginManager;
     }
@@ -77,6 +120,10 @@ public abstract class Midnight implements IMidnight {
         return MidnightInfo.INSTANCE;
     }
 
+    /**
+     * Returns the current {@link Midnight} instance, as in {@link MidnightMod#MIDNIGHT}. Prefer using this over using
+     * {@link MidnightMod#MIDNIGHT} itself.
+     */
     public static Midnight get() {
         return MidnightMod.MIDNIGHT;
     }
