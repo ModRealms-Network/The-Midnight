@@ -18,6 +18,22 @@ on:
       - '.gitattributes'
     tags-ignore:
       - '*.*'
+  pull_request:
+    branches:
+      - 1.16.1
+    paths-ignore:
+      - '.github/**'
+      - 'curseforge/**'
+      - 'versioninfo/**'
+      - 'README.md'
+      - 'LICENSE.md'
+      - 'changelog.json'
+      - '.gitignore'
+      - '.gitattributes'
+    tags-ignore:
+      - '*.*'
+  release:
+    types: [created]
 
 jobs:
   build:
