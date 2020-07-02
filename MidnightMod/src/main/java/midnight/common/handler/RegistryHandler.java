@@ -11,6 +11,9 @@ import midnight.common.block.MnBlocks;
 import midnight.common.item.MnItems;
 import midnight.common.registry.RegistryManager;
 
+/**
+ * Event handler responsible for handling all registry events and passing them to their respective object holders.
+ */
 @Mod.EventBusSubscriber(modid = "midnight", bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class RegistryHandler {
     private RegistryHandler() {

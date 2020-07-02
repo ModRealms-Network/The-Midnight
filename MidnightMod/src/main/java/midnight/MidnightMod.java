@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +18,7 @@ import midnight.server.MidnightServer;
 public class MidnightMod {
     private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
-    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::new, () -> MidnightServer::new);
+    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
 
     public MidnightMod() {
         printVersion();
@@ -36,8 +37,12 @@ public class MidnightMod {
         LOGGER.info("Initializing The Midnight");
         LOGGER.info(" - Version: " + MidnightInfo.VERSION);
         LOGGER.info(" - Build Date: " + MidnightInfo.BUILD_DATE);
+        LOGGER.info(" - Dist: " + FMLEnvironment.dist);
         if (MidnightInfo.IDE) {
             LOGGER.info(" - Running in an IDE or via Gradle");
+        }
+        if (MidnightInfo.DATAGEN) {
+            LOGGER.info(" - Running data generator");
         }
     }
 
