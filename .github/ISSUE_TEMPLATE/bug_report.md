@@ -26,7 +26,6 @@ WE WILL STILL ACCEPT ISSUES ON THE 1.15.2 VERSION OF THE MIDNIGHT, BUT THEY WILL
 If you understand this, feel free to proceed and write your bug report.
 -->
 
-
 # The Bug
 
 <!-- Description of the bug in question. If you can, describe what should be happening vs. what is actually happening. -->
@@ -52,6 +51,19 @@ ADDITIONAL INFORMATION
 - Midnight: [midnight version]
 - Forge: [forge version]
 - Did you use other remarkable modpacks, mods, resource packs or data packs, please list them here too. If your issue involves a problem with rendering or GUI, make sure to list all clientside mods as well.
+
+<!--
+FOR ANYONE WRITING ISSUES FOR THE 1.16.1 VERSION OF THE MIDNIGHT
+Please keep in mind the following except from our terms and conditions:
+
+## _Contribution_
+_Contribution_ to _this mod_ and/or its _sources_ is allowed under the following conditions:
+- The _contributor_ must suggest modifications using Issues or Pull Requests on GitHub.
+- The _contributor_ must follow the contribution guidelines.
+- The _contributor_ may NOT contribute when an _owner_ has forbidden the _contributor_ to contribute.
+- The _contribution_ must be voluntary.
+By contributing, _contributors_ automatically agree that an _owner_ shares and distributes this contribution legally.
+-->
 
 <!--
 New bug report template inspired by Microsoft's Cascadia Code bug report template.

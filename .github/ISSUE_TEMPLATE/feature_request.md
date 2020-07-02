@@ -43,6 +43,19 @@ Give a full explanation of the feature. Be obvious. Tell us everything about the
 <!-- If your enhancement involves code and you have an idea of how you would implement it, share your thoughts here. -->
 
 <!--
+FOR ANYONE WRITING ISSUES FOR THE 1.16.1 VERSION OF THE MIDNIGHT
+Please keep in mind the following except from our terms and conditions:
+
+## _Contribution_
+_Contribution_ to _this mod_ and/or its _sources_ is allowed under the following conditions:
+- The _contributor_ must suggest modifications using Issues or Pull Requests on GitHub.
+- The _contributor_ must follow the contribution guidelines.
+- The _contributor_ may NOT contribute when an _owner_ has forbidden the _contributor_ to contribute.
+- The _contribution_ must be voluntary.
+By contributing, _contributors_ automatically agree that an _owner_ shares and distributes this contribution legally.
+-->
+
+<!--
 New feature request template inspired by Microsoft's Cascadia Code feature request template.
 https://github.com/microsoft/cascadia-code/blob/master/.github/ISSUE_TEMPLATE/Feature_Request.md
 -->
