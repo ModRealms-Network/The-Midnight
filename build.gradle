@@ -83,7 +83,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.1-32.0.38'
+        minecraft 'net.minecraftforge:forge:1.16.1-32.0.43'
 
         embed("net.rgsw:noise:1.0.5") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
@@ -91,8 +91,8 @@ allprojects {
             transitive false
         }
 
-        compileOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.2:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.2")
+        compileOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.3:api")
+        runtimeOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.3")
 
         // TODO Add TerraForged API dependency for 1.16.1
         // compileOnly "com.terraforged:TerraForgedAPI:1.15.2-0.0.1"
