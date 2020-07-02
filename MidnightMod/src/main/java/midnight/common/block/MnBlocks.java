@@ -11,6 +11,10 @@ import net.minecraft.item.BlockItem;
 import midnight.common.registry.BlockItemBuilder;
 import midnight.common.registry.RegistryManager;
 
+/*
+ * We use our own Registry Manager to register blocks for The Midnight.
+ * This makes adding and developing new blocks into the mod easier for everyone involved.
+ */
 @ObjectHolder("midnight")
 public final class MnBlocks {
     public static final Block NIGHT_DIRT = register(

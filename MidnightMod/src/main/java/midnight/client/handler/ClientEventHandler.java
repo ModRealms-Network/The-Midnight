@@ -10,15 +10,16 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import midnight.MidnightMod;
 
+/*
+ * TODO: Make this the overall event handler or have multiple event handler classes?
+ */
 @Mod.EventBusSubscriber(Dist.CLIENT)
-public final class WarningMessageHandler {
-    private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
+public final class ClientEventHandler {
+    private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
-    private static final String WARNING = "The Midnight for Minecraft 1.16.1 is still under active development. " +
-            "Many features will be missing and/or completely unusable. You have been warned!";
-
-    private WarningMessageHandler() {
+    private ClientEventHandler() {
     }
 
     /*
@@ -30,9 +31,10 @@ public final class WarningMessageHandler {
     public static void loggedInEvent(ClientPlayerNetworkEvent.LoggedInEvent event) {
         ClientPlayerEntity player = event.getPlayer();
 
+        // Null-check the player
         if (player != null) {
-            LOGGER.warn(WARNING);
-            event.getPlayer().sendMessage(new TranslationTextComponent(WARNING).func_240699_a_(TextFormatting.RED), event.getPlayer().getUniqueID());
+            LOGGER.warn(MidnightMod.DEV_WARNING);
+            event.getPlayer().sendMessage(new TranslationTextComponent(MidnightMod.DEV_WARNING).func_240699_a_(TextFormatting.RED), event.getPlayer().getUniqueID());
         }
     }
 }

@@ -13,7 +13,7 @@ import midnight.api.event.MidnightPreInitEvent;
 import midnight.core.plugin.PluginManager;
 
 public abstract class Midnight implements IMidnight {
-    public static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
     private final PluginManager pluginManager = new PluginManager();
 
