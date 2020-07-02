@@ -8,10 +8,11 @@ on:
     branches:
       - 1.16.1
     paths-ignore:
+      - '.github/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
-      - 'LICENSE'
+      - 'LICENSE.md'
       - 'changelog.json'
       - '.gitignore'
       - '.gitattributes'
