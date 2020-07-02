@@ -52,7 +52,7 @@ allprojects {
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
         constant('sha1') {
-            ! project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
+            !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
         }
     }
 
@@ -86,8 +86,8 @@ allprojects {
         minecraft 'net.minecraftforge:forge:1.16.1-32.0.38'
 
         embed("net.rgsw:noise:1.0.5") {
-            // The only dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't need to
-            // embed it
+            // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
+            // need to embed it
             transitive false
         }
 
@@ -188,11 +188,14 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
             property 'midnight.iside', 'true'
-            if(project.ext.isOsx()) {
+            property 'midnight.datagen', 'true'
+
+            // Workaround for https://github.com/MinecraftForge/ForgeGradle/issues/690
+            if (project.ext.isOsx()) {
                 jvmArg("-XstartOnFirstThread")
             }
 
-            args '--mod', 'midnight', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'midnight', '--all', '--output', file("MidnightMod/src/generated/resources/")
 
             mods {
                 midnight {
@@ -224,142 +227,234 @@ dependencies {
 }
 
 // Collect classes and resources from other projects so that running includes all classes
-task remakeClassesDir {
-    doFirst {
-        delete "$buildDir/classes/main"
-        file("$buildDir/classes/main").mkdirs()
-    }
 
-    outputs.upToDateWhen { t -> false }
+def remake(String path) {
+    delete path
+    file(path).mkdirs()
 }
 
-task collectClasses(type: Copy) {
+task collectClassPath {
     dependsOn ':MidnightAPI:classes'
     dependsOn ':MidnightCore:classes'
     dependsOn ':MidnightMod:classes'
-    dependsOn ':remakeClassesDir'
-
-    outputs.upToDateWhen { t -> false }
 
     doFirst {
-        delete "$buildDir/classes/java/main"
-        file("$buildDir/classes/java/main").mkdirs()
-    }
+        remake "$buildDir/resources/main"
+        remake "$buildDir/classes/java/main"
 
-    configurations.collectMany {
-        it.allDependencies
-    }.findAll {
-        it instanceof ProjectDependency
-    }.each {
-        ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/classes/java/main")
+        remake "out/production/resources"
+        remake "out/production/classes"
     }
-
-    into("$buildDir/classes/java/main")
+    doLast {
+        configurations.collectMany {
+            it.allDependencies
+        }.findAll {
+            it instanceof ProjectDependency
+        }.each {
+            ProjectDependency dep = (ProjectDependency) it
+            copy {
+                from("$dep.dependencyProject.buildDir/resources/main")
+                into("$buildDir/resources/main")
+            }
+            copy {
+                from("$dep.dependencyProject.buildDir/classes/java/main")
+                into("$buildDir/classes/java/main")
+            }
+        }
+        copy {
+            from("$buildDir/resources/main")
+            into("out/production/resources")
+        }
+        copy {
+            from("$buildDir/classes/java/main")
+            into("out/production/classes")
+        }
+    }
 }
 
-task remakeTestClassesDir {
-    doFirst {
-        delete "$buildDir/classes/test"
-        file("$buildDir/classes/test").mkdirs()
-    }
-
-    outputs.upToDateWhen { t -> false }
-}
-
-task collectTestClasses(type: Copy) {
+task collectTestClassPath {
     dependsOn ':MidnightAPI:testClasses'
     dependsOn ':MidnightCore:testClasses'
     dependsOn ':MidnightMod:testClasses'
-    dependsOn ':remakeTestClassesDir'
 
-    outputs.upToDateWhen { t -> false }
-
-    configurations.collectMany {
-        it.allDependencies
-    }.findAll {
-        it instanceof ProjectDependency
-    }.each {
-        ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/classes/java/test")
-    }
-
-    into("$buildDir/classes/java/test")
-}
-
-compileJava {
-    dependsOn 'collectClasses'
-}
-
-compileTestJava {
-    dependsOn 'collectTestClasses'
-}
-
-task remakeResourcesDir {
     doFirst {
-        delete "$buildDir/resources/main"
-        file("$buildDir/resources/main").mkdirs()
+        remake "$buildDir/resources/test"
+        remake "$buildDir/classes/java/test"
+
+        remake "out/test/resources"
+        remake "out/test/classes"
     }
-
-    outputs.upToDateWhen { t -> false }
-}
-
-task collectResources(type: Copy) {
-    dependsOn ':MidnightAPI:classes'
-    dependsOn ':MidnightCore:classes'
-    dependsOn ':MidnightMod:classes'
-    dependsOn ':remakeResourcesDir'
-
-    outputs.upToDateWhen { t -> false }
-
-    configurations.collectMany {
-        it.allDependencies
-    }.findAll {
-        it instanceof ProjectDependency
-    }.each {
-        ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/resources/main")
+    doLast {
+        configurations.collectMany {
+            it.allDependencies
+        }.findAll {
+            it instanceof ProjectDependency
+        }.each {
+            ProjectDependency dep = (ProjectDependency) it
+            copy {
+                from("$dep.dependencyProject.buildDir/resources/test")
+                into("$buildDir/resources/test")
+            }
+            copy {
+                from("$dep.dependencyProject.buildDir/classes/java/test")
+                into("$buildDir/classes/java/test")
+            }
+        }
+        copy {
+            from("$buildDir/resources/test")
+            into("out/test/resources")
+        }
+        copy {
+            from("$buildDir/classes/java/test")
+            into("out/test/classes")
+        }
     }
-
-    into("$buildDir/resources/main")
 }
 
-task remakeTestResourcesDir {
-    doFirst {
-        delete "$buildDir/resources/test"
-        file("$buildDir/resources/test").mkdirs()
-    }
-
-    outputs.upToDateWhen { t -> false }
+classes {
+    dependsOn 'collectClassPath'
 }
 
-task collectTestResources(type: Copy) {
-    dependsOn ':MidnightAPI:testClasses'
-    dependsOn ':MidnightCore:testClasses'
-    dependsOn ':MidnightMod:testClasses'
-    dependsOn ':remakeTestResourcesDir'
-
-    outputs.upToDateWhen { t -> false }
-
-    configurations.collectMany {
-        it.allDependencies
-    }.findAll {
-        it instanceof ProjectDependency
-    }.each {
-        ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/resources/test")
-    }
-
-    into("$buildDir/resources/test")
+testClasses {
+    dependsOn 'collectTestClassPath'
 }
 
-processResources {
-    dependsOn 'collectResources'
-}
+//task remakeClassesDir {
+//    doFirst {
+//        delete "$buildDir/classes/main"
+//        file("$buildDir/classes/main").mkdirs()
+//    }
+//
+//    outputs.upToDateWhen { t -> false }
+//}
+//
+//task collectClasses(type: Copy) {
+//    dependsOn ':MidnightAPI:classes'
+//    dependsOn ':MidnightCore:classes'
+//    dependsOn ':MidnightMod:classes'
+//    dependsOn ':remakeClassesDir'
+//
+//    outputs.upToDateWhen { t -> false }
+//
+//    doFirst {
+//        delete "$buildDir/classes/java/main"
+//        file("$buildDir/classes/java/main").mkdirs()
+//    }
+//
+//    configurations.collectMany {
+//        it.allDependencies
+//    }.findAll {
+//        it instanceof ProjectDependency
+//    }.each {
+//        ProjectDependency dep = (ProjectDependency) it
+//        from("$dep.dependencyProject.buildDir/classes/java/main")
+//    }
+//
+//    into("$buildDir/classes/java/main")
+//}
+//
+//task remakeTestClassesDir {
+//    doFirst {
+//        delete "$buildDir/classes/test"
+//        file("$buildDir/classes/test").mkdirs()
+//    }
+//
+//    outputs.upToDateWhen { t -> false }
+//}
+//
+//task collectTestClasses(type: Copy) {
+//    dependsOn ':MidnightAPI:testClasses'
+//    dependsOn ':MidnightCore:testClasses'
+//    dependsOn ':MidnightMod:testClasses'
+//    dependsOn ':remakeTestClassesDir'
+//
+//    outputs.upToDateWhen { t -> false }
+//
+//    configurations.collectMany {
+//        it.allDependencies
+//    }.findAll {
+//        it instanceof ProjectDependency
+//    }.each {
+//        ProjectDependency dep = (ProjectDependency) it
+//        from("$dep.dependencyProject.buildDir/classes/java/test")
+//    }
+//
+//    into("$buildDir/classes/java/test")
+//}
+//
+//compileJava {
+//    dependsOn 'collectClasses'
+//}
+//
+//compileTestJava {
+//    dependsOn 'collectTestClasses'
+//}
+//
+//task remakeResourcesDir {
+//    doFirst {
+//        delete "$buildDir/resources/main"
+//        file("$buildDir/resources/main").mkdirs()
+//    }
+//
+//    outputs.upToDateWhen { t -> false }
+//}
+//
+//task collectResources(type: Copy) {
+//    dependsOn ':MidnightAPI:classes'
+//    dependsOn ':MidnightCore:classes'
+//    dependsOn ':MidnightMod:classes'
+//    dependsOn ':remakeResourcesDir'
+//
+//    outputs.upToDateWhen { t -> false }
+//
+//    configurations.collectMany {
+//        it.allDependencies
+//    }.findAll {
+//        it instanceof ProjectDependency
+//    }.each {
+//        ProjectDependency dep = (ProjectDependency) it
+//        from("$dep.dependencyProject.buildDir/resources/main") {
+//            into("$buildDir/resources/main")
+//        }
+//    }
+//}
+//
+//task remakeTestResourcesDir {
+//    doFirst {
+//        delete "$buildDir/resources/test"
+//        file("$buildDir/resources/test").mkdirs()
+//    }
+//
+//    outputs.upToDateWhen { t -> false }
+//}
+//
+//task collectTestResources(type: Copy) {
+//    dependsOn ':MidnightAPI:testClasses'
+//    dependsOn ':MidnightCore:testClasses'
+//    dependsOn ':MidnightMod:testClasses'
+//    dependsOn ':remakeTestResourcesDir'
+//
+//    outputs.upToDateWhen { t -> false }
+//
+//    configurations.collectMany {
+//        it.allDependencies
+//    }.findAll {
+//        it instanceof ProjectDependency
+//    }.each {
+//        ProjectDependency dep = (ProjectDependency) it
+//        from("$dep.dependencyProject.buildDir/resources/test")
+//    }
+//
+//    into("$buildDir/resources/test")
+//}
 
-processTestResources {
-    dependsOn 'collectTestResources'
-}
+//processResources {
+//    dependsOn 'collectResources'
+//}
+//
+//processTestResources {
+//    dependsOn 'collectTestResources'
+//}
 
 // These tasks are unnecessary for the root project...
 jar {
@@ -370,6 +465,7 @@ injectConstants {
     enabled false
 }
 
+// Make version info task, just combines updateVersionJson and genChangelogMarkdown
 task makeVersionInfo() {
     dependsOn updateVersionJson
     dependsOn genChangelogMarkdown
