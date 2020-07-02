@@ -83,7 +83,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.1-32.0.43'
+        minecraft 'net.minecraftforge:forge:1.16.1-32.0.38'
 
         embed("net.rgsw:noise:1.0.5") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
@@ -237,6 +237,8 @@ task collectClassPath {
     dependsOn ':MidnightAPI:classes'
     dependsOn ':MidnightCore:classes'
     dependsOn ':MidnightMod:classes'
+    dependsOn ':compileJava'
+    dependsOn ':processResources'
 
     doFirst {
         remake "$buildDir/resources/main"
@@ -276,6 +278,8 @@ task collectTestClassPath {
     dependsOn ':MidnightAPI:testClasses'
     dependsOn ':MidnightCore:testClasses'
     dependsOn ':MidnightMod:testClasses'
+    dependsOn ':compileTestJava'
+    dependsOn ':processTestResources'
 
     doFirst {
         remake "$buildDir/resources/test"
