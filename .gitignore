@@ -28,6 +28,7 @@ eclipse
 run
 /src
 .cache
+local.properties
 
 
 # Files from Forge MDK
