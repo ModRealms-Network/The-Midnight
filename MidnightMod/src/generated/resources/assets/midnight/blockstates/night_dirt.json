@@ -1,5 +1,7 @@
 {
-  "": {
-    "model": "midnight:block/night_dirt"
+  "variants": {
+    "": {
+      "model": "midnight:block/night_dirt"
+    }
   }
 }

@@ -39,7 +39,9 @@ public class SelectorBlockstateGen implements IBlockstateGen {
         for (Map.Entry<String, ModelVariant[]> variant : variants.entrySet()) {
             object.add(variant.getKey(), ModelVariant.makeJson(variant.getValue()));
         }
-        return object;
+        JsonObject out = new JsonObject();
+        out.add("variants", object);
+        return out;
     }
 
     public static SelectorBlockstateGen create(ModelVariant... variants) {
