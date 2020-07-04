@@ -28,11 +28,11 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        RegistryManager.BLOCKS.register(event.getRegistry());
+        RegistryManager.BLOCKS.fillRegistry(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        RegistryManager.ITEMS.register(event.getRegistry());
+        RegistryManager.ITEMS.fillRegistry(event.getRegistry());
     }
 }

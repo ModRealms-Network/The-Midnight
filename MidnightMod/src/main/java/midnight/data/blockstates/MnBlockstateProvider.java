@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
 import net.minecraft.util.ResourceLocation;
+import midnight.common.registry.RegistryManager;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -36,6 +37,12 @@ public class MnBlockstateProvider implements IDataProvider {
         blockstateData.clear();
         BlockstateTable.collectBlockstates(blockstateData::put);
 
+        for (Block block : getKnownBlocks()) {
+            if (!blockstateData.containsKey(block)) {
+                throw new IllegalStateException("No block state specified for block " + block.getRegistryName());
+            }
+        }
+
         Path path = datagen.getOutputFolder();
         blockstateData.forEach((block, model) -> {
             ResourceLocation id = block.getRegistryName();
@@ -49,6 +56,10 @@ public class MnBlockstateProvider implements IDataProvider {
                 LOGGER.error("Couldn't save blockstate {}", out, exc);
             }
         });
+    }
+
+    protected Iterable<Block> getKnownBlocks() {
+        return RegistryManager.BLOCKS;
     }
 
     @Override

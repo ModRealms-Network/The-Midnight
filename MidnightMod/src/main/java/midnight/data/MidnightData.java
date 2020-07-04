@@ -9,6 +9,7 @@ import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
 import midnight.data.blockstates.MnBlockstateProvider;
+import midnight.data.loottables.MnLootTableProvider;
 import midnight.data.models.BlockItemModelTable;
 import midnight.data.models.MnModelProvider;
 import midnight.data.proxy.DataBlockItemProxy;
@@ -37,6 +38,9 @@ public class MidnightData extends MidnightClient {
         if (event.includeClient()) {
             gen.addProvider(new MnBlockstateProvider(gen));
             gen.addProvider(new MnModelProvider(gen).withTable(new BlockItemModelTable()));
+        }
+        if (event.includeServer()) {
+            gen.addProvider(new MnLootTableProvider(gen));
         }
     }
 

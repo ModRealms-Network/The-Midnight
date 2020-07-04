@@ -1,6 +1,7 @@
 package midnight.common.block;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ObjectHolder;
 
 import net.minecraft.block.Block;
@@ -22,7 +23,9 @@ public final class MnBlocks {
             BlockItemBuilder.builder(Block::new)
                             .material(Material.EARTH)
                             .color(MaterialColor.BLACK)
-                            .sound(SoundType.field_235579_A_)
+                            .sound(SoundType.GROUND)
+                            .strength(0.5)
+                            .harvestTool(ToolType.SHOVEL)
                             .makeBlockAndItem()
     );
 
