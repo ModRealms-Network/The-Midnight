@@ -25,6 +25,7 @@
 
 # Specific Files
 Thumbs.db
+*.code-workspace
 
 .cache/
 .DS_Store
