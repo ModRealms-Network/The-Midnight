@@ -8,7 +8,6 @@ on:
     branches:
       - rewrite
     paths-ignore:
-      - '.github/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
@@ -22,7 +21,6 @@ on:
     branches:
       - rewrite
     paths-ignore:
-      - '.github/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
