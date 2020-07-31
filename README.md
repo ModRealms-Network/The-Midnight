@@ -1,4 +1,4 @@
-![The Midnight](https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/1.16.1/curseforge/front-page-poster.jpg)
+![The Midnight](/curseforge/front-page-poster.jpg?raw=true)
 # The Midnight  
 *The Midnight* is being completely rewritten from the ground up for Minecraft 1.16.1! More info on the rewrite to come very soon.
 
