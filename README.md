@@ -1,6 +1,6 @@
 ![The Midnight](/curseforge/front-page-poster.jpg?raw=true)
 # The Midnight  
-*The Midnight* is being completely rewritten from the ground up for Minecraft 1.16.1! More info on the rewrite to come very soon.
+*The Midnight* is being completely rewritten from the ground up for better stability and performance! More info on the rewrite to come very soon.
 
 ## Where can you find us?  
 If you want to discuss the mod, we have a [Discord server](https://discord.gg/Rdc86yA)!  
@@ -14,7 +14,7 @@ For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
 ### The Midnight Development Team  
 [Cipher_Zero_X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
 [RedGalaxySW](https://github.com/RedGalaxySW) - Lead Programmer  
-[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer
+[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer, Musician
 
 ### Active Collaborators  
 [Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician
@@ -30,4 +30,4 @@ For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
 [MCVinnyq](https://github.com/MCVinnyq) - Texturer, Modeler  
 
 ## Additional Thanks  
-Contributors (1.12.2 - 1.15.2): [ZombieEnderman5](https://github.com/ZombieEnderman5), [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir), 123wdog, [Terenx](https://github.com/Terenx), [KingPhygieBoo](https://gitlab.com/KingPhygieBoo)
+Contributors (pre-rewrite): [ZombieEnderman5](https://github.com/ZombieEnderman5), [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir), 123wdog, [Terenx](https://github.com/Terenx), [KingPhygieBoo](https://gitlab.com/KingPhygieBoo)

@@ -21,7 +21,6 @@ PLEASE READ THE FOLLOWING BEFORE PROCEEDING:
 
 And most importantly:
 DO NOT SUGGEST ANY IDEAS SPECIFICALLY FOR THE 1.12.2 or 1.14.4 VERSIONS OF THE MIDNIGHT: THOSE VERSIONS ARE NO LONGER SUPPORTED AND ANY RELATING ISSUE WILL BE CLOSED AND IGNORED!!!
-WE WILL STILL ACCEPT FEATURE REQUESTS FOR THE 1.15.2 VERSION OF THE MIDNIGHT, BUT THEY WILL NOT BE ADDED FOR 1.15.2. INSTEAD, THEY WILL BE ACCOUNTED FOR THE 1.16.1 VERSION OF THE MIDNIGHT, WHICH IS CURRENTLY IN DEVELOPMENT.
 
 If you understand this, feel free to proceed and write your feature request.
 -->
@@ -43,7 +42,7 @@ Give a full explanation of the feature. Be obvious. Tell us everything about the
 <!-- If your enhancement involves code and you have an idea of how you would implement it, share your thoughts here. -->
 
 <!--
-FOR ANYONE WRITING ISSUES FOR THE 1.16.1 VERSION OF THE MIDNIGHT
+FOR ANYONE WRITING ISSUES FOR THE 1.15.2 VERSION OF THE MIDNIGHT SINCE VERSION 0.6.0
 Please keep in mind the following except from our terms and conditions:
 
 ## _Contribution_

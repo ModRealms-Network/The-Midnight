@@ -1,4 +1,4 @@
-# The Gradle project of the Midnight
+# The Gradle project of The Midnight
 
 The Midnight is divided into four projects:
 
@@ -9,8 +9,9 @@ The Midnight is divided into four projects:
 - **`buildSrc` - the Gradle code.** A simple Gradle plugin uses to do advanced Gradle magic, such as renaming a java package when packaging a dependency into one of the jar files.
 
 ## Building
+
 To build the Midnight, simply run `./gradlew :build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
 
 ## Updating the Changelog
-The Midnight's changelog can be edited in `changelog.json`. To update the changelogs in the `versioninfo/` folder, simply run `./gradlew makeVersionInfo`.
 
+The Midnight's changelog can be edited in `changelog.json`. To update the changelogs in the `versioninfo/` folder, simply run `./gradlew makeVersionInfo`.

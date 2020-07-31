@@ -1,6 +1,6 @@
 ---
 name: Documentation/Wiki Issue 📚
-about: Report issues in our Wiki. (1.12.2, 1.14.4, and 1.15.2 not supported)
+about: Report issues in our Wiki. (1.12.2 and 1.14.4 not supported)
 title: "Documentation Issue"
 labels: Issue-Docs
 assignees: ''
@@ -14,7 +14,7 @@ assignees: ''
 
 PLEASE READ THE FOLLOWING BEFORE PROCEEDING:
 
-DO NOT FOR DOCUMENTATION OF THE 1.12.2, 1.14.4, AND 1.15.2 VERSIONS OF THE MIDNIGHT. THE WIKI ONLY ACCOUNTS FOR THE 1.16.1 VERSION OF THE MIDNIGHT AND ONWARD!
+DO NOT FOR DOCUMENTATION OF THE 1.12.2, AND 1.14.4 VERSIONS OF THE MIDNIGHT. THE WIKI ONLY ACCOUNTS FOR THE 1.16.1 VERSION OF THE MIDNIGHT AND ONWARD!
 
 If you understand this, feel free to proceed and write your documentation issue.
 -->
@@ -22,7 +22,7 @@ If you understand this, feel free to proceed and write your documentation issue.
 <!-- Briefly describe which page of the wiki needs to be corrected and why. -->
 
 <!--
-FOR ANYONE WRITING ISSUES FOR THE 1.16.1 VERSION OF THE MIDNIGHT
+FOR ANYONE WRITING ISSUES FOR THE 1.15.2 VERSION OF THE MIDNIGHT SINCE VERSION 0.6.0
 Please keep in mind the following except from our terms and conditions:
 
 ## _Contribution_

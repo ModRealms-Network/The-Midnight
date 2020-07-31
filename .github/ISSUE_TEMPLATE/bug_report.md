@@ -47,13 +47,14 @@ ADDITIONAL INFORMATION
 -->
 
 ## Environment
+
 - Minecraft: [minecraft version]
 - Midnight: [midnight version]
 - Forge: [forge version]
 - Did you use other remarkable modpacks, mods, resource packs or data packs, please list them here too. If your issue involves a problem with rendering or GUI, make sure to list all clientside mods as well.
 
 <!--
-FOR ANYONE WRITING ISSUES FOR THE 1.16.1 VERSION OF THE MIDNIGHT
+FOR ANYONE WRITING ISSUES FOR THE 1.15.2 VERSION OF THE MIDNIGHT SINCE VERSION 0.6.0
 Please keep in mind the following except from our terms and conditions:
 
 ## _Contribution_
