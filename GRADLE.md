@@ -10,7 +10,7 @@ The Midnight is divided into four projects:
 
 ## Building
 
-To build the Midnight, simply run `./gradlew :build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
+To build the Midnight, simply run `./gradlew build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
 
 ## Updating the Changelog
 

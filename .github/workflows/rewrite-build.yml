@@ -8,10 +8,13 @@ on:
     branches:
       - rewrite
     paths-ignore:
+      - '.github/FUNDING.yml'
+      - '.github/ISSUE_TEMPLATE/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
       - 'LICENSE.md'
+      - 'GRADLE.md'
       - 'changelog.json'
       - '.gitignore'
       - '.gitattributes'
@@ -25,6 +28,7 @@ on:
       - 'versioninfo/**'
       - 'README.md'
       - 'LICENSE.md'
+      - 'GRADLE.md'
       - 'changelog.json'
       - '.gitignore'
       - '.gitattributes'

@@ -2,13 +2,13 @@
   "version": {
     "number": "0.6.0",
     "name": "The Midnight: Rewritten",
-    "minecraft": "1.16.1",
+    "minecraft": "1.15.2",
     "stable": false
   },
   "description": [
     "The Midnight, rewritten from the ground up for better stability and performance."
   ],
   "changelog": [
-    "Introduced the Midnight API"
+    "Introduced the Midnight API."
   ]
 }
