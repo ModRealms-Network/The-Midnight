@@ -63,6 +63,6 @@ public class MidnightMod {
         LOGGER.debug("Midnight post-initialized");
     }
 
-    public static final String DEV_WARNING = "The Midnight for Minecraft 1.16.1 is still under active development. " +
+    public static final String DEV_WARNING = "The Midnight: Rewritten is still under active development. " +
             "Many features will be missing and/or completely unusable. You have been warned!";
 }

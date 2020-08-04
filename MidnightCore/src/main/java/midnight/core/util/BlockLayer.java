@@ -33,7 +33,7 @@ public enum BlockLayer {
             case TRANSLUCENT:
                 return RenderType.getTranslucent();
             case TRIPWIRE:
-                return RenderType.func_241715_r_();
+                return RenderType.func_241715_r_(); // TODO There doesn't seem to be a getTripwire() method in the RenderType class. Is it called something different in 1.15.2?
         }
     }
 

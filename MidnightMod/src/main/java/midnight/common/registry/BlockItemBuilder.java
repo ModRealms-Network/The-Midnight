@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.*;
 
+// TODO AbstractBlock does not exist in 1.15.2! Is there an alternative?
 /**
  * Block builder class to wrap around {@link AbstractBlock.Properties} for clarity and to configure and create items
  * with the configured block.

@@ -17,6 +17,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+// TODO This class needs fixing. Some of the imported classes from 1.16.1 don't exist in 1.15.2.
 public class MnLootTableProvider extends LootTableProvider {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> tables = ImmutableList.of(
             Pair.of(MnBlockLootTables::new, LootParameterSets.BLOCK)
