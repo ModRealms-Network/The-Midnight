@@ -20,7 +20,7 @@ import midnight.common.registry.RegistryManager;
 public final class MnBlocks {
     public static final Block NIGHT_DIRT = register(
             "night_dirt",
-            BlockItemBuilder.builder(Block::new) // TODO this is broken as well
+            BlockItemBuilder.builder(Block::new)
                             .material(Material.EARTH)
                             .color(MaterialColor.BLACK)
                             .sound(SoundType.GROUND)
