@@ -25,7 +25,7 @@ public class MidnightMod {
     /**
      * The general {@link Midnight} instance. Don't use - use {@link Midnight#get()} instead.
      */
-    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
+    public static final Midnight MIDNIGHT = DistExecutor.runForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
 
     public MidnightMod() {
         printVersion();

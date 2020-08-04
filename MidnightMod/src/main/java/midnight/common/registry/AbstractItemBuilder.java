@@ -24,7 +24,6 @@ public abstract class AbstractItemBuilder<T extends AbstractItemBuilder<T, I>, I
     protected ItemGroup group = null;
     protected Rarity rarity = Rarity.COMMON;
     protected Food food = null;
-    protected boolean resistsFire = false;
     protected boolean canRepair = false;
     protected Map<ToolType, Integer> toolClasses = Maps.newHashMap();
     protected Supplier<Callable<ItemStackTileEntityRenderer>> teRenderer = null;
@@ -80,15 +79,6 @@ public abstract class AbstractItemBuilder<T extends AbstractItemBuilder<T, I>, I
     }
 
     /**
-     * Sets whether this item resists fire and lava damage. Example, netherite tools have this set to true. Default is
-     * false.
-     */
-    public T resistsFire(boolean resistsFire) {
-        this.resistsFire = resistsFire;
-        return (T) this;
-    }
-
-    /**
      * Sets whether this item is repairable. Default is false.
      */
     public T canRepair(boolean canRepair) {
@@ -134,7 +124,6 @@ public abstract class AbstractItemBuilder<T extends AbstractItemBuilder<T, I>, I
         props.group(group);
         props.rarity(rarity);
         props.food(food);
-        if (resistsFire) props.func_234689_a_(); // TODO I can't find this method in the old mappings. Is this a 1.16.1 only field?
         if (!canRepair) props.setNoRepair();
         for (Map.Entry<ToolType, Integer> toolTier : toolClasses.entrySet()) {
             props.addToolType(toolTier.getKey(), toolTier.getValue());

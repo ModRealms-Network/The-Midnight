@@ -6,8 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Replaces a certain constant value with a value generated during Gradle build. Usage:<br><br> {@code
- * @DynamicConstant("version")}<br> {@code public static String VERSION = "-uninjected-";}
+ * Replaces a certain constant value with a value generated during Gradle build. Usage:<br><br>
+ * <code>
+ * {@literal @}DynamicConstant("version")<br> public static String VERSION = "-uninjected-";
+ * </code>
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.CLASS)

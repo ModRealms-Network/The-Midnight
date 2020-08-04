@@ -130,6 +130,12 @@ allprojects {
         }
     }
 
+    injectConstants {
+        doFirst {
+            delete "$buildDir/sources"
+        }
+    }
+
     project.shade.create("jar")
 
     apply from: "$rootDir/gensources.gradle"

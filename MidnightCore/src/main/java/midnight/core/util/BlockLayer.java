@@ -14,8 +14,7 @@ public enum BlockLayer {
     SOLID,
     CUTOUT,
     CUTOUT_MIPPED,
-    TRANSLUCENT,
-    TRIPWIRE;
+    TRANSLUCENT;
 
     /**
      * Returns the corresponding {@link RenderType} for this render layer.
@@ -32,8 +31,6 @@ public enum BlockLayer {
                 return RenderType.getCutoutMipped();
             case TRANSLUCENT:
                 return RenderType.getTranslucent();
-            case TRIPWIRE:
-                return RenderType.func_241715_r_(); // TODO There doesn't seem to be a getTripwire() method in the RenderType class. Is it called something different in 1.15.2?
         }
     }
 
@@ -46,7 +43,6 @@ public enum BlockLayer {
         if (type == RenderType.getCutout()) return CUTOUT;
         if (type == RenderType.getCutoutMipped()) return CUTOUT_MIPPED;
         if (type == RenderType.getTranslucent()) return TRANSLUCENT;
-        if (type == RenderType.func_241715_r_()) return TRIPWIRE;
         return SOLID;
     }
 }

@@ -1,23 +1,22 @@
-modLoader="javafml" #mandatory
-loaderVersion="[32,)" #mandatory
-issueTrackerURL="https://github.com/Cryptic-Mushroom/The-Midnight/issues" #optional
+modLoader="javafml"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/Cryptic-Mushroom/The-Midnight/issues"
 
-[[mods]] #mandatory
-modId="midnight" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="The Midnight" #mandatory
-updateJSONURL="https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/rewrite/versioninfo/update.json" #optional
-displayURL="https://www.curseforge.com/minecraft/mc-mods/the-midnight" #optional
-logoFile="logo.png" #optional
-#credits="Thanks for this example mod goes to Java" #optional
-authors="Cryptic Mushroom's The Midnight Development Team" #optional
+[[mods]]
+modId="midnight"
+version="${version}"
+displayName="The Midnight"
+updateJSONURL="https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/rewrite/versioninfo/update.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/the-midnight"
+logoFile="logo.png"
+authors="Cryptic Mushroom's The Midnight Development Team"
 description='''
 The Midnight has been rewritten from the ground up for Minecraft 1.15.2 and is currently in an unstable alpha. Expect more content soon!
 
 This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past.
 
 The Midnight Development Team Active Developers
-Cipher Zero X - Project Lead, Mastermind, Modeler
+Cipher Zerø X - Project Lead, Mastermind, Modeler
 RedGalaxySW - Lead Programmer
 Jonathing - Lead QA, Community Manager, Programmer
 
@@ -35,7 +34,7 @@ Five (Paradiscal) - Texturer
 MCVinnyq - Texturer, Modeler
 
 The Midnight is still in active development and we'd love to hear your feedback! Click the link near the top of this page to view information on our Discord server, active developers, and plans for the future of this mod.
-''' #mandatory
+'''
 
 [[dependencies.midnight]]
     modId="forge"
