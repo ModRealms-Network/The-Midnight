@@ -8,6 +8,7 @@ The Midnight is divided into four projects:
 - **`:MidnightMod` - the implementation code.** This project contains the implementation of the API and the core classes and makes them 'the Midnight'.
 - **`buildSrc` - the Gradle code.** A simple Gradle plugin uses to do advanced Gradle magic, such as renaming a java package when packaging a dependency into one of the jar files.
 
+
 ## Building
 
 To build the Midnight, simply run `./gradlew build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
