@@ -36,3 +36,8 @@ forge*changelog.txt
 
 # Java Keystores
 *.jsk
+
+# VSCode Workspaces
+# I use this to edit files that have nothing to with Java code or the mod. - Jonathing
+*.code-workspace
+
