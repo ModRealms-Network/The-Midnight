@@ -4,12 +4,10 @@
 name: The Midnight (1.15.2)
 
 on:
-  push:
+  pull_request:
     branches:
       - rewrite
     paths-ignore:
-      - '.github/FUNDING.yml'
-      - '.github/ISSUE_TEMPLATE/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
@@ -20,8 +18,6 @@ on:
       - '.gitattributes'
     tags-ignore:
       - '*.*'
-  release:
-    types: [created]
 
 jobs:
   build:
@@ -38,26 +34,6 @@ jobs:
         java-version: 1.8
         java-package: jdk
         architecture: x64
-
-    - name: Prepare to build The Midnight
-      env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-          git clone git@github.com:${{ secrets.PRIVATE_REPO }}
-          echo "" >> gradle.properties
-          echo "mnKeyStore=${{ secrets.JKS_NAME }}" >> gradle.properties
-          echo "mnKeyStoreAlias=${{ secrets.JKS_ALIAS }}" >> gradle.properties
-          echo "mnKeyStorePass=${{ secrets.JKS_PASS }}" >> gradle.properties
-          echo "mnKeyStoreKeyPass=${{ secrets.JKS_PASS }}" >> gradle.properties
-          cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightAPI/${{ secrets.JKS_NAME }}
-          cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightCore/${{ secrets.JKS_NAME }}
-          cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightMod/${{ secrets.JKS_NAME }}
-          rm -rf ${{ secrets.PRIVATE_REPO_NAME }}
-          echo "Ready to build and sign The Midnight!"
 
     - name: Build The Midnight
       uses: eskatos/gradle-command-action@v1
