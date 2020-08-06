@@ -1,8 +1,8 @@
 package midnight.data.blockstates;
 
+import midnight.common.block.MnBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
-import midnight.common.block.MnBlocks;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -12,7 +12,11 @@ public final class BlockstateTable {
     }
 
     public static void collectBlockstates(BiConsumer<Block, IBlockstateGen> consumer) {
-        add(consumer, BlockstateTable::basic, MnBlocks.NIGHT_DIRT);
+        add(
+            consumer, BlockstateTable::basic,
+            MnBlocks.NIGHT_DIRT,
+            MnBlocks.NIGHT_GRASS
+        );
     }
 
     private static IBlockstateGen basic(Block block) {

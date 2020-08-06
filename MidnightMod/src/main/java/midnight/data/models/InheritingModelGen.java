@@ -3,7 +3,6 @@ package midnight.data.models;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
-
 import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
@@ -107,27 +106,35 @@ public class InheritingModelGen implements IModelGen {
 
     public static InheritingModelGen cubeFrontSided(String front, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
-                .texture("north", front)
-                .texture("east", side)
-                .texture("south", side)
-                .texture("west", side)
-                .texture("up", top)
-                .texture("down", bottom);
+                   .texture("north", front)
+                   .texture("east", side)
+                   .texture("south", side)
+                   .texture("west", side)
+                   .texture("up", top)
+                   .texture("down", bottom);
     }
 
     public static InheritingModelGen cubeFrontBackSided(String front, String back, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
-                .texture("north", front)
-                .texture("east", side)
-                .texture("south", back)
-                .texture("west", side)
-                .texture("up", top)
-                .texture("down", bottom);
+                   .texture("north", front)
+                   .texture("east", side)
+                   .texture("south", back)
+                   .texture("west", side)
+                   .texture("up", top)
+                   .texture("down", bottom);
+    }
+
+    public static InheritingModelGen grassBlock(String top, String side, String bottom, String overlay) {
+        return new InheritingModelGen("midnight:block/grass_block")
+                   .texture("top", top)
+                   .texture("bottom", bottom)
+                   .texture("side", side)
+                   .texture("overlay", overlay);
     }
 
     public static InheritingModelGen generatedItem(String... layers) {
         InheritingModelGen gen = new InheritingModelGen("item/generated");
-        for (int i = 0, l = layers.length; i < l; i++) {
+        for(int i = 0, l = layers.length; i < l; i++) {
             gen.texture("layer" + i, layers[i]);
         }
         return gen;

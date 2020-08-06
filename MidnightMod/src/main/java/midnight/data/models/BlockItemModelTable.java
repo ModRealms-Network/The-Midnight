@@ -1,11 +1,11 @@
 package midnight.data.models;
 
+import midnight.common.block.MnBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
-import midnight.common.block.MnBlocks;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -15,14 +15,24 @@ public class BlockItemModelTable extends ModelTable {
     public void collectModels(BiConsumer<ResourceLocation, IModelGen> consumer) {
         // Full-cube blocks
         addBlocks(
-                consumer, block -> InheritingModelGen.cubeAll(texture(block)),
-                MnBlocks.NIGHT_DIRT
+            consumer, block -> InheritingModelGen.cubeAll(texture(block)),
+            MnBlocks.NIGHT_DIRT
+        );
+
+        addBlock(
+            consumer, MnBlocks.NIGHT_GRASS,
+            InheritingModelGen.grassBlock(
+                "midnight:block/night_grass_block_top",
+                "midnight:block/night_grass_block_side",
+                "midnight:block/night_dirt",
+                "midnight:block/night_grass_block_overlay"
+            )
         );
 
         // Block model inheriting items
         addItems(
-                consumer, BlockItemModelTable::inheritBlock,
-                MnBlocks.NIGHT_DIRT
+            consumer, BlockItemModelTable::inheritBlock,
+            MnBlocks.NIGHT_DIRT, MnBlocks.NIGHT_GRASS
         );
     }
 

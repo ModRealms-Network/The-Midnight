@@ -1,17 +1,23 @@
 package midnight.client;
 
-import net.minecraftforge.api.distmarker.Dist;
-
 import midnight.client.proxy.ClientBlockItemProxy;
+import midnight.client.util.BlockLayerUtil;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
 import midnight.core.util.MnUtil;
 import midnight.data.MidnightData;
+import net.minecraftforge.api.distmarker.Dist;
 
 /**
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
  */
 public class MidnightClient extends Midnight {
+
+    @Override
+    public void init() {
+        BlockLayerUtil.register();
+    }
+
     @Override
     public Dist getRuntimeDist() {
         return Dist.CLIENT;
