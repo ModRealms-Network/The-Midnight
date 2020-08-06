@@ -34,7 +34,7 @@ allprojects {
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20200322-1.15.1'
+        mappings channel: 'snapshot', version: '20200802-1.15.1'
 
         // Access transformer
         accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
