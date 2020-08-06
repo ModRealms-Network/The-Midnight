@@ -34,7 +34,7 @@ allprojects {
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20200802-1.15.1'
+        mappings channel: 'snapshot', version: '20200322-1.15.1'
 
         // Access transformer
         accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -57,10 +57,14 @@ allprojects {
     }
 
     repositories {
+        mavenLocal()
         mavenCentral()
-        maven {
-            name = "Progwml6 maven"
-            url = "https://dvs1.progwml6.com/files/maven/"
+//        maven {
+//            name = "Progwml6 maven"
+//            url = "https://dvs1.progwml6.com/files/maven/"
+//        }
+        flatDir {
+            dirs "$rootDir/dependencies"
         }
         maven {
             name = "ModMaven"
@@ -68,9 +72,6 @@ allprojects {
         }
         maven {
             url "https://io.terraforged.com/repository/maven/"
-        }
-        flatDir {
-            dirs "$rootDir/dependencies"
         }
     }
 
@@ -85,7 +86,7 @@ allprojects {
     dependencies {
         minecraft 'net.minecraftforge:forge:1.15.2-31.2.0'
 
-        embed("net.shadew:ptg:1.2.0") {
+        embed("net.shadew:ptg:1+") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
             // need to embed it
             transitive false
@@ -94,13 +95,11 @@ allprojects {
         compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.2.12:api")
         runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.2.12")
 
-        // TODO Add TerraForged API dependency for 1.15.2
-        // compileOnly "com.terraforged:TerraForgedAPI:1.15.2-0.0.1"
-        // runtimeOnly fg.deobf("local:TerraForged:1.15.2-0.0.13")
+        compileOnly "com.terraforged:TerraForgedAPI:1.15.2-0.0.1"
+        runtimeOnly fg.deobf("local:TerraForged:1.15.2-0.0.13")
 
-        // TODO Add Biomes O' Plenty dependency for 1.15.2
-        // compileOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.345:api")
-        // runtimeOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.345:universal")
+        compileOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:api")
+        runtimeOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:universal")
     }
 
     jar {
