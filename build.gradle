@@ -96,7 +96,7 @@ allprojects {
         runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.2.12")
 
         compileOnly "com.terraforged:TerraForgedAPI:1.15.2-0.0.1"
-        runtimeOnly fg.deobf("local:TerraForged:1.15.2-0.0.13")
+        runtimeOnly fg.deobf("local:TerraForged:1.15.2-0.1.2")
 
         compileOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:api")
         runtimeOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:universal")
