@@ -2,10 +2,12 @@ package midnight.common.block;
 
 import com.mojang.datafixers.util.Pair;
 import midnight.common.block.color.NightGrassColor;
+import midnight.common.block.fluid.MnFluids;
 import midnight.common.registry.BlockItemBuilder;
 import midnight.common.registry.RegistryManager;
 import midnight.core.util.BlockLayer;
 import net.minecraft.block.Block;
+import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -48,6 +50,14 @@ public final class MnBlocks {
                         .strength(0.6)
                         .renderLayer(BlockLayer.CUTOUT_MIPPED)
                         .multiplier(new NightGrassColor())
+    );
+
+    public static final Block DARK_WATER = register(
+        "dark_water",
+        BlockItemBuilder.builder(props -> new FlowingFluidBlock(() -> MnFluids.DARK_WATER, props))
+                        .material(Material.WATER)
+                        .strength(100)
+                        .makeBlock()
     );
 
 

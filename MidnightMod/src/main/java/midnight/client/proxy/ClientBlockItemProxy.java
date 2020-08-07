@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import java.util.function.Predicate;
 public class ClientBlockItemProxy extends BlockItemProxy {
     private static boolean registered;
     private static final HashMap<Block, Predicate<BlockLayer>> BLOCK_LAYERS = new HashMap<>();
+    private static final HashMap<Fluid, Predicate<BlockLayer>> FLUID_LAYERS = new HashMap<>();
     private static final HashMap<Block, IColoredBlock> BLOCK_COLORS = new HashMap<>();
     private static final HashMap<Item, IColoredItem> ITEM_COLORS = new HashMap<>();
 
@@ -38,6 +40,9 @@ public class ClientBlockItemProxy extends BlockItemProxy {
         registered = true; // Mark that we have called init() - from now on delegate directly to RenderTypeLookup
 
         for(Map.Entry<Block, Predicate<BlockLayer>> entry : BLOCK_LAYERS.entrySet()) {
+            RenderTypeLookup.setRenderLayer(entry.getKey(), type -> entry.getValue().test(BlockLayer.getFromRenderType(type)));
+        }
+        for(Map.Entry<Fluid, Predicate<BlockLayer>> entry : FLUID_LAYERS.entrySet()) {
             RenderTypeLookup.setRenderLayer(entry.getKey(), type -> entry.getValue().test(BlockLayer.getFromRenderType(type)));
         }
         for(Map.Entry<Block, IColoredBlock> entry : BLOCK_COLORS.entrySet()) {
@@ -60,6 +65,20 @@ public class ClientBlockItemProxy extends BlockItemProxy {
             return;
         }
         BLOCK_LAYERS.put(block, predicate);
+    }
+
+    @Override
+    public void registerRenderLayer(Fluid fluid, BlockLayer layer) {
+        registerRenderLayer(fluid, l -> l == layer);
+    }
+
+    @Override
+    public void registerRenderLayer(Fluid fluid, Predicate<BlockLayer> predicate) {
+        if(registered) {
+            RenderTypeLookup.setRenderLayer(fluid, type -> predicate.test(BlockLayer.getFromRenderType(type)));
+            return;
+        }
+        FLUID_LAYERS.put(fluid, predicate);
     }
 
     @Override

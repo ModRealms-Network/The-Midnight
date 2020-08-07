@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:night_dirt",
+    "midnight:night_grass_block",
+    "midnight:night_stone"
+  ]
+}

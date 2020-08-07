@@ -1,10 +1,5 @@
 package midnight.data;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-
-import net.minecraft.data.DataGenerator;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
@@ -13,6 +8,12 @@ import midnight.data.loottables.MnLootTableProvider;
 import midnight.data.models.BlockItemModelTable;
 import midnight.data.models.MnModelProvider;
 import midnight.data.proxy.DataBlockItemProxy;
+import midnight.data.tags.MnBlockTagsProvider;
+import midnight.data.tags.MnFluidTagsProvider;
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 /**
  * The data-generation-only main class of the Midnight, to handle initialization during data generation and to prevent
@@ -41,6 +42,8 @@ public class MidnightData extends MidnightClient {
         }
         if (event.includeServer()) {
             gen.addProvider(new MnLootTableProvider(gen));
+            gen.addProvider(new MnBlockTagsProvider(gen));
+            gen.addProvider(new MnFluidTagsProvider(gen));
         }
     }
 
