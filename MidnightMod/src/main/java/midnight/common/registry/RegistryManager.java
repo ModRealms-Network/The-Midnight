@@ -1,15 +1,15 @@
 package midnight.common.registry;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-
+import midnight.MidnightInfo;
+import midnight.common.Midnight;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import midnight.MidnightInfo;
-import midnight.common.Midnight;
+import net.minecraftforge.common.ModDimension;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +25,8 @@ public class RegistryManager<E extends IForgeRegistryEntry<E>> implements Iterab
     public static final RegistryManager<Block> BLOCKS = new RegistryManager<>();
     public static final RegistryManager<Item> ITEMS = new RegistryManager<>();
     public static final BlockItemRegistryManager BLOCKS_ITEMS = new BlockItemRegistryManager(BLOCKS, ITEMS);
+
+    public static final RegistryManager<ModDimension> DIMENSIONS = new RegistryManager<>();
 
     private final List<Entry> entries = new ArrayList<>();
 
