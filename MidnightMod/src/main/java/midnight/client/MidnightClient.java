@@ -1,7 +1,6 @@
 package midnight.client;
 
 import midnight.client.proxy.ClientBlockItemProxy;
-import midnight.client.util.BlockLayerUtil;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
 import midnight.core.util.MnUtil;
@@ -15,7 +14,7 @@ public class MidnightClient extends Midnight {
 
     @Override
     public void init() {
-        BlockLayerUtil.register();
+        getBlockItemProxy().init();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package midnight.common.block;
 
 import com.mojang.datafixers.util.Pair;
+import midnight.common.block.color.NightGrassColor;
 import midnight.common.registry.BlockItemBuilder;
 import midnight.common.registry.RegistryManager;
 import midnight.core.util.BlockLayer;
@@ -21,17 +22,33 @@ import java.util.function.Supplier;
  */
 @ObjectHolder("midnight")
 public final class MnBlocks {
+    private static final Factory<Block> STONE = factory(
+        () -> BlockItemBuilder.builder(Block::new)
+                              .material(Material.ROCK)
+                              .sound(SoundType.STONE)
+                              .strength(0.5, 6)
+                              .harvestTool(ToolType.PICKAXE)
+    );
+
     private static final Factory<Block> DIRT = factory(
         () -> BlockItemBuilder.builder(Block::new)
                               .material(Material.EARTH)
-                              .color(MaterialColor.BLACK)
                               .sound(SoundType.GROUND)
                               .strength(0.5)
                               .harvestTool(ToolType.SHOVEL)
     );
 
-    public static final Block NIGHT_DIRT = DIRT.blockItem("night_dirt");
-    public static final Block NIGHT_GRASS = DIRT.blockItem("night_grass", config -> config.renderLayer(BlockLayer.CUTOUT_MIPPED));
+    public static final Block NIGHT_STONE = STONE.blockItem("night_stone", config -> config.color(MaterialColor.BLACK));
+    public static final Block NIGHT_BEDROCK = STONE.blockItem("night_bedrock", config -> config.color(MaterialColor.BLACK).unbreakable());
+
+    public static final Block NIGHT_DIRT = DIRT.blockItem("night_dirt", config -> config.color(MaterialColor.BLACK));
+    public static final Block NIGHT_GRASS_BLOCK = DIRT.blockItem(
+        "night_grass_block",
+        config -> config.color(MaterialColor.PURPLE_TERRACOTTA)
+                        .strength(0.6)
+                        .renderLayer(BlockLayer.CUTOUT_MIPPED)
+                        .multiplier(new NightGrassColor())
+    );
 
 
 

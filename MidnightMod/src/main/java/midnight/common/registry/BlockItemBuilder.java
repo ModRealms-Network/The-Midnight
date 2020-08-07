@@ -2,8 +2,10 @@ package midnight.common.registry;
 
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import net.minecraftforge.common.ToolType;
-
+import midnight.common.Midnight;
+import midnight.common.block.color.IColoredBlock;
+import midnight.common.item.IColoredItem;
+import midnight.core.util.BlockLayer;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,8 +13,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
-import midnight.common.Midnight;
-import midnight.core.util.BlockLayer;
+import net.minecraftforge.common.ToolType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -285,24 +286,44 @@ public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<Block
     }
 
     /**
+     * Sets the block coloring of this block. Delegates to the client via a proxy.
+     */
+    public BlockItemBuilder<B> multiplier(IColoredBlock color) {
+        processBlock(block -> Midnight.get().getBlockItemProxy().registerColoredBlock(block, color));
+        processItem(item -> Midnight.get().getBlockItemProxy().registerColoredItem(item, color));
+        return this;
+    }
+
+    /**
+     * Sets the block coloring of the item of this block. Delegates to the client via a proxy.
+     *
+     * @deprecated Do not use: use {@link #multiplier(IColoredBlock)} for blocks instead.
+     */
+    @Deprecated
+    @Override
+    public BlockItemBuilder<B> multiplier(IColoredItem color) {
+        return super.multiplier(color);
+    }
+
+    /**
      * Makes the {@link Block.Properties} instance using the configuration in this builder.
      */
     protected Block.Properties makeBlockProps() {
         Block.Properties props = Block.Properties.create(material, color);
-        if (!blocksMovement) props.doesNotBlockMovement();
+        if(!blocksMovement) props.doesNotBlockMovement();
         props.sound(sound);
         props.lightValue(lightLevel);
         props.hardnessAndResistance((float) hardness, (float) resistance);
-        if (ticksRandomly) props.tickRandomly();
+        if(ticksRandomly) props.tickRandomly();
         props.slipperiness((float) slipperiness);
         props.speedFactor((float) speedFactor);
         props.jumpFactor((float) jumpFactor);
-        if (!drops) props.noDrops();
-        if (!solid) props.notSolid();
+        if(!drops) props.noDrops();
+        if(!solid) props.notSolid();
         props.harvestLevel(harvestLevel);
         props.harvestTool(harvestTool);
-        if (drops && lootFrom != null) props.lootFrom(lootFrom);
-        if (variableOpacity) props.variableOpacity();
+        if(drops && lootFrom != null) props.lootFrom(lootFrom);
+        if(variableOpacity) props.variableOpacity();
         return props;
     }
 
@@ -311,7 +332,7 @@ public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<Block
      */
     public B makeBlock() {
         B block = factory.apply(makeBlockProps());
-        for (Consumer<? super B> processor : blockProcess) {
+        for(Consumer<? super B> processor : blockProcess) {
             processor.accept(block);
         }
         return block;
@@ -322,7 +343,7 @@ public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<Block
      */
     public BlockItem makeItem(B block) {
         BlockItem item = itemFactory.apply(block, makeItemProps());
-        for (Consumer<? super BlockItem> processor : itemProcess) {
+        for(Consumer<? super BlockItem> processor : itemProcess) {
             processor.accept(item);
         }
         return item;

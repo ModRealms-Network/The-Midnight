@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "midnight:night_grass"
+          "name": "midnight:night_stone"
         }
       ],
       "conditions": [

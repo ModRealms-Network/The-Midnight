@@ -16,11 +16,13 @@ public class BlockItemModelTable extends ModelTable {
         // Full-cube blocks
         addBlocks(
             consumer, block -> InheritingModelGen.cubeAll(texture(block)),
-            MnBlocks.NIGHT_DIRT
+            MnBlocks.NIGHT_DIRT,
+            MnBlocks.NIGHT_STONE,
+            MnBlocks.NIGHT_BEDROCK
         );
 
         addBlock(
-            consumer, MnBlocks.NIGHT_GRASS,
+            consumer, MnBlocks.NIGHT_GRASS_BLOCK,
             InheritingModelGen.grassBlock(
                 "midnight:block/night_grass_block_top",
                 "midnight:block/night_grass_block_side",
@@ -32,7 +34,10 @@ public class BlockItemModelTable extends ModelTable {
         // Block model inheriting items
         addItems(
             consumer, BlockItemModelTable::inheritBlock,
-            MnBlocks.NIGHT_DIRT, MnBlocks.NIGHT_GRASS
+            MnBlocks.NIGHT_DIRT,
+            MnBlocks.NIGHT_GRASS_BLOCK,
+            MnBlocks.NIGHT_STONE,
+            MnBlocks.NIGHT_BEDROCK
         );
     }
 

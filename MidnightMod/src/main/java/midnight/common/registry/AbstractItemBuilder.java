@@ -1,13 +1,14 @@
 package midnight.common.registry;
 
 import com.google.common.collect.Maps;
-import net.minecraftforge.common.ToolType;
-
+import midnight.common.Midnight;
+import midnight.common.item.IColoredItem;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Rarity;
+import net.minecraftforge.common.ToolType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,14 @@ public abstract class AbstractItemBuilder<T extends AbstractItemBuilder<T, I>, I
      */
     public T processItem(Consumer<? super I> processor) {
         this.itemProcess.add(processor);
+        return (T) this;
+    }
+
+    /**
+     * Sets the coloring of this item. Delegates to the client via a proxy.
+     */
+    public T multiplier(IColoredItem color) {
+        processItem(item -> Midnight.get().getBlockItemProxy().registerColoredItem(item, color));
         return (T) this;
     }
 
