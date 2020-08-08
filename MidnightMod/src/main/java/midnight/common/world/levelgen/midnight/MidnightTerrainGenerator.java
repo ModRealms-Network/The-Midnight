@@ -77,6 +77,8 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
 
                     if(noise > 0) {
                         chunk.setBlockState(mpos, MnBlocks.NIGHT_STONE.getDefaultState(), false);
+                    } else if(y < chunkGenerator.getSeaLevel()) {
+                        chunk.setBlockState(mpos, MnBlocks.DARK_WATER.getDefaultState(), false);
                     }
                 }
             }

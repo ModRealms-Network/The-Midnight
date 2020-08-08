@@ -11,7 +11,6 @@ import net.minecraft.world.biome.provider.SingleBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 
 public class MidnightDimension extends Dimension {
     public MidnightDimension(World world, DimensionType type) {
@@ -20,7 +19,7 @@ public class MidnightDimension extends Dimension {
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        return new MidnightChunkGenerator(world, new SingleBiomeProvider(new SingleBiomeProviderSettings(world.getWorldInfo()).setBiome(MnBiomes.NIGHT_PLAINS)), new GenerationSettings());
+        return new MidnightChunkGenerator(world, new SingleBiomeProvider(new SingleBiomeProviderSettings(world.getWorldInfo()).setBiome(MnBiomes.NIGHT_PLAINS)));
     }
 
     @Override

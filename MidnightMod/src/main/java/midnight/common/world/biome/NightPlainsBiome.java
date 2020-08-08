@@ -29,7 +29,7 @@ public class NightPlainsBiome extends MidnightBiome {
         setMidnightGrassColor(0x8F54A1);
         setMidnightWaterColor(0x2C0266);
 
-        setTerrainHeight(2);
+        setTerrainHeight(1);
         setTerrainDifference(2);
         setTerrainHilliness(1);
         setTerrainGranularity(0.4);

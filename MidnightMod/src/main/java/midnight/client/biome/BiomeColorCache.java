@@ -26,16 +26,23 @@ public class BiomeColorCache {
         int[] cacheBuf = cache.get(sectPos);
         lock.readLock().unlock();
 
+        boolean forcePut = false;
         if(cacheBuf == null) {
             cacheBuf = new int[4096];
             Arrays.fill(cacheBuf, -1);
             if(cache.size() > Runtime.getRuntime().availableProcessors() * 16) {
                 cache.removeLast();
             }
+            forcePut = true;
         }
 
         lock.writeLock().lock();
-        cache.putAndMoveToFirst(sectPos, cacheBuf);
+        try {
+            cache.putAndMoveToFirst(sectPos, cacheBuf);
+        } catch(ArrayIndexOutOfBoundsException exc) {
+            if(forcePut) // Get rid of a bug in FastUtil
+                cache.put(sectPos, cacheBuf);
+        }
         lock.writeLock().unlock();
 
         int x = pos.getX() & 15;
