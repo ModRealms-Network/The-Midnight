@@ -29,17 +29,14 @@ public class BiomeColorCache {
         if(cacheBuf == null) {
             cacheBuf = new int[4096];
             Arrays.fill(cacheBuf, -1);
-            lock.writeLock().lock();
-            cache.putAndMoveToFirst(sectPos, cacheBuf);
             if(cache.size() > Runtime.getRuntime().availableProcessors() * 16) {
                 cache.removeLast();
             }
-            lock.writeLock().unlock();
-        } else {
-            lock.writeLock().lock();
-            cache.putAndMoveToFirst(sectPos, cacheBuf);
-            lock.writeLock().unlock();
         }
+
+        lock.writeLock().lock();
+        cache.putAndMoveToFirst(sectPos, cacheBuf);
+        lock.writeLock().unlock();
 
         int x = pos.getX() & 15;
         int y = pos.getY() & 15;
