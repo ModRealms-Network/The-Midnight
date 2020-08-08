@@ -1,5 +1,6 @@
 package midnight.client;
 
+import midnight.client.biome.BiomeColorCache;
 import midnight.client.proxy.ClientBlockItemProxy;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
@@ -11,6 +12,8 @@ import net.minecraftforge.api.distmarker.Dist;
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
  */
 public class MidnightClient extends Midnight {
+    private final BiomeColorCache darkWaterColorCache = new BiomeColorCache();
+    private final BiomeColorCache nightGrassColorCache = new BiomeColorCache();
 
     @Override
     public void init() {
@@ -22,17 +25,25 @@ public class MidnightClient extends Midnight {
         return Dist.CLIENT;
     }
 
+    @Override
+    protected BlockItemProxy makeBlockItemProxy() {
+        return new ClientBlockItemProxy();
+    }
+
+    public BiomeColorCache getDarkWaterColorCache() {
+        return darkWaterColorCache;
+    }
+
+    public BiomeColorCache getNightGrassColorCache() {
+        return nightGrassColorCache;
+    }
+
     /**
      * Returns the direct instance of {@link MidnightClient}, or throws a {@link ClassCastException} when not on the
      * client (that would already have caused a class loading failure in most cases).
      */
     public static MidnightClient get() {
         return (MidnightClient) Midnight.get();
-    }
-
-    @Override
-    protected BlockItemProxy makeBlockItemProxy() {
-        return new ClientBlockItemProxy();
     }
 
     /**

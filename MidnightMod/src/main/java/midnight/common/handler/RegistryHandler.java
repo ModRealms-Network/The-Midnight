@@ -5,10 +5,12 @@ import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.item.MnItems;
 import midnight.common.registry.RegistryManager;
+import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,7 +29,8 @@ public final class RegistryHandler {
             MnBlocks.class,
             MnItems.class,
             MnFluids.class,
-            MnDimensions.class
+            MnDimensions.class,
+            MnBiomes.class
         );
     }
 
@@ -49,5 +52,10 @@ public final class RegistryHandler {
     @SubscribeEvent
     public static void registerFluids(RegistryEvent.Register<Fluid> event) {
         RegistryManager.FLUIDS.fillRegistry(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void registerBiomes(RegistryEvent.Register<Biome> event) {
+        RegistryManager.BIOMES.fillRegistry(event.getRegistry());
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -29,6 +30,7 @@ public class RegistryManager<E extends IForgeRegistryEntry<E>> implements Iterab
 
     public static final RegistryManager<Fluid> FLUIDS = new RegistryManager<>();
     public static final RegistryManager<ModDimension> DIMENSIONS = new RegistryManager<>();
+    public static final RegistryManager<Biome> BIOMES = new RegistryManager<>();
 
     private final List<Entry> entries = new ArrayList<>();
 

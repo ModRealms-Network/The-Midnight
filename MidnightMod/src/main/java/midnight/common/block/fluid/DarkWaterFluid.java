@@ -1,6 +1,8 @@
 package midnight.common.block.fluid;
 
+import midnight.client.MidnightClient;
 import midnight.common.block.MnBlocks;
+import midnight.common.world.biome.MnBiomeColors;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
@@ -19,10 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -126,11 +125,25 @@ public abstract class DarkWaterFluid extends FlowingFluid {
 
     @Override
     protected FluidAttributes createAttributes() {
-        return FluidAttributes.builder(new ResourceLocation("midnight:block/dark_water_still"), new ResourceLocation("midnight:block/dark_water_flow"))
-                              .overlay(new ResourceLocation("midnight:block/dark_water_overlay"))
-                              .translationKey("block.midnight.dark_water")
-                              .color(0xFF481A9C)
-                              .build(this);
+        return new Attributes(this);
+    }
+
+    private static class Attributes extends FluidAttributes {
+        Attributes(Fluid fluid) {
+            super(
+                FluidAttributes.builder(new ResourceLocation("midnight:block/dark_water_still"), new ResourceLocation("midnight:block/dark_water_flow"))
+                               .overlay(new ResourceLocation("midnight:block/dark_water_overlay"))
+                               .translationKey("block.midnight.dark_water")
+                               .color(0xFF481A9C),
+                fluid
+            );
+        }
+
+        @Override
+        @OnlyIn(Dist.CLIENT)
+        public int getColor(ILightReader world, BlockPos pos) {
+            return 0xFF000000 | MidnightClient.get().getDarkWaterColorCache().getColor(pos, MnBiomeColors.DARK_WATER);
+        }
     }
 
     public static class Flowing extends DarkWaterFluid {
