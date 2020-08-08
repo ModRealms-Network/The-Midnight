@@ -1,7 +1,7 @@
 package midnight.common.world.dimension;
 
 import midnight.common.world.biome.MnBiomes;
-import midnight.common.world.levelgen.MidnightChunkGenerator;
+import midnight.common.world.levelgen.midnight.MidnightChunkGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;

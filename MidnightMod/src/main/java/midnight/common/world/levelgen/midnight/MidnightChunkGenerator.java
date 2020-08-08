@@ -1,7 +1,5 @@
-package midnight.common.world.levelgen;
+package midnight.common.world.levelgen.midnight;
 
-import midnight.common.block.MnBlocks;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
@@ -11,8 +9,12 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.WorldGenRegion;
 
 public class MidnightChunkGenerator extends ChunkGenerator<GenerationSettings> {
+
+    private final MidnightTerrainGenerator terrainGen;
+
     public MidnightChunkGenerator(IWorld world, BiomeProvider biomes, GenerationSettings settings) {
         super(world, biomes, settings);
+        terrainGen = new MidnightTerrainGenerator(world, biomes, this, 72);
     }
 
     @Override
@@ -27,15 +29,7 @@ public class MidnightChunkGenerator extends ChunkGenerator<GenerationSettings> {
 
     @Override
     public void makeBase(IWorld world, IChunk chunk) {
-        BlockPos.Mutable mpos = new BlockPos.Mutable();
-        for(int y = 0; y < 72; y++) {
-            for(int x = 0; x < 16; x++) {
-                for(int z = 0; z < 16; z++) {
-                    mpos.setPos(x, y, z);
-                    chunk.setBlockState(mpos, MnBlocks.NIGHT_STONE.getDefaultState(), false);
-                }
-            }
-        }
+        terrainGen.generateTerrain(world, chunk);
     }
 
     @Override

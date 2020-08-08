@@ -33,6 +33,26 @@ class DefaultMidnightBiomeWrapper implements IMidnightBiome {
         return 0x22517D;
     }
 
+    @Override
+    public double getTerrainHeight() {
+        return 2;
+    }
+
+    @Override
+    public double getTerrainDifference() {
+        return 2;
+    }
+
+    @Override
+    public double getTerrainHilliness() {
+        return 1;
+    }
+
+    @Override
+    public double getTerrainGranularity() {
+        return 0.5;
+    }
+
     static DefaultMidnightBiomeWrapper get(Biome biome) {
         return CACHE.computeIfAbsent(biome, DefaultMidnightBiomeWrapper::new);
     }

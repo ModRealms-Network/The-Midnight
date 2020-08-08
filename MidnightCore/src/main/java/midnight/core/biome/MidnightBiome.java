@@ -25,6 +25,11 @@ public abstract class MidnightBiome extends Biome implements IMidnightBiome {
     private int midnightGrassColor = 0x8F54A1;
     private int midnightWaterColor = 0x2C0266;
 
+    private double terrainHeight = 1;
+    private double terrainDifference = 1;
+    private double terrainHilliness = 0.5;
+    private double terrainGranularity = 0.5;
+
 
     protected final Map<GenerationStage.Carving, List<ConfiguredCarver<?>>> mnCarvers = Maps.newEnumMap(GenerationStage.Carving.class);
     protected final Map<GenerationStage.Decoration, List<ConfiguredFeature<?, ?>>> mnFeatures = Maps.newEnumMap(GenerationStage.Decoration.class);
@@ -43,6 +48,22 @@ public abstract class MidnightBiome extends Biome implements IMidnightBiome {
         this.midnightWaterColor = midnightWaterColor;
     }
 
+    public void setTerrainHeight(double terrainHeight) {
+        this.terrainHeight = terrainHeight;
+    }
+
+    public void setTerrainDifference(double terrainDifference) {
+        this.terrainDifference = terrainDifference;
+    }
+
+    public void setTerrainHilliness(double terrainHilliness) {
+        this.terrainHilliness = terrainHilliness;
+    }
+
+    public void setTerrainGranularity(double terrainGranularity) {
+        this.terrainGranularity = terrainGranularity;
+    }
+
     @Override
     public int getMidnightGrassColor(double x, double z) {
         return midnightGrassColor;
@@ -51,6 +72,26 @@ public abstract class MidnightBiome extends Biome implements IMidnightBiome {
     @Override
     public int getMidnightWaterColor(double x, double z) {
         return midnightWaterColor;
+    }
+
+    @Override
+    public double getTerrainHeight() {
+        return terrainHeight;
+    }
+
+    @Override
+    public double getTerrainDifference() {
+        return terrainDifference;
+    }
+
+    @Override
+    public double getTerrainHilliness() {
+        return terrainHilliness;
+    }
+
+    @Override
+    public double getTerrainGranularity() {
+        return terrainGranularity;
     }
 
     @Override

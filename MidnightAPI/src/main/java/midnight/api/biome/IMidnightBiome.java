@@ -46,6 +46,30 @@ public interface IMidnightBiome {
     int getMidnightWaterColor(double x, double z);
 
     /**
+     * Returns the base terrain height of this biome, as an offset from the water level. This height factor is scaled by
+     * 4, so if this returns 1 the terrain is raised by 4 blocks.
+     */
+    double getTerrainHeight();
+
+    /**
+     * Returns the noise interpolation range of this biome - the difference. This range factor is scaled by 4, so if
+     * this returns 1 the terrain differs 4 blocks in height.
+     */
+    double getTerrainDifference();
+
+    /**
+     * Returns the variation in the base terrain height of this biome - the hilliness. This hilliness factor is scaled
+     * by 4, so if this returns 1 the base height differs by 4 blocks.
+     */
+    double getTerrainHilliness();
+
+    /**
+     * Returns the granularity of the terrain, determining how cliffy and eroded the terrain looks. Lower values make a
+     * smoother terrain, while higher values make a more granulated terrain.
+     */
+    double getTerrainGranularity();
+
+    /**
      * Add a working Feature to this Midnight biome. This replaces {@link Biome#addFeature} in order to prevent
      * batch-modifications on builtin Midnight biomes. Default implementation just delegates to the biome itself, but if
      * you add another biome to the Midnight, it is recommended to re-implement this so other mods won't be able to
