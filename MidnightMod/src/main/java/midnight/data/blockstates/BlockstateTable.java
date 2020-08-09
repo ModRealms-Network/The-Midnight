@@ -27,6 +27,11 @@ public final class BlockstateTable {
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK
         );
+
+        add(
+            consumer, BlockstateTable::rotateRandomXY,
+            MnBlocks.STRANGE_SAND
+        );
     }
 
     private static IBlockstateGen basic(Block block) {
@@ -47,6 +52,31 @@ public final class BlockstateTable {
             new ModelVariant(model).rotate(0, 90),
             new ModelVariant(model).rotate(0, 180),
             new ModelVariant(model).rotate(0, 270)
+        );
+    }
+
+    private static IBlockstateGen rotateRandomXY(Block block) {
+        ResourceLocation id = block.getRegistryName();
+        assert id != null;
+
+        ResourceLocation model = new ResourceLocation(id.getNamespace(), "block/" + id.getPath());
+        return SelectorBlockstateGen.create(
+            new ModelVariant(model).rotate(0, 0),
+            new ModelVariant(model).rotate(0, 90),
+            new ModelVariant(model).rotate(0, 180),
+            new ModelVariant(model).rotate(0, 270),
+            new ModelVariant(model).rotate(90, 0),
+            new ModelVariant(model).rotate(90, 90),
+            new ModelVariant(model).rotate(90, 180),
+            new ModelVariant(model).rotate(90, 270),
+            new ModelVariant(model).rotate(180, 0),
+            new ModelVariant(model).rotate(180, 90),
+            new ModelVariant(model).rotate(180, 180),
+            new ModelVariant(model).rotate(180, 270),
+            new ModelVariant(model).rotate(270, 0),
+            new ModelVariant(model).rotate(270, 90),
+            new ModelVariant(model).rotate(270, 180),
+            new ModelVariant(model).rotate(270, 270)
         );
     }
 

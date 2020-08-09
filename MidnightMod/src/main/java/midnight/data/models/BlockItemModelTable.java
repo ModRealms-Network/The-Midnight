@@ -21,7 +21,8 @@ public class BlockItemModelTable extends ModelTable {
             MnBlocks.NIGHT_BEDROCK,
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
-            MnBlocks.TRENCHSTONE
+            MnBlocks.TRENCHSTONE,
+            MnBlocks.STRANGE_SAND
         );
 
         addBlock(
@@ -43,7 +44,8 @@ public class BlockItemModelTable extends ModelTable {
             MnBlocks.NIGHT_BEDROCK,
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
-            MnBlocks.TRENCHSTONE
+            MnBlocks.TRENCHSTONE,
+            MnBlocks.STRANGE_SAND
         );
     }
 

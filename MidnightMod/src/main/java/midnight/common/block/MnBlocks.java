@@ -3,6 +3,7 @@ package midnight.common.block;
 import com.mojang.datafixers.util.Pair;
 import midnight.common.block.color.NightGrassColor;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.item.MnItemGroups;
 import midnight.common.registry.BlockItemBuilder;
 import midnight.common.registry.RegistryManager;
 import midnight.core.util.BlockLayer;
@@ -30,6 +31,7 @@ public final class MnBlocks {
                               .sound(SoundType.STONE)
                               .strength(0.5, 6)
                               .harvestTool(ToolType.PICKAXE)
+                              .group(MnItemGroups.BLOCKS)
     );
 
     private static final Factory<NightDirtBlock> DIRT = factory(
@@ -38,6 +40,7 @@ public final class MnBlocks {
                               .sound(SoundType.GROUND)
                               .strength(0.5)
                               .harvestTool(ToolType.SHOVEL)
+                              .group(MnItemGroups.BLOCKS)
     );
 
     public static final Block NIGHT_STONE = STONE.blockItem("night_stone", config -> config.color(MaterialColor.OBSIDIAN));
@@ -56,6 +59,7 @@ public final class MnBlocks {
                         .renderLayer(BlockLayer.CUTOUT_MIPPED)
                         .multiplier(new NightGrassColor())
                         .ticksRandomly(true)
+                        .group(MnItemGroups.BLOCKS)
                         .makeBlockAndItem()
     );
 
@@ -65,10 +69,21 @@ public final class MnBlocks {
         BlockItemBuilder.builder(DeceitfulMudBlock::new)
                         .material(Material.EARTH)
                         .sound(MnSoundTypes.MUD)
-                        .speedFactor(0.7)
                         .strength(0.5)
                         .harvestTool(ToolType.SHOVEL)
                         .color(MaterialColor.BLUE_TERRACOTTA)
+                        .group(MnItemGroups.BLOCKS)
+                        .makeBlockAndItem()
+    );
+    public static final Block STRANGE_SAND = register(
+        "strange_sand",
+        BlockItemBuilder.builder(StrangeSandBlock::new)
+                        .material(Material.SAND)
+                        .sound(SoundType.SAND)
+                        .strength(0.5)
+                        .harvestTool(ToolType.SHOVEL)
+                        .color(MaterialColor.BLUE_TERRACOTTA)
+                        .group(MnItemGroups.BLOCKS)
                         .makeBlockAndItem()
     );
 
