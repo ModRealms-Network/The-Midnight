@@ -1,7 +1,6 @@
 package midnight.common.block;
 
 import midnight.common.world.dimension.MnDimensions;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SnowBlock;
@@ -14,7 +13,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class NightGrassBlock extends Block {
+public class NightGrassBlock extends NightDirtBlock {
     public NightGrassBlock(Properties props) {
         super(props);
     }

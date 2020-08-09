@@ -18,7 +18,10 @@ public class BlockItemModelTable extends ModelTable {
             consumer, block -> InheritingModelGen.cubeAll(texture(block)),
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_STONE,
-            MnBlocks.NIGHT_BEDROCK
+            MnBlocks.NIGHT_BEDROCK,
+            MnBlocks.DECEITFUL_PEAT,
+            MnBlocks.DECEITFUL_MUD,
+            MnBlocks.TRENCHSTONE
         );
 
         addBlock(
@@ -37,7 +40,10 @@ public class BlockItemModelTable extends ModelTable {
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
             MnBlocks.NIGHT_STONE,
-            MnBlocks.NIGHT_BEDROCK
+            MnBlocks.NIGHT_BEDROCK,
+            MnBlocks.DECEITFUL_PEAT,
+            MnBlocks.DECEITFUL_MUD,
+            MnBlocks.TRENCHSTONE
         );
     }
 

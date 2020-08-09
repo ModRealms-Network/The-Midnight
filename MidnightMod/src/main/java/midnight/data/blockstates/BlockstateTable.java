@@ -16,7 +16,10 @@ public final class BlockstateTable {
             consumer, BlockstateTable::basic,
             MnBlocks.NIGHT_STONE,
             MnBlocks.NIGHT_BEDROCK,
-            MnBlocks.DARK_WATER
+            MnBlocks.DARK_WATER,
+            MnBlocks.DECEITFUL_PEAT,
+            MnBlocks.DECEITFUL_MUD,
+            MnBlocks.TRENCHSTONE
         );
 
         add(

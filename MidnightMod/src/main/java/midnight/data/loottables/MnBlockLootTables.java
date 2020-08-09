@@ -18,6 +18,9 @@ public class MnBlockLootTables extends BlockLootTables {
     protected void addTables() {
         registerDropSelfLootTable(MnBlocks.NIGHT_STONE);
         registerDropSelfLootTable(MnBlocks.NIGHT_DIRT);
+        registerDropSelfLootTable(MnBlocks.DECEITFUL_PEAT);
+        registerDropSelfLootTable(MnBlocks.DECEITFUL_MUD);
+        registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
         registerSilkTouch(MnBlocks.NIGHT_BEDROCK);
         registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
         registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());

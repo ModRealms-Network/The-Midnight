@@ -32,16 +32,17 @@ public final class MnBlocks {
                               .harvestTool(ToolType.PICKAXE)
     );
 
-    private static final Factory<Block> DIRT = factory(
-        () -> BlockItemBuilder.builder(Block::new)
+    private static final Factory<NightDirtBlock> DIRT = factory(
+        () -> BlockItemBuilder.builder(NightDirtBlock::new)
                               .material(Material.EARTH)
                               .sound(SoundType.GROUND)
                               .strength(0.5)
                               .harvestTool(ToolType.SHOVEL)
     );
 
-    public static final Block NIGHT_STONE = STONE.blockItem("night_stone", config -> config.color(MaterialColor.BLACK));
-    public static final Block NIGHT_BEDROCK = STONE.blockItem("night_bedrock", config -> config.color(MaterialColor.BLACK).unbreakable());
+    public static final Block NIGHT_STONE = STONE.blockItem("night_stone", config -> config.color(MaterialColor.OBSIDIAN));
+    public static final Block NIGHT_BEDROCK = STONE.blockItem("night_bedrock", config -> config.color(MaterialColor.LIGHT_GRAY_TERRACOTTA).unbreakable());
+    public static final Block TRENCHSTONE = STONE.blockItem("trenchstone", config -> config.color(MaterialColor.BLACK));
 
     public static final Block NIGHT_DIRT = DIRT.blockItem("night_dirt", config -> config.color(MaterialColor.BLACK));
     public static final Block NIGHT_GRASS_BLOCK = register(
@@ -55,6 +56,19 @@ public final class MnBlocks {
                         .renderLayer(BlockLayer.CUTOUT_MIPPED)
                         .multiplier(new NightGrassColor())
                         .ticksRandomly(true)
+                        .makeBlockAndItem()
+    );
+
+    public static final Block DECEITFUL_PEAT = DIRT.blockItem("deceitful_peat", config -> config.color(MaterialColor.PURPLE_TERRACOTTA));
+    public static final Block DECEITFUL_MUD = register(
+        "deceitful_mud",
+        BlockItemBuilder.builder(DeceitfulMudBlock::new)
+                        .material(Material.EARTH)
+                        .sound(MnSoundTypes.MUD)
+                        .speedFactor(0.7)
+                        .strength(0.5)
+                        .harvestTool(ToolType.SHOVEL)
+                        .color(MaterialColor.BLUE_TERRACOTTA)
                         .makeBlockAndItem()
     );
 

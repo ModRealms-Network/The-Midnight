@@ -3,6 +3,9 @@
   "values": [
     "midnight:night_dirt",
     "midnight:night_grass_block",
-    "midnight:night_stone"
+    "midnight:night_stone",
+    "midnight:deceitful_peat",
+    "midnight:deceitful_mud",
+    "midnight:trenchstone"
   ]
 }

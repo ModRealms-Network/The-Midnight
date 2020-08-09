@@ -1,0 +1,22 @@
+{
+  "block.mud.break": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:blocks/dig/mud_1",
+      "midnight:blocks/dig/mud_2",
+      "midnight:blocks/dig/mud_3",
+      "midnight:blocks/dig/mud_4"
+    ]
+  },
+  "block.mud.step": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "midnight:blocks/step/mud_1",
+      "midnight:blocks/step/mud_2",
+      "midnight:blocks/step/mud_3",
+      "midnight:blocks/step/mud_4"
+    ]
+  }
+}

@@ -22,7 +22,10 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
         getBuilder(BlockTags.ENDERMAN_HOLDABLE).replace(false).add(
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
-            MnBlocks.NIGHT_STONE
+            MnBlocks.NIGHT_STONE,
+            MnBlocks.DECEITFUL_PEAT,
+            MnBlocks.DECEITFUL_MUD,
+            MnBlocks.TRENCHSTONE
         );
     }
 
