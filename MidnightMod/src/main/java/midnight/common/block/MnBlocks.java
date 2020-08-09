@@ -44,12 +44,18 @@ public final class MnBlocks {
     public static final Block NIGHT_BEDROCK = STONE.blockItem("night_bedrock", config -> config.color(MaterialColor.BLACK).unbreakable());
 
     public static final Block NIGHT_DIRT = DIRT.blockItem("night_dirt", config -> config.color(MaterialColor.BLACK));
-    public static final Block NIGHT_GRASS_BLOCK = DIRT.blockItem(
+    public static final Block NIGHT_GRASS_BLOCK = register(
         "night_grass_block",
-        config -> config.color(MaterialColor.PURPLE_TERRACOTTA)
+        BlockItemBuilder.builder(NightGrassBlock::new)
+                        .material(Material.EARTH)
+                        .sound(SoundType.PLANT)
                         .strength(0.6)
+                        .harvestTool(ToolType.SHOVEL)
+                        .color(MaterialColor.PURPLE_TERRACOTTA)
                         .renderLayer(BlockLayer.CUTOUT_MIPPED)
                         .multiplier(new NightGrassColor())
+                        .ticksRandomly(true)
+                        .makeBlockAndItem()
     );
 
     public static final Block DARK_WATER = register(

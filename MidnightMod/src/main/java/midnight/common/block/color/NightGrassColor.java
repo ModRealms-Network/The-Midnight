@@ -15,6 +15,7 @@ public class NightGrassColor implements IColoredBlock {
     @Override
     @OnlyIn(Dist.CLIENT)
     public int getColor(BlockState state, @Nullable ILightReader lworld, @Nullable BlockPos pos, int tintIndex) {
+        if(pos == null || lworld == null) return 0x8C74A1;
         return MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
     }
 

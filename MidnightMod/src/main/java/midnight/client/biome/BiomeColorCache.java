@@ -3,6 +3,7 @@ package midnight.client.biome;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.SectionPos;
 import net.minecraft.world.level.ColorResolver;
 
@@ -15,11 +16,15 @@ public class BiomeColorCache {
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     public int getColor(BlockPos pos, ColorResolver resolver) {
+        if(pos == null) pos = BlockPos.ZERO;
         if(Minecraft.getInstance().world == null) return 0xFFFFFF;
-        return getColor(pos, () -> Minecraft.getInstance().world.getBlockColorRaw(pos, resolver));
+        BlockPos finalPos = pos;
+        return getColor(pos, () -> Minecraft.getInstance().world.getBlockColorRaw(finalPos, resolver));
     }
 
     public int getColor(BlockPos pos, IntSupplier supplier) {
+        if(pos == null) pos = BlockPos.ZERO;
+
         SectionPos sectPos = SectionPos.from(pos);
 
         lock.readLock().lock();
@@ -31,7 +36,9 @@ public class BiomeColorCache {
             cacheBuf = new int[4096];
             Arrays.fill(cacheBuf, -1);
             if(cache.size() > Runtime.getRuntime().availableProcessors() * 16) {
+                lock.writeLock().lock();
                 cache.removeLast();
+                lock.writeLock().unlock();
             }
             forcePut = true;
         }
@@ -68,5 +75,23 @@ public class BiomeColorCache {
 
     public void reset() {
         cache.clear();
+    }
+
+    public void chunkLoad(ChunkPos pos) {
+        invalidateAll(new ChunkPos(pos.x, pos.z));
+        invalidateAll(new ChunkPos(pos.x + 1, pos.z));
+        invalidateAll(new ChunkPos(pos.x - 1, pos.z));
+        invalidateAll(new ChunkPos(pos.x, pos.z + 1));
+        invalidateAll(new ChunkPos(pos.x, pos.z - 1));
+    }
+
+    private void invalidateAll(ChunkPos pos) {
+        for(int i = 0; i < 16; i++) {
+            SectionPos sp = SectionPos.from(pos, i);
+
+            lock.writeLock().lock();
+            cache.remove(sp);
+            lock.writeLock().unlock();
+        }
     }
 }
