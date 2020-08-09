@@ -13,16 +13,19 @@ public class MidnightChunkGenerator extends ChunkGenerator<GenerationSettings> {
 
     private final MidnightTerrainGenerator terrainGen;
     private final MidnightSurfaceGenerator surfaceGen;
+    private final MidnightBedrockGenerator bedrockGen;
 
     public MidnightChunkGenerator(IWorld world, BiomeProvider biomes) {
         super(world, biomes, createSettings());
         terrainGen = new MidnightTerrainGenerator(world, biomes, this, 72);
         surfaceGen = new MidnightSurfaceGenerator(world, biomes, this);
+        bedrockGen = new MidnightBedrockGenerator(world, biomes, this);
     }
 
     @Override
     public void generateSurface(WorldGenRegion region, IChunk chunk) {
         surfaceGen.generateSurface(region, chunk);
+        bedrockGen.generateBedrock(chunk);
     }
 
     @Override
