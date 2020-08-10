@@ -11,7 +11,12 @@ The Midnight is divided into four projects:
 
 ## Building
 
-To build the Midnight, simply run `./gradlew build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
+To build %he Midnight, simply run `./gradlew build`. It will build `buildSrc` and then all subprojects, and you can find the jar files in the `build/libs` folders of all subprojects after it has built successfully.
+
+## Testing The Midnight
+
+To test The Midnight, simply generate the run files of whatever IDE you're using (`./gradlew genIntellijRuns` or `./gradlew genEclipseRuns`) and run the client/server as normal. If The Midnight does not initialize with Minecraft, simply generate the run files again.  
+You may have noticed that there's a `runTestServer` run configuration. **Do not run it!** It is meant for our GitHub Actions CI and you will just crash on world load if you run it, since that is what it's meant to do.
 
 ## Updating the Changelog
 

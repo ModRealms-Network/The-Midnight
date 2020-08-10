@@ -28,6 +28,12 @@ public final class MidnightInfo implements IMidnightInfo {
     public static final boolean DATAGEN = isRunningDatagen();
 
     /**
+     * This constant is true when the system property {@code midnight.istestserver} is {@code "true"}. This property is set
+     * in the {@code testserver} run configration (for the {@code runTestServer} task).
+     */
+    public static final boolean TESTSERVER = isRunningTestServer();
+
+    /**
      * The version of the Midnight (ex. {@code 0.6.0}), which is dynamically injected on build. Defaults to {@code
      * NOT.A.VERSION}.
      */
@@ -68,6 +74,11 @@ public final class MidnightInfo implements IMidnightInfo {
         return Boolean.parseBoolean(p);
     }
 
+    private static boolean isRunningTestServer() {
+        String p = System.getProperty("midnight.istestserver");
+        return Boolean.parseBoolean(p);
+    }
+
     @Override
     public String modid() {
         return MODID;
@@ -96,5 +107,15 @@ public final class MidnightInfo implements IMidnightInfo {
     @Override
     public boolean ide() {
         return IDE;
+    }
+
+    @Override
+    public boolean data() {
+        return DATAGEN;
+    }
+
+    @Override
+    public boolean testServer() {
+        return TESTSERVER;
     }
 }

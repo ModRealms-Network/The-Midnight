@@ -45,9 +45,13 @@ public class MidnightMod {
         LOGGER.info(" - Version: " + MidnightInfo.VERSION);
         LOGGER.info(" - Build Date: " + MidnightInfo.BUILD_DATE);
         LOGGER.info(" - Dist: " + FMLEnvironment.dist);
-        if (MidnightInfo.IDE) {
+
+        if (MidnightInfo.IDE && !MidnightInfo.TESTSERVER) {
             LOGGER.info(" - Running in an IDE or via Gradle");
+        } else if (MidnightInfo.TESTSERVER) {
+            LOGGER.info(" - Running a GitHub Actions test server");
         }
+
         if (MidnightInfo.DATAGEN) {
             LOGGER.info(" - Running data generator");
         }

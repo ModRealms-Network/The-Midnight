@@ -29,22 +29,28 @@ public final class GitHubActionsHandler {
         File testServerProof = new File("./TESTSERVER.txt");
         boolean isTestServer = testServerProof.exists();
 
-        // Only fire if ./TESTSERVER.txt exists and the server is running via Gradle.
-        if (isTestServer && MidnightInfo.IDE) {
-            // Delete the old file and create a new one saying "TEST SUCCESS".
-            testServerProof.delete();
-            File testServerSuccess = new File("./TESTSERVER.txt");
-            try {
-                FileWriter fileWriter = new FileWriter(testServerSuccess, false);
-                fileWriter.write("TEST SUCCESS");
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        // Only fire if ./TESTSERVER.txt exists and the server is running via runTestServer.
+        if (MidnightInfo.TESTSERVER) {
+            if (isTestServer) {
+                // Delete the old file and create a new one saying "TEST SUCCESS".
+                testServerProof.delete();
+                File testServerSuccess = new File("./TESTSERVER.txt");
+                try {
+                    FileWriter fileWriter = new FileWriter(testServerSuccess, false);
+                    fileWriter.write("TEST SUCCESS");
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
-            // This Exception is intentional. Do not report it.
-            throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER.txt file from your directory.");
+                LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
+                // This Exception is intentional. Do not report it.
+                throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER.txt file from your directory.");
+            } else {
+                LOGGER.fatal("UNABLE TO LOCATE TESTSERVER.txt! THE CI WILL REPORT THIS BUILD AS FAILED!");
+                throw new NullPointerException("TESTSERVER.txt was not found in the root server directory.");
+            }
         }
+
     }
 }
