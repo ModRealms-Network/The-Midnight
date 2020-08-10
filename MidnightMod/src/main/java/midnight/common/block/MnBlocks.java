@@ -116,6 +116,7 @@ public final class MnBlocks {
         "night_grass",
         config -> config.color(MaterialColor.PURPLE_TERRACOTTA)
                         .multiplier(new NightGrassColor())
+                        .factory(props -> new SmallGrowablePlantBlock(props, supply("tall_night_grass")))
                         .processBlock(block -> block.setPlantHitbox(14, 14))
                         .processBlock(block -> block.setOffsetType(Block.OffsetType.XYZ))
     );
