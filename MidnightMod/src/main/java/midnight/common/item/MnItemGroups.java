@@ -11,4 +11,10 @@ public class MnItemGroups {
             return new ItemStack(MnBlocks.NIGHT_GRASS_BLOCK);
         }
     };
+    public static final ItemGroup DECOR = new ItemGroup("midnight.decor") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(MnBlocks.NIGHT_GRASS);
+        }
+    };
 }

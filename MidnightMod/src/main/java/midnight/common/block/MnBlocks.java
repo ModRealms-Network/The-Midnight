@@ -1,6 +1,8 @@
 package midnight.common.block;
 
 import com.mojang.datafixers.util.Pair;
+import midnight.common.Midnight;
+import midnight.common.block.color.NightGrassBlockColor;
 import midnight.common.block.color.NightGrassColor;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.item.MnItemGroups;
@@ -13,7 +15,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.function.Function;
@@ -57,23 +61,18 @@ public final class MnBlocks {
                         .harvestTool(ToolType.SHOVEL)
                         .color(MaterialColor.PURPLE_TERRACOTTA)
                         .renderLayer(BlockLayer.CUTOUT_MIPPED)
-                        .multiplier(new NightGrassColor())
+                        .multiplier(new NightGrassBlockColor())
                         .ticksRandomly(true)
                         .group(MnItemGroups.BLOCKS)
                         .makeBlockAndItem()
     );
-
     public static final Block DECEITFUL_PEAT = DIRT.blockItem("deceitful_peat", config -> config.color(MaterialColor.PURPLE_TERRACOTTA));
-    public static final Block DECEITFUL_MUD = register(
+    public static final Block DECEITFUL_MUD = DIRT.blockItem(
         "deceitful_mud",
-        BlockItemBuilder.builder(DeceitfulMudBlock::new)
-                        .material(Material.EARTH)
+        config -> config.factory(DeceitfulMudBlock::new)
                         .sound(MnSoundTypes.MUD)
                         .strength(0.5)
-                        .harvestTool(ToolType.SHOVEL)
                         .color(MaterialColor.BLUE_TERRACOTTA)
-                        .group(MnItemGroups.BLOCKS)
-                        .makeBlockAndItem()
     );
     public static final Block STRANGE_SAND = register(
         "strange_sand",
@@ -95,6 +94,39 @@ public final class MnBlocks {
                         .makeBlock()
     );
 
+    private static final Factory<MnPlantBlock> PLANTS = factory(
+        () -> BlockItemBuilder.builder(MnPlantBlock::new)
+                              .solid(false)
+                              .group(MnItemGroups.DECOR)
+                              .sound(SoundType.PLANT)
+                              .renderLayer(BlockLayer.CUTOUT)
+                              .material(Material.PLANTS)
+    );
+
+    private static final Factory<MnDoublePlantBlock> TALL_PLANTS = factory(
+        () -> BlockItemBuilder.builder(MnDoublePlantBlock::new)
+                              .solid(false)
+                              .group(MnItemGroups.DECOR)
+                              .sound(SoundType.PLANT)
+                              .renderLayer(BlockLayer.CUTOUT)
+                              .material(Material.PLANTS)
+    );
+
+    public static final Block NIGHT_GRASS = PLANTS.blockItem(
+        "night_grass",
+        config -> config.color(MaterialColor.PURPLE_TERRACOTTA)
+                        .multiplier(new NightGrassColor())
+                        .processBlock(block -> block.setPlantHitbox(14, 14))
+                        .processBlock(block -> block.setOffsetType(Block.OffsetType.XYZ))
+    );
+    public static final Block TALL_NIGHT_GRASS = TALL_PLANTS.blockItem(
+        "tall_night_grass",
+        config -> config.color(MaterialColor.PURPLE_TERRACOTTA)
+                        .multiplier(new NightGrassColor())
+                        .processBlock(block -> block.setPlantHitbox(14, 30))
+                        .processBlock(block -> block.setOffsetType(Block.OffsetType.XZ))
+    );
+
 
 
 
@@ -114,6 +146,12 @@ public final class MnBlocks {
 
     private static <B extends Block> Factory<B> factory(Supplier<BlockItemBuilder<B>> config) {
         return new Factory<>(config);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <B extends Block> Supplier<B> supply(String id) {
+        ResourceLocation key = Midnight.resLoc(id);
+        return () -> (B) ForgeRegistries.BLOCKS.getValue(key);
     }
 
     private static class Factory<B extends Block> {

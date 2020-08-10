@@ -9,7 +9,7 @@ import java.util.function.Function;
  * Item builder class to wrap around {@link Item.Properties} for clarity and the ease of building items.
  */
 public class ItemBuilder<I extends Item> extends AbstractItemBuilder<ItemBuilder<I>, I> {
-    private final Function<? super Item.Properties, ? extends I> factory;
+    private Function<? super Item.Properties, ? extends I> factory;
 
     private ItemBuilder(Function<? super Item.Properties, ? extends I> factory) {
         this.factory = factory;
@@ -20,10 +20,19 @@ public class ItemBuilder<I extends Item> extends AbstractItemBuilder<ItemBuilder
      */
     public I makeItem() {
         I item = factory.apply(makeItemProps());
-        for (Consumer<? super I> processor : itemProcess) {
+        for(Consumer<? super I> processor : itemProcess) {
             processor.accept(item);
         }
         return item;
+    }
+
+    /**
+     * Set the factory that creates the item. The factory must not be null. If you create a builder yourself prefer
+     * specifying your factory directly to {@link #builder}.
+     */
+    public ItemBuilder<I> factory(Function<? super Item.Properties, ? extends I> factory) {
+        this.factory = factory;
+        return this;
     }
 
     /**

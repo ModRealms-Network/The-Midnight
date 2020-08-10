@@ -139,4 +139,14 @@ public class InheritingModelGen implements IModelGen {
         }
         return gen;
     }
+
+    public static InheritingModelGen cross(String texture) {
+        return new InheritingModelGen("block/cross")
+                   .texture("cross", texture);
+    }
+
+    public static InheritingModelGen tintedCross(String texture) {
+        return new InheritingModelGen("block/tinted_cross")
+                   .texture("cross", texture);
+    }
 }

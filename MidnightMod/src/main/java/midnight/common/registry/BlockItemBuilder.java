@@ -28,7 +28,7 @@ import java.util.function.Predicate;
  * configured block.
  */
 public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<BlockItemBuilder<B>, BlockItem> {
-    private final Function<? super Block.Properties, ? extends B> factory;
+    private Function<? super Block.Properties, ? extends B> factory;
     private BiFunction<? super B, ? super Item.Properties, ? extends BlockItem> itemFactory = BlockItem::new;
     private Material material = Material.ROCK;
     private MaterialColor color = null;
@@ -52,6 +52,15 @@ public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<Block
 
     private BlockItemBuilder(Function<? super Block.Properties, ? extends B> factory) {
         this.factory = factory;
+    }
+
+    /**
+     * Set the factory that creates the block. The factory must not be null. If you create a builder yourself prefer
+     * specifying your factory directly to {@link #builder}.
+     */
+    public BlockItemBuilder<B> factory(Function<? super Block.Properties, ? extends B> factory) {
+        this.factory = factory;
+        return this;
     }
 
     /**

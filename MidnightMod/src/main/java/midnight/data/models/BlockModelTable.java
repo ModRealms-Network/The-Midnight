@@ -1,5 +1,7 @@
 package midnight.data.models;
 
+import com.mojang.datafixers.util.Pair;
+import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -10,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public class BlockItemModelTable extends ModelTable {
+public class BlockModelTable extends ModelTable {
     @Override
     public void collectModels(BiConsumer<ResourceLocation, IModelGen> consumer) {
         // Full-cube blocks
@@ -25,6 +27,7 @@ public class BlockItemModelTable extends ModelTable {
             MnBlocks.STRANGE_SAND
         );
 
+        // Night grass
         addBlock(
             consumer, MnBlocks.NIGHT_GRASS_BLOCK,
             InheritingModelGen.grassBlock(
@@ -34,10 +37,19 @@ public class BlockItemModelTable extends ModelTable {
                 "midnight:block/night_grass_block_overlay"
             )
         );
+        addBlock(
+            consumer, MnBlocks.NIGHT_GRASS,
+            InheritingModelGen.tintedCross("midnight:block/night_grass")
+        );
+        addDoublePlant(
+            consumer, MnBlocks.TALL_NIGHT_GRASS,
+            InheritingModelGen.tintedCross("midnight:block/tall_night_grass_lower"),
+            InheritingModelGen.tintedCross("midnight:block/tall_night_grass_upper")
+        );
 
         // Block model inheriting items
         addItems(
-            consumer, BlockItemModelTable::inheritBlock,
+            consumer, BlockModelTable::inheritBlock,
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
             MnBlocks.NIGHT_STONE,
@@ -47,11 +59,38 @@ public class BlockItemModelTable extends ModelTable {
             MnBlocks.TRENCHSTONE,
             MnBlocks.STRANGE_SAND
         );
+
+        // Layered items
+        addItems(
+            consumer, BlockModelTable::bgenerated,
+            MnBlocks.NIGHT_GRASS,
+            MnBlocks.TALL_NIGHT_GRASS
+        );
+        addItems(
+            consumer, BlockModelTable::bgenerated,
+            MnBlocks.NIGHT_GRASS
+        );
+        addItems(
+            consumer, BlockModelTable::generatedDoublePlant,
+            MnBlocks.TALL_NIGHT_GRASS
+        );
     }
 
     public static IModelGen inheritBlock(Item item) {
-        if (!(item instanceof BlockItem)) throw new IllegalArgumentException("Not a BlockItem");
+        if(!(item instanceof BlockItem)) throw new IllegalArgumentException("Not a BlockItem");
         return InheritingModelGen.inherit(blockModel(item));
+    }
+
+    public static IModelGen generated(Item item) {
+        return InheritingModelGen.generatedItem(texture(item));
+    }
+
+    public static IModelGen bgenerated(Item item) {
+        return InheritingModelGen.generatedItem(btexture(item));
+    }
+
+    public static IModelGen generatedDoublePlant(Item item) {
+        return InheritingModelGen.generatedItem(btexture(item, "%s_upper"));
     }
 
     private static String blockModel(Item item) {
@@ -75,6 +114,13 @@ public class BlockItemModelTable extends ModelTable {
         return loc.getNamespace() + ":block/" + String.format(pathFormat, loc.getPath());
     }
 
+    private static String btexture(Item item) {
+        ResourceLocation loc = item.getRegistryName();
+        assert loc != null;
+
+        return loc.getNamespace() + ":block/" + loc.getPath();
+    }
+
     private static String texture(Item item) {
         ResourceLocation loc = item.getRegistryName();
         assert loc != null;
@@ -89,6 +135,13 @@ public class BlockItemModelTable extends ModelTable {
         return loc.getNamespace() + ":item/" + String.format(pathFormat, loc.getPath());
     }
 
+    private static String btexture(Item item, String pathFormat) {
+        ResourceLocation loc = item.getRegistryName();
+        assert loc != null;
+
+        return loc.getNamespace() + ":block/" + String.format(pathFormat, loc.getPath());
+    }
+
     public static void addBlock(BiConsumer<ResourceLocation, IModelGen> consumer, Block block, IModelGen gen) {
         ResourceLocation id = block.getRegistryName();
         assert id != null;
@@ -97,9 +150,31 @@ public class BlockItemModelTable extends ModelTable {
         consumer.accept(model, gen);
     }
 
+    public static void addDoublePlant(BiConsumer<ResourceLocation, IModelGen> consumer, Block block, IModelGen lower, IModelGen upper) {
+        ResourceLocation id = block.getRegistryName();
+        assert id != null;
+
+        ResourceLocation lo = new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_lower");
+        ResourceLocation hi = new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_upper");
+        consumer.accept(lo, lower);
+        consumer.accept(hi, upper);
+    }
+
+    public static void addNamed(BiConsumer<ResourceLocation, IModelGen> consumer, String block, IModelGen gen) {
+        ResourceLocation model = Midnight.resLoc(block);
+        consumer.accept(model, gen);
+    }
+
     public static void addBlocks(BiConsumer<ResourceLocation, IModelGen> consumer, Function<Block, IModelGen> gen, Block... blocks) {
-        for (Block block : blocks) {
+        for(Block block : blocks) {
             addBlock(consumer, block, gen.apply(block));
+        }
+    }
+
+    public static void addDoublePlants(BiConsumer<ResourceLocation, IModelGen> consumer, Function<Block, Pair<IModelGen, IModelGen>> gen, Block... blocks) {
+        for(Block block : blocks) {
+            Pair<IModelGen, IModelGen> pair = gen.apply(block);
+            addDoublePlant(consumer, block, pair.getFirst(), pair.getSecond());
         }
     }
 

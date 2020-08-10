@@ -19,7 +19,8 @@ public final class BlockstateTable {
             MnBlocks.DARK_WATER,
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
-            MnBlocks.TRENCHSTONE
+            MnBlocks.TRENCHSTONE,
+            MnBlocks.NIGHT_GRASS
         );
 
         add(
@@ -32,6 +33,11 @@ public final class BlockstateTable {
             consumer, BlockstateTable::rotateRandomXY,
             MnBlocks.STRANGE_SAND
         );
+
+        add(
+            consumer, BlockstateTable::doublePlant,
+            MnBlocks.TALL_NIGHT_GRASS
+        );
     }
 
     private static IBlockstateGen basic(Block block) {
@@ -40,6 +46,16 @@ public final class BlockstateTable {
 
         ResourceLocation model = new ResourceLocation(id.getNamespace(), "block/" + id.getPath());
         return SelectorBlockstateGen.create(new ModelVariant(model));
+    }
+
+    private static IBlockstateGen doublePlant(Block block) {
+        ResourceLocation id = block.getRegistryName();
+        assert id != null;
+
+        ResourceLocation lower = new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_lower");
+        ResourceLocation upper = new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_upper");
+        return SelectorBlockstateGen.create("half=lower", new ModelVariant(lower))
+                                    .variant("half=upper", new ModelVariant(upper));
     }
 
     private static IBlockstateGen rotateRandomY(Block block) {
