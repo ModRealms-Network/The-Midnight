@@ -1,0 +1,16 @@
+{
+  "block.midnight.night_stone": "Nachtgesteente",
+  "block.midnight.night_bedrock": "Nacht-Bodemgesteente",
+  "block.midnight.trenchstone": "Greppelgesteente",
+  "block.midnight.night_dirt": "Nachtaarde",
+  "block.midnight.night_grass_block": "Nachtgrasblok",
+  "block.midnight.deceitful_peat": "Bedriegelijk Turf",
+  "block.midnight.deceitful_mud": "Bedriegelijke Modder",
+  "block.midnight.strange_sand": "Onwennig Zand",
+  "block.midnight.dark_water": "Donker Water",
+
+  "itemGroup.midnight.blocks": "Midnight Blokken",
+  "itemGroup.midnight.decor": "Midnight Decoraties",
+
+  "biome.midnight.night_plains": "Nachtvelden"
+}

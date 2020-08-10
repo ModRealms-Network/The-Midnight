@@ -1,0 +1,16 @@
+{
+  "block.midnight.night_stone": "Nachtgestein",
+  "block.midnight.night_bedrock": "Nacht-Grundgestein",
+  "block.midnight.trenchstone": "Grabengestein",
+  "block.midnight.night_dirt": "Nachterde",
+  "block.midnight.night_grass_block": "Nachtgrasblock",
+  "block.midnight.deceitful_peat": "Betrügerischer Torf",
+  "block.midnight.deceitful_mud": "Betrügerischer Schlamm",
+  "block.midnight.strange_sand": "Fremder Sand",
+  "block.midnight.dark_water": "Dunkel Wasser",
+
+  "itemGroup.midnight.blocks": "Midnight Blöcke",
+  "itemGroup.midnight.decor": "Midnight Dekorationen",
+
+  "biome.midnight.night_plains": "Nachtflachland"
+}
