@@ -128,7 +128,7 @@ jobs:
         continue-on-error: true
         with:
           gradle-version: 4.10.3
-          arguments: runServer
+          arguments: runServer --max-workers 1
 
       - name: Read server test result
         id: log
