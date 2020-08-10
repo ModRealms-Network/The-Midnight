@@ -52,6 +52,7 @@ public final class MnBlocks {
     public static final Block TRENCHSTONE = STONE.blockItem("trenchstone", config -> config.color(MaterialColor.BLACK));
 
     public static final Block NIGHT_DIRT = DIRT.blockItem("night_dirt", config -> config.color(MaterialColor.BLACK));
+    public static final Block COARSE_NIGHT_DIRT = DIRT.blockItem("coarse_night_dirt", config -> config.color(MaterialColor.BLACK));
     public static final Block NIGHT_GRASS_BLOCK = register(
         "night_grass_block",
         BlockItemBuilder.builder(NightGrassBlock::new)

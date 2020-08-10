@@ -1,23 +1,23 @@
 package midnight.common.world.biome;
 
 import midnight.common.block.MnBlocks;
+import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
 import midnight.core.biome.MidnightBiome;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class NightPlainsBiome extends MidnightBiome {
-    protected NightPlainsBiome() {
+public class DeceitfulBogBiome extends MidnightBiome {
+    protected DeceitfulBogBiome() {
         super(
             new Builder().depth(0.1f)
                          .scale(0.1f)
                          .downfall(0)
-                         .category(Category.MUSHROOM)
+                         .category(Category.FOREST)
                          .waterColor(0x5280EB)
                          .waterFogColor(0x395087)
                          .precipitation(RainType.NONE)
                          .temperature(1)
                          .surfaceBuilder(
-                             SurfaceBuilder.DEFAULT,
+                             MnSurfaceBuilders.DECEITFUL_BOG,
                              new SurfaceBuilderConfig(
                                  MnBlocks.NIGHT_GRASS_BLOCK.getDefaultState(),
                                  MnBlocks.NIGHT_DIRT.getDefaultState(),
@@ -26,12 +26,12 @@ public class NightPlainsBiome extends MidnightBiome {
                          )
         );
 
-        setMidnightGrassColor(0x8F54A1);
-        setMidnightWaterColor(0x2C0266);
+        setMidnightGrassColor(0x765E8A);
+        setMidnightWaterColor(0x422D54);
 
-        setTerrainHeight(1);
-        setTerrainDifference(2);
-        setTerrainHilliness(1);
-        setTerrainGranularity(0.4);
+        setTerrainHeight(0.2);
+        setTerrainDifference(1);
+        setTerrainHilliness(0.5);
+        setTerrainGranularity(0.8);
     }
 }

@@ -24,7 +24,8 @@ public class BlockModelTable extends ModelTable {
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
-            MnBlocks.STRANGE_SAND
+            MnBlocks.STRANGE_SAND,
+            MnBlocks.COARSE_NIGHT_DIRT
         );
 
         // Night grass

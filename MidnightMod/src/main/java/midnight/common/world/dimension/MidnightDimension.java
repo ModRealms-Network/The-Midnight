@@ -1,13 +1,11 @@
 package midnight.common.world.dimension;
 
-import midnight.common.world.biome.MnBiomes;
+import midnight.common.world.biome.MnBiomeProvider;
 import midnight.common.world.levelgen.midnight.MidnightChunkGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.provider.SingleBiomeProvider;
-import net.minecraft.world.biome.provider.SingleBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
@@ -19,7 +17,7 @@ public class MidnightDimension extends Dimension {
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        return new MidnightChunkGenerator(world, new SingleBiomeProvider(new SingleBiomeProviderSettings(world.getWorldInfo()).setBiome(MnBiomes.NIGHT_PLAINS)));
+        return new MidnightChunkGenerator(world, new MnBiomeProvider(world.getWorldInfo()));
     }
 
     @Override

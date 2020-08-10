@@ -5,13 +5,13 @@ import midnight.core.biome.MidnightBiome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
-public class NightPlainsBiome extends MidnightBiome {
-    protected NightPlainsBiome() {
+public class VigilantForestBiome extends MidnightBiome {
+    protected VigilantForestBiome() {
         super(
             new Builder().depth(0.1f)
                          .scale(0.1f)
                          .downfall(0)
-                         .category(Category.MUSHROOM)
+                         .category(Category.FOREST)
                          .waterColor(0x5280EB)
                          .waterFogColor(0x395087)
                          .precipitation(RainType.NONE)
@@ -26,12 +26,12 @@ public class NightPlainsBiome extends MidnightBiome {
                          )
         );
 
-        setMidnightGrassColor(0x8F54A1);
-        setMidnightWaterColor(0x2C0266);
+        setMidnightGrassColor(0x5B527D);
+        setMidnightWaterColor(0x302859);
 
-        setTerrainHeight(1);
+        setTerrainHeight(0.75);
         setTerrainDifference(2);
-        setTerrainHilliness(1);
-        setTerrainGranularity(0.4);
+        setTerrainHilliness(2);
+        setTerrainGranularity(0.7);
     }
 }

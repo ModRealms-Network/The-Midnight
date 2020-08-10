@@ -78,11 +78,11 @@ public class BiomeColorCache {
     }
 
     public void chunkLoad(ChunkPos pos) {
-        invalidateAll(new ChunkPos(pos.x, pos.z));
-        invalidateAll(new ChunkPos(pos.x + 1, pos.z));
-        invalidateAll(new ChunkPos(pos.x - 1, pos.z));
-        invalidateAll(new ChunkPos(pos.x, pos.z + 1));
-        invalidateAll(new ChunkPos(pos.x, pos.z - 1));
+        for(int x = -1; x <= 1; x++) {
+            for(int z = -1; z <= 1; z++) {
+                invalidateAll(new ChunkPos(pos.x + x, pos.z + z));
+            }
+        }
     }
 
     private void invalidateAll(ChunkPos pos) {

@@ -20,7 +20,8 @@ public final class BlockstateTable {
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
-            MnBlocks.NIGHT_GRASS
+            MnBlocks.NIGHT_GRASS,
+            MnBlocks.COARSE_NIGHT_DIRT
         );
 
         add(
