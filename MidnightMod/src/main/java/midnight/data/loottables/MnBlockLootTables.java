@@ -23,6 +23,9 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
         registerDropSelfLootTable(MnBlocks.STRANGE_SAND);
         registerDropSelfLootTable(MnBlocks.COARSE_NIGHT_DIRT);
+        registerDropSelfLootTable(MnBlocks.GIANT_GHOST_PLANT_LEAF);
+        registerDropSelfLootTable(MnBlocks.GIANT_GHOST_PLANT_STEM);
+        registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
         registerSilkTouch(MnBlocks.NIGHT_BEDROCK);
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));

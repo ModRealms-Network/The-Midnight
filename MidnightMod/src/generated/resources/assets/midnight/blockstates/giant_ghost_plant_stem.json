@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "midnight:block/giant_ghost_plant_stem"
+    },
+    "axis=x": {
+      "model": "midnight:block/giant_ghost_plant_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "midnight:block/giant_ghost_plant_stem",
+      "x": 90
+    }
+  }
+}

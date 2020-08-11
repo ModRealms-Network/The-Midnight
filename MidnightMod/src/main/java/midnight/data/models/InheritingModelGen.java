@@ -67,8 +67,8 @@ public class InheritingModelGen implements IModelGen {
 
     public static InheritingModelGen cubeColumn(String end, String side) {
         return new InheritingModelGen("block/cube_column")
-                .texture("end", end)
-                .texture("side", end);
+                   .texture("end", end)
+                   .texture("side", side);
     }
 
     public static InheritingModelGen cubeColumnHoriz(String end, String side) {

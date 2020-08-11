@@ -129,6 +129,31 @@ public final class MnBlocks {
                         .processBlock(block -> block.setOffsetType(Block.OffsetType.XZ))
     );
 
+    private static final Factory<Block> GIANT_GHOST_PLANT = factory(
+        () -> BlockItemBuilder.<Block>builder(GhostPlantBlock::new)
+                  .solid(false)
+                  .group(MnItemGroups.DECOR)
+                  .hardness(0.3)
+                  .sound(SoundType.WOOD)
+                  .renderLayer(BlockLayer.TRANSLUCENT)
+                  .emission(15)
+                  .material(Material.WOOD)
+                  .color(MaterialColor.SNOW)
+    );
+
+    public static final Block GIANT_GHOST_PLANT_STEM = GIANT_GHOST_PLANT.blockItem(
+        "giant_ghost_plant_stem",
+        config -> config.factory(GhostPlantStemBlock::new)
+    );
+    public static final Block GIANT_GHOST_PLANT_LEAF = GIANT_GHOST_PLANT.blockItem("giant_ghost_plant_leaf");
+    public static final Block GHOST_PLANT = PLANTS.blockItem(
+        "ghost_plant",
+        config -> config.color(MaterialColor.SNOW)
+                        .emission(9)
+                        .processBlock(block -> block.setPlantHitbox(14, 14))
+                        .processBlock(block -> block.setOffsetType(Block.OffsetType.XZ))
+    );
+
 
 
 

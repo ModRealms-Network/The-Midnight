@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "midnight:block/giant_ghost_plant_leaf"
+  }
+}

@@ -27,7 +27,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
             MnBlocks.STRANGE_SAND,
-            MnBlocks.COARSE_NIGHT_DIRT
+            MnBlocks.COARSE_NIGHT_DIRT,
+            MnBlocks.GHOST_PLANT
         );
     }
 

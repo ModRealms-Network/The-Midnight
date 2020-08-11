@@ -25,7 +25,20 @@ public class BlockModelTable extends ModelTable {
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
             MnBlocks.STRANGE_SAND,
-            MnBlocks.COARSE_NIGHT_DIRT
+            MnBlocks.COARSE_NIGHT_DIRT,
+            MnBlocks.GIANT_GHOST_PLANT_LEAF
+        );
+
+        // Cross plants
+        addBlocks(
+            consumer, block -> InheritingModelGen.cross(texture(block)),
+            MnBlocks.GHOST_PLANT
+        );
+
+        // Column blocks
+        addBlocks(
+            consumer, block -> InheritingModelGen.cubeColumn(texture(block, "%s_end"), texture(block, "%s_side")),
+            MnBlocks.GIANT_GHOST_PLANT_STEM
         );
 
         // Night grass
@@ -58,14 +71,17 @@ public class BlockModelTable extends ModelTable {
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
-            MnBlocks.STRANGE_SAND
+            MnBlocks.STRANGE_SAND,
+            MnBlocks.GIANT_GHOST_PLANT_LEAF,
+            MnBlocks.GIANT_GHOST_PLANT_STEM
         );
 
         // Layered items
         addItems(
             consumer, BlockModelTable::bgenerated,
             MnBlocks.NIGHT_GRASS,
-            MnBlocks.TALL_NIGHT_GRASS
+            MnBlocks.TALL_NIGHT_GRASS,
+            MnBlocks.GHOST_PLANT
         );
         addItems(
             consumer, BlockModelTable::bgenerated,
