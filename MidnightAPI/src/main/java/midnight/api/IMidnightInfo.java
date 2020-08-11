@@ -36,4 +36,14 @@ public interface IMidnightInfo {
      * system property to {@code true}.
      */
     boolean ide();
+
+    /**
+     * Returns whether the Midnight is running as a data generator.
+     */
+    boolean data();
+
+    /**
+     * Returns whether the Midnight is running from GitHub Actions.
+     */
+    boolean testServer();
 }
