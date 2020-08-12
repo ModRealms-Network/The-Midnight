@@ -23,6 +23,8 @@ sourceSets {
     main {
         resources {
             srcDirs += "src/generated/resources"
+            srcDirs -= "src/assets/old"
+            srcDirs -= "src/data/old"
         }
     }
 }
