@@ -3,10 +3,8 @@ package midnight.data;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.proxy.BlockItemProxy;
-import midnight.data.blockstates.MnBlockstateProvider;
 import midnight.data.loottables.MnLootTableProvider;
-import midnight.data.models.BlockModelTable;
-import midnight.data.models.MnModelProvider;
+import midnight.data.models.MnStateModelProvider;
 import midnight.data.proxy.DataBlockItemProxy;
 import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
@@ -37,8 +35,7 @@ public class MidnightData extends MidnightClient {
     public void onGenerateData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            gen.addProvider(new MnBlockstateProvider(gen));
-            gen.addProvider(new MnModelProvider(gen).withTable(new BlockModelTable()));
+            gen.addProvider(new MnStateModelProvider(gen));
         }
         if (event.includeServer()) {
             gen.addProvider(new MnLootTableProvider(gen));

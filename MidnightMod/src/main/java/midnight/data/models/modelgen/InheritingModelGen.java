@@ -1,4 +1,4 @@
-package midnight.data.models;
+package midnight.data.models.modelgen;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -132,7 +132,7 @@ public class InheritingModelGen implements IModelGen {
                    .texture("overlay", overlay);
     }
 
-    public static InheritingModelGen generatedItem(String... layers) {
+    public static InheritingModelGen generated(String... layers) {
         InheritingModelGen gen = new InheritingModelGen("item/generated");
         for(int i = 0, l = layers.length; i < l; i++) {
             gen.texture("layer" + i, layers[i]);

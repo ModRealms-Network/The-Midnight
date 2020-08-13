@@ -44,6 +44,6 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
 
     @Override
     public String getName() {
-        return "MnBlockTags";
+        return "Midnight - Block tags";
     }
 }

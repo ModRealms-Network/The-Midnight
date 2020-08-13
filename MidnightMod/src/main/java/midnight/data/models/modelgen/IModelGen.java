@@ -1,8 +1,7 @@
-package midnight.data.models;
+package midnight.data.models.modelgen;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import net.minecraft.util.ResourceLocation;
 
 @FunctionalInterface

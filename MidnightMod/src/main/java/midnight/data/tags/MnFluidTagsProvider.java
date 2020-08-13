@@ -34,6 +34,6 @@ public class MnFluidTagsProvider extends TagsProvider<Fluid> {
 
     @Override
     public String getName() {
-        return "MnFluidTags";
+        return "Midnight - Fluid tags";
     }
 }
