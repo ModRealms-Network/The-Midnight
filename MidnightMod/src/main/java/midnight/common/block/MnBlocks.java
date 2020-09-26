@@ -31,10 +31,6 @@ import javax.annotation.Nonnull;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/*
- * We use our own Registry Manager to register blocks for The Midnight.
- * This makes adding and developing new blocks into the mod easier for everyone involved.
- */
 @ObjectHolder("midnight")
 public final class MnBlocks {
 
