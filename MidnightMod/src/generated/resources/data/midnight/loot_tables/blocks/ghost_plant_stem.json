@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "midnight:giant_ghost_plant_stem"
+          "name": "midnight:ghost_plant_stem"
         }
       ],
       "conditions": [

@@ -19,7 +19,7 @@ public class MnBiomeProvider extends BiomeProvider {
         ));
 
         CachingRegionContext ctx = new CachingRegionContext(25, info.getSeed());
-        generator = ctx.generate(new MidnightBiomeLayer())
+        generator = ctx.generate(new MidnightBiomeLayer(), 8812L)
                        .zoomFuzzy()
                        .zoom(5)
                        .smooth()

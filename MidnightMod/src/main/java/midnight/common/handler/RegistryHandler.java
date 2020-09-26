@@ -1,10 +1,7 @@
 package midnight.common.handler;
 
-import com.google.common.reflect.Reflection;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
-import midnight.common.item.MnItems;
-import midnight.common.registry.RegistryManager;
 import midnight.common.sound.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.dimension.MnDimensions;
@@ -26,44 +23,33 @@ public final class RegistryHandler {
     private RegistryHandler() {
     }
 
-    static {
-        Reflection.initialize(
-            MnBlocks.class,
-            MnItems.class,
-            MnFluids.class,
-            MnDimensions.class,
-            MnBiomes.class,
-            MnSoundEvents.class
-        );
-    }
-
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        RegistryManager.BLOCKS.fillRegistry(event.getRegistry());
+        MnBlocks.registerBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerDimensions(RegistryEvent.Register<ModDimension> event) {
-        RegistryManager.DIMENSIONS.fillRegistry(event.getRegistry());
+        MnDimensions.registerDimensions(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        RegistryManager.ITEMS.fillRegistry(event.getRegistry());
+        MnBlocks.registerItems(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerFluids(RegistryEvent.Register<Fluid> event) {
-        RegistryManager.FLUIDS.fillRegistry(event.getRegistry());
+        MnFluids.registerFluids(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-        RegistryManager.SOUND_EVENTS.fillRegistry(event.getRegistry());
+        MnSoundEvents.registerSoundEvents(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        RegistryManager.BIOMES.fillRegistry(event.getRegistry());
+        MnBiomes.registerBiomes(event.getRegistry());
     }
 }

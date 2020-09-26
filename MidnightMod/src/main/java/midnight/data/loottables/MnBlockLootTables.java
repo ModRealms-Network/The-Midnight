@@ -1,12 +1,13 @@
 package midnight.data.loottables;
 
 import midnight.common.block.MnBlocks;
-import midnight.common.registry.RegistryManager;
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.ConstantRange;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.LootTable;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class MnBlockLootTables extends BlockLootTables {
 
@@ -23,8 +24,8 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
         registerDropSelfLootTable(MnBlocks.STRANGE_SAND);
         registerDropSelfLootTable(MnBlocks.COARSE_NIGHT_DIRT);
-        registerDropSelfLootTable(MnBlocks.GIANT_GHOST_PLANT_LEAF);
-        registerDropSelfLootTable(MnBlocks.GIANT_GHOST_PLANT_STEM);
+        registerDropSelfLootTable(MnBlocks.GHOST_PLANT_LEAF);
+        registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
         registerSilkTouch(MnBlocks.NIGHT_BEDROCK);
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
@@ -35,6 +36,12 @@ public class MnBlockLootTables extends BlockLootTables {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return RegistryManager.BLOCKS;
+        return ForgeRegistries.BLOCKS.getValues()
+                                     .stream()
+                                     .filter(block -> {
+                                         ResourceLocation loc = block.getRegistryName();
+                                         assert loc != null;
+                                         return loc.getNamespace().equals("midnight");
+                                     })::iterator;
     }
 }

@@ -32,8 +32,8 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_NIGHT_GRASS, item -> generated(name(item, "block/%s_upper")));
 
         register(MnBlocks.GHOST_PLANT, item -> generated(name(item, "block/%s")));
-        register(MnBlocks.GIANT_GHOST_PLANT_LEAF, item -> inherit(name(item, "block/%s")));
-        register(MnBlocks.GIANT_GHOST_PLANT_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GHOST_PLANT_LEAF, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GHOST_PLANT_STEM, item -> inherit(name(item, "block/%s")));
     }
 
 

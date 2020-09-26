@@ -1,9 +1,9 @@
 package midnight.client;
 
-import midnight.client.biome.BiomeColorCache;
-import midnight.client.proxy.ClientBlockItemProxy;
+import midnight.client.util.BiomeColorCache;
 import midnight.common.Midnight;
-import midnight.common.proxy.BlockItemProxy;
+import midnight.common.block.MnBlocks;
+import midnight.common.block.fluid.MnFluids;
 import midnight.core.util.MnUtil;
 import midnight.data.MidnightData;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,17 +17,13 @@ public class MidnightClient extends Midnight {
 
     @Override
     public void init() {
-        getBlockItemProxy().init();
+        MnBlocks.setupRenderers();
+        MnFluids.setupRenderers();
     }
 
     @Override
     public Dist getRuntimeDist() {
         return Dist.CLIENT;
-    }
-
-    @Override
-    protected BlockItemProxy makeBlockItemProxy() {
-        return new ClientBlockItemProxy();
     }
 
     public BiomeColorCache getDarkWaterColorCache() {

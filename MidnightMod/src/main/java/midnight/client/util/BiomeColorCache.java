@@ -1,4 +1,4 @@
-package midnight.client.biome;
+package midnight.client.util;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.client.Minecraft;

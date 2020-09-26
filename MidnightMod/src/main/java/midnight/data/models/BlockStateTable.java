@@ -44,8 +44,8 @@ public final class BlockStateTable {
         register(MnBlocks.DARK_WATER, block -> simple(name(block, "block/%s"), IModelGen.EMPTY));
 
         register(MnBlocks.GHOST_PLANT, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
-        register(MnBlocks.GIANT_GHOST_PLANT_LEAF, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
-        register(MnBlocks.GIANT_GHOST_PLANT_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(
+        register(MnBlocks.GHOST_PLANT_LEAF, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.GHOST_PLANT_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(
             name(block, "block/%s_end"),
             name(block, "block/%s_side")
         )));

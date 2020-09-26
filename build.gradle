@@ -95,7 +95,7 @@ allprojects {
     dependencies {
         minecraft 'net.minecraftforge:forge:1.15.2-31.2.0'
 
-        embed("net.shadew:ptg:1.2.1") {
+        embed("net.shadew:ptg:1.2.2") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
             // need to embed it
             transitive false

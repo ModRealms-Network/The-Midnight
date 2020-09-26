@@ -2,10 +2,8 @@ package midnight.data;
 
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
-import midnight.common.proxy.BlockItemProxy;
 import midnight.data.loottables.MnLootTableProvider;
 import midnight.data.models.MnStateModelProvider;
-import midnight.data.proxy.DataBlockItemProxy;
 import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -21,11 +19,6 @@ public class MidnightData extends MidnightClient {
     @Override
     public Dist getRuntimeDist() {
         return Dist.CLIENT;
-    }
-
-    @Override
-    protected BlockItemProxy makeBlockItemProxy() {
-        return new DataBlockItemProxy();
     }
 
     /**

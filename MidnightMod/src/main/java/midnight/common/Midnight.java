@@ -1,11 +1,5 @@
 package midnight.common;
 
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import net.minecraft.util.ResourceLocation;
 import midnight.MidnightInfo;
 import midnight.MidnightMod;
 import midnight.api.IMidnight;
@@ -14,10 +8,14 @@ import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
 import midnight.client.MidnightClient;
-import midnight.common.proxy.BlockItemProxy;
 import midnight.core.plugin.PluginManager;
 import midnight.data.MidnightData;
 import midnight.server.MidnightServer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Main class of the Midnight. From here the complete mod is controlled. A few subclasses of this class exist, each one
@@ -42,7 +40,6 @@ public abstract class Midnight implements IMidnight {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();
-    private BlockItemProxy blockItemProxy;
 
 
 
@@ -54,8 +51,6 @@ public abstract class Midnight implements IMidnight {
      * Called on pre-initialization, in the constructor of the {@link MidnightMod} class.
      */
     public void preInit() {
-        blockItemProxy = makeBlockItemProxy();
-
         if (!MidnightInfo.DATAGEN) {
             EVENT_BUS.start(); // Start the event bus manually when we're available
             pluginManager.loadPlugins();
@@ -82,21 +77,6 @@ public abstract class Midnight implements IMidnight {
     /*
      * BLOCK ITEM PROXY
      */
-
-    /**
-     * Makes the {@link BlockItemProxy}.
-     */
-    protected BlockItemProxy makeBlockItemProxy() {
-        return new BlockItemProxy();
-    }
-
-    /**
-     * Returns the {@link BlockItemProxy} instance, for delegating certain block/item-related events to clients or
-     * servers safely without loading unexisting classes.
-     */
-    public BlockItemProxy getBlockItemProxy() {
-        return blockItemProxy;
-    }
 
 
 

@@ -16,17 +16,20 @@ public class MnPlantBlock extends BushBlock {
         super(props);
     }
 
-    public void setHitbox(VoxelShape hitbox) {
+    public MnPlantBlock setHitbox(VoxelShape hitbox) {
         this.hitbox = hitbox;
+        return this;
     }
 
-    public void setPlantHitbox(double size, double height) {
+    public MnPlantBlock setPlantHitbox(double size, double height) {
         double radius = size / 2;
         setHitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
+        return this;
     }
 
-    public void setOffsetType(OffsetType offsetType) {
+    public MnPlantBlock setOffsetType(OffsetType offsetType) {
         this.offsetType = offsetType;
+        return this;
     }
 
     @Override

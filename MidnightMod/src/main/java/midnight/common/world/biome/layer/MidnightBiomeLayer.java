@@ -13,8 +13,8 @@ public class MidnightBiomeLayer implements GeneratorLayer {
 
     private final int[] weights = {
         100,
-        89,
-        89
+        87,
+        87
     };
 
     private final int totalWeight;

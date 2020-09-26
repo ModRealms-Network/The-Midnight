@@ -18,12 +18,13 @@ public class MnDoublePlantBlock extends DoublePlantBlock {
         super(props);
     }
 
-    public void setHitbox(VoxelShape lo, VoxelShape hi) {
+    public MnDoublePlantBlock setHitbox(VoxelShape lo, VoxelShape hi) {
         this.hitboxLo = lo;
         this.hitboxHi = hi;
+        return this;
     }
 
-    public void setPlantHitbox(double size, double height) {
+    public MnDoublePlantBlock setPlantHitbox(double size, double height) {
         double radius = size / 2;
         if(height < 16) {
             setHitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
@@ -33,6 +34,7 @@ public class MnDoublePlantBlock extends DoublePlantBlock {
                 makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height - 16, 8 + radius)
             );
         }
+        return this;
     }
 
     @Override
@@ -52,7 +54,8 @@ public class MnDoublePlantBlock extends DoublePlantBlock {
         return VoxelShapes.empty();
     }
 
-    public void setOffsetType(OffsetType offsetType) {
+    public MnDoublePlantBlock setOffsetType(OffsetType offsetType) {
         this.offsetType = offsetType;
+        return this;
     }
 }
