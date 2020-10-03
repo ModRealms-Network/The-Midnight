@@ -6,8 +6,8 @@ If you are a contributor on this list and want your name to link to a different 
 ## The Midnight Development Team
 
 [Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
-[RedGalaxySW](https://github.com/RedGalaxySW) - Lead Programmer  
-[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer
+[RedGalaxySW](https://shadew.net/) - Lead Programmer  
+[Jonathing](https://colmenares.codes/) - Lead QA, Community Manager, Programmer, Musician
 
 ## Active Collaborators
 

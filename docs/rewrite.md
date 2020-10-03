@@ -1,6 +1,6 @@
 # Rewriting The Midnight
 
-As many of you know, Cryptic Mushroom's The Midnight Development Team is planning on completely rewriting the entirety of The Midnight for Minecraft 1.16.1. On this page, you will find various pieces of information such as what we have publically confirmed for the rewrite, the development roadmap, and more.
+As many of you know, Cryptic Mushroom's The Midnight Development Team is planning on completely rewriting the entirety of The Midnight. On this page, you will find various pieces of information such as what we have publically confirmed for the rewrite, the development roadmap, and more.
 
 ## Current Development Status
 
@@ -10,7 +10,7 @@ As many of you know, Cryptic Mushroom's The Midnight Development Team is plannin
 
 The following is information we have publicly confirmed will be a part of the rewrite.
 
-- The Midnight: Rewritten *will not* be backwards compatible with **any previous version of The Midnight**. In addition, there are no plans to backport the rewrite to any Minecraft version below 1.15.2. **Essentially, we will be dropping all support for previous versions of The Midnight.**
+- The Midnight: Rewritten *will not* be backwards compatible with **any previous version of The Midnight**. In addition, there are no plans to backport the rewrite to any Minecraft version below the version that 0.6.0 is being written for. **Essentially, we will be dropping all support for previous versions of The Midnight.**
 - Entrance rifts will be reworked. This includes dark pearls.
 - Rifters will be completely redone and will be implemented last. If we choose to, we may remove the limby animation the rifters currently possess.
 - Many balance issues The Midnight currently holds will be addressed. We plan on making The Midnight much more demanding, unforgiving, and rewarding.

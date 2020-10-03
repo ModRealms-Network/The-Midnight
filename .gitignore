@@ -29,3 +29,5 @@ Thumbs.db
 
 .cache/
 .DS_Store
+
+.code-workspace

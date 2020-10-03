@@ -12,5 +12,4 @@ nav:
     - Rewrite Information: rewrite.md
     - About:
         - What is The Midnight?: about.md
-        - Contributing to the Wiki: about/contribution.md
         - Credits: about/credits.md

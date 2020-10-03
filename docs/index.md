@@ -4,7 +4,7 @@
 
 # The Midnight Wiki
 
-Welcome to the official wiki for The Midnight by Cryptic Mushroom! This is the official source for information on The Midnight for Minecraft 1.16.1 and above. It is currently maintained by the active developers of Cryptic Mushroom's The Midnight Development Team, but if you ever want to add something, feel free to find out how to [contribute to the wiki](about/contribution.md).
+Welcome to the official wiki for The Midnight by Cryptic Mushroom! This is the official source for information on The Midnight 0.6.0 and above. It is currently maintained by the active developers of Cryptic Mushroom's The Midnight Development Team, but if you ever want to add something, feel free to find out how to [contribute to the wiki](about/contribution.md).
 
 ## More Information
 
