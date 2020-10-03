@@ -25,7 +25,7 @@ build
 
 # other
 eclipse
-run
+/run
 /src
 .cache
 local.properties
@@ -41,3 +41,5 @@ forge*changelog.txt
 # I use this to edit files that have nothing to with Java code or the mod. - Jonathing
 *.code-workspace
 
+# I don't know where these came from
+logs/
