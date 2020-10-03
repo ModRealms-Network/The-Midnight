@@ -1,6 +1,6 @@
 package midnight.common.world.levelgen.surface;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import midnight.common.block.MnBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,6 @@ import net.shadew.ptg.noise.Noise3D;
 import net.shadew.ptg.noise.opensimplex.FractalOpenSimplex3D;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
     private static final BlockState COARSE_DIRT = MnBlocks.COARSE_NIGHT_DIRT.getDefaultState();
@@ -32,8 +31,8 @@ public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     private Noise3D dirtSoilNoise;
     private Noise3D mudSoilNoise;
 
-    public DeceitfulBogSurfaceBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> deserializer) {
-        super(deserializer);
+    public DeceitfulBogSurfaceBuilder(Codec<SurfaceBuilderConfig> codec) {
+        super(codec);
     }
 
     @Override

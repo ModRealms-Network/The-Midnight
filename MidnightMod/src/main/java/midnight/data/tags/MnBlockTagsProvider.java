@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagCollection;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
@@ -19,7 +18,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
 
     @Override
     protected void registerTags() {
-        getBuilder(BlockTags.ENDERMAN_HOLDABLE).replace(false).add(
+        getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).replace(false).add(
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
             MnBlocks.NIGHT_STONE,
@@ -30,11 +29,6 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.COARSE_NIGHT_DIRT,
             MnBlocks.GHOST_PLANT
         );
-    }
-
-    @Override
-    protected void setCollection(TagCollection<Block> collection) {
-        BlockTags.setCollection(collection);
     }
 
     @Override

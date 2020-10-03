@@ -3,13 +3,12 @@ package midnight.common.world.levelgen.midnight;
 import midnight.common.block.MnBlocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 
 public class MidnightBedrockGenerator extends MidnightGenerator {
-    public MidnightBedrockGenerator(IWorld world, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
-        super(world, biomeProvider, chunkGenerator);
+    public MidnightBedrockGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
+        super(seed, biomeProvider, chunkGenerator);
     }
 
     public void generateBedrock(IChunk chunk) {

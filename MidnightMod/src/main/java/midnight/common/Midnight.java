@@ -75,12 +75,6 @@ public abstract class Midnight implements IMidnight {
 
 
     /*
-     * BLOCK ITEM PROXY
-     */
-
-
-
-    /*
      * PLUGIN MANAGER
      */
 

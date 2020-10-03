@@ -3,14 +3,11 @@ package midnight.common.handler;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.sound.MnSoundEvents;
-import midnight.common.world.biome.MnBiomes;
-import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,10 +25,11 @@ public final class RegistryHandler {
         MnBlocks.registerBlocks(event.getRegistry());
     }
 
-    @SubscribeEvent
-    public static void registerDimensions(RegistryEvent.Register<ModDimension> event) {
-        MnDimensions.registerDimensions(event.getRegistry());
-    }
+    // TODO Dimensions
+//    @SubscribeEvent
+//    public static void registerDimensions(RegistryEvent.Register<ModDimension> event) {
+//        MnDimensions.registerDimensions(event.getRegistry());
+//    }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -50,6 +48,7 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        MnBiomes.registerBiomes(event.getRegistry());
+        // TODO Biomes
+//        MnBiomes.registerBiomes(event.getRegistry());
     }
 }

@@ -2,7 +2,7 @@
   "required": true,
   "package": "midnight.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "modid.refmap.json",
+  "refmap": "midnight.refmap.json",
   "mixins": [
   ],
   "minVersion": "0.8.1"

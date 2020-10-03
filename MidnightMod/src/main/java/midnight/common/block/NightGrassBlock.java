@@ -1,6 +1,5 @@
 package midnight.common.block;
 
-import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
@@ -39,7 +38,7 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     }
 
     private static int getGrowStatusAt(ServerWorld world, BlockPos pos) {
-        if(world.getDimension().getType() == MnDimensions.midnight()) {
+        if(true) { // TODO world.getDimension().getType() == MnDimensions.midnight()
             BlockPos up = pos.up();
             BlockState upstate = world.getBlockState(up);
             if(!doesLightGoThroughBlockAbove(world.getBlockState(pos), world, pos, upstate, up)) {
@@ -104,7 +103,7 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
                 }
 
                 placePos = placePos.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if(world.getBlockState(placePos.down()).getBlock() != this || world.getBlockState(placePos).isCollisionShapeOpaque(world, placePos)) {
+                if(world.getBlockState(placePos.down()).getBlock() != this || world.getBlockState(placePos).isOpaqueCube(world, placePos)) {
                     break;
                 }
 

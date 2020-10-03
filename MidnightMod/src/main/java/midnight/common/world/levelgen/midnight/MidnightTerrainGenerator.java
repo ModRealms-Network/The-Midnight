@@ -38,11 +38,11 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     // The base height, which is the water level divided by 4
     private final double baseHeight;
 
-    public MidnightTerrainGenerator(IWorld world, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator, int baseHeight) {
-        super(world, biomeProvider, chunkGenerator);
+    public MidnightTerrainGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator, int baseHeight) {
+        super(seed, biomeProvider, chunkGenerator);
         this.baseHeight = baseHeight / 4D;
 
-        Random rand = new Random(world.getSeed()); // RNG to scramble seeds for noise gens
+        Random rand = new Random(seed); // RNG to scramble seeds for noise gens
 
         mixNoise = new FractalPerlin3D(rand.nextInt(), 12.561823, 8);
 
@@ -144,7 +144,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
                 int gx = lx + cx * 4;
                 int gz = lz + cz * 4;
 
-                Biome biome = biomeProvider.getNoiseBiome(gx, (int) baseHeight + 1, gz);
+                Biome biome = biomeProvider.getBiomeForNoiseGen(gx, (int) baseHeight + 1, gz);
 
                 buf[x * 11 + z] = biome;
             }

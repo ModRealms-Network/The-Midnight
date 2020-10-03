@@ -1,5 +1,11 @@
 package midnight.common.handler;
 
+import midnight.Constants;
+import midnight.MidnightInfo;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
@@ -8,12 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import midnight.MidnightInfo;
-import midnight.MidnightMod;
 
 /**
  * Event handler responsible for sending the warning message about the incompleteness of 0.6.0.
@@ -36,8 +36,10 @@ public final class WarningMessageHandler {
 
         // Null-check the player
         if (player != null) {
-            LOGGER.warn(MidnightMod.DEV_WARNING);
-            event.getPlayer().sendMessage(new TranslationTextComponent(MidnightMod.DEV_WARNING).applyTextStyles(TextFormatting.RED));
+            LOGGER.warn(Constants.DEV_WARNING);
+            Minecraft.getInstance().ingameGUI.getChatGUI().printChatMessage(
+                new TranslationTextComponent(Constants.DEV_WARNING).formatted(TextFormatting.RED)
+            );
         }
     }
 
@@ -49,6 +51,6 @@ public final class WarningMessageHandler {
     @OnlyIn(Dist.DEDICATED_SERVER)
     public static void serverStarting(FMLServerStartingEvent event) {
         // TODO This event fires twice. Not sure why.
-        LOGGER.warn(MidnightMod.DEV_WARNING);
+        LOGGER.warn(Constants.DEV_WARNING);
     }
 }

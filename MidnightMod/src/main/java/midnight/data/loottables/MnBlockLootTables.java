@@ -3,10 +3,10 @@ package midnight.data.loottables;
 import midnight.common.block.MnBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.loot.ConstantRange;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.ConstantRange;
-import net.minecraft.world.storage.loot.LootPool;
-import net.minecraft.world.storage.loot.LootTable;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class MnBlockLootTables extends BlockLootTables {

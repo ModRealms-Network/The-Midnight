@@ -1,10 +1,10 @@
 package midnight.common.world.levelgen.midnight;
 
+import midnight.common.block.MnBlocks;
 import midnight.core.util.MnMath;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.Heightmap;
@@ -17,9 +17,9 @@ import java.util.Random;
 public class MidnightSurfaceGenerator extends MidnightGenerator {
     private final Noise2D surfaceNoise;
 
-    public MidnightSurfaceGenerator(IWorld world, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
-        super(world, biomeProvider, chunkGenerator);
-        Random rng = new Random(world.getSeed());
+    public MidnightSurfaceGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
+        super(seed, biomeProvider, chunkGenerator);
+        Random rng = new Random(seed);
         surfaceNoise = new FractalOpenSimplex2D(rng.nextInt(), 15.6587812, 5);
     }
 
@@ -46,8 +46,8 @@ public class MidnightSurfaceGenerator extends MidnightGenerator {
                 world.getBiome(mpos.setPos(rx + x, hgt, rz + z))
                      .buildSurface(
                          rng, chunk, gx, gz, hgt, snoise,
-                         chunkGenerator.getSettings().getDefaultBlock(),
-                         chunkGenerator.getSettings().getDefaultFluid(),
+                         MnBlocks.NIGHT_STONE.getDefaultState(), //chunkGenerator.getSettings().getDefaultBlock(),
+                         MnBlocks.DARK_WATER.getDefaultState(),
                          chunkGenerator.getSeaLevel(),
                          world.getSeed()
                      );

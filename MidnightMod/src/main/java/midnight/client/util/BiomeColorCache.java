@@ -19,7 +19,7 @@ public class BiomeColorCache {
         if(pos == null) pos = BlockPos.ZERO;
         if(Minecraft.getInstance().world == null) return 0xFFFFFF;
         BlockPos finalPos = pos;
-        return getColor(pos, () -> Minecraft.getInstance().world.getBlockColorRaw(finalPos, resolver));
+        return getColor(pos, () -> Minecraft.getInstance().world.calculateColor(finalPos, resolver));
     }
 
     public int getColor(BlockPos pos, IntSupplier supplier) {

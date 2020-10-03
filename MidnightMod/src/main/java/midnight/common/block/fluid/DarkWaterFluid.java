@@ -8,7 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particles.IParticleData;
@@ -47,7 +47,7 @@ public abstract class DarkWaterFluid extends FlowingFluid {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(World world, BlockPos pos, IFluidState state, Random rand) {
+    public void animateTick(World world, BlockPos pos, FluidState state, Random rand) {
         if(!state.isSource() && !state.get(FALLING)) {
             if(rand.nextInt(64) == 0) {
                 world.playSound(
@@ -85,7 +85,7 @@ public abstract class DarkWaterFluid extends FlowingFluid {
     @Override
     protected void beforeReplacingBlock(IWorld world, BlockPos pos, BlockState state) {
         TileEntity tileentity = state.hasTileEntity() ? world.getTileEntity(pos) : null;
-        Block.spawnDrops(state, world.getWorld(), pos, tileentity);
+        Block.spawnDrops(state, world, pos, tileentity);
     }
 
     @Override
@@ -94,7 +94,7 @@ public abstract class DarkWaterFluid extends FlowingFluid {
     }
 
     @Override
-    public BlockState getBlockState(IFluidState state) {
+    public BlockState getBlockState(FluidState state) {
         return MnBlocks.DARK_WATER.getDefaultState().with(FlowingFluidBlock.LEVEL, getLevelFromState(state));
     }
 
@@ -114,7 +114,7 @@ public abstract class DarkWaterFluid extends FlowingFluid {
     }
 
     @Override
-    public boolean canDisplace(IFluidState state, IBlockReader world, BlockPos pos, Fluid fluid, Direction dir) {
+    public boolean canDisplace(FluidState state, IBlockReader world, BlockPos pos, Fluid fluid, Direction dir) {
         return dir == Direction.DOWN && !fluid.isIn(FluidTags.WATER);
     }
 
@@ -141,37 +141,37 @@ public abstract class DarkWaterFluid extends FlowingFluid {
 
         @Override
         @OnlyIn(Dist.CLIENT)
-        public int getColor(ILightReader world, BlockPos pos) {
+        public int getColor(IBlockDisplayReader world, BlockPos pos) {
             return 0xFF000000 | MidnightClient.get().getDarkWaterColorCache().getColor(pos, MnBiomeColors.DARK_WATER);
         }
     }
 
     public static class Flowing extends DarkWaterFluid {
         @Override
-        protected void fillStateContainer(StateContainer.Builder<Fluid, IFluidState> builder) {
+        protected void fillStateContainer(StateContainer.Builder<Fluid, FluidState> builder) {
             super.fillStateContainer(builder);
             builder.add(LEVEL_1_8);
         }
 
         @Override
-        public int getLevel(IFluidState state) {
+        public int getLevel(FluidState state) {
             return state.get(LEVEL_1_8);
         }
 
         @Override
-        public boolean isSource(IFluidState state) {
+        public boolean isSource(FluidState state) {
             return false;
         }
     }
 
     public static class Source extends DarkWaterFluid {
         @Override
-        public int getLevel(IFluidState state) {
+        public int getLevel(FluidState state) {
             return 8;
         }
 
         @Override
-        public boolean isSource(IFluidState state) {
+        public boolean isSource(FluidState state) {
             return true;
         }
     }

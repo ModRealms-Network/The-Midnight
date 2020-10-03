@@ -6,6 +6,7 @@ import midnight.common.block.fluid.MnFluids;
 import midnight.common.item.MnItemGroups;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.SoundType;
@@ -167,103 +168,103 @@ public final class MnBlocks {
 
     private static Block stone(String id, double hardness, double resistance, MaterialColor color) {
         return block(id, new Block(
-            Block.Properties.create(Material.ROCK, color)
-                            .sound(SoundType.STONE)
-                            .hardnessAndResistance((float) hardness, (float) resistance)
-                            .harvestTool(ToolType.PICKAXE)
+            AbstractBlock.Properties.create(Material.ROCK, color)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
         ));
     }
 
     private static Block dirt(String id, MaterialColor color) {
         return block(id, new NightDirtBlock(
-            Block.Properties.create(Material.EARTH, color)
-                            .sound(SoundType.GROUND)
-                            .hardnessAndResistance(0.5f)
-                            .harvestTool(ToolType.SHOVEL)
+            AbstractBlock.Properties.create(Material.EARTH, color)
+                                    .sound(SoundType.GROUND)
+                                    .hardnessAndResistance(0.5f)
+                                    .harvestTool(ToolType.SHOVEL)
         ));
     }
 
     private static Block grassBlock(String id) {
         return block(id, new NightGrassBlock(
-            Block.Properties.create(Material.EARTH, MaterialColor.PURPLE_TERRACOTTA)
-                            .sound(SoundType.PLANT)
-                            .hardnessAndResistance(0.6f)
-                            .harvestTool(ToolType.SHOVEL)
-                            .tickRandomly()
+            AbstractBlock.Properties.create(Material.EARTH, MaterialColor.PURPLE_TERRACOTTA)
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance(0.6f)
+                                    .harvestTool(ToolType.SHOVEL)
+                                    .tickRandomly()
         ));
     }
 
     private static Block mud(String id) {
         return block(id, new DeceitfulMudBlock(
-            Block.Properties.create(Material.EARTH, MaterialColor.BLUE_TERRACOTTA)
-                            .sound(MnSoundTypes.MUD)
-                            .hardnessAndResistance(0.5f)
-                            .harvestTool(ToolType.SHOVEL)
+            AbstractBlock.Properties.create(Material.EARTH, MaterialColor.BLUE_TERRACOTTA)
+                                    .sound(MnSoundTypes.MUD)
+                                    .hardnessAndResistance(0.5f)
+                                    .harvestTool(ToolType.SHOVEL)
         ));
     }
 
     private static Block sand(String id) {
         return block(id, new StrangeSandBlock(
-            Block.Properties.create(Material.SAND, MaterialColor.BLUE_TERRACOTTA)
-                            .sound(SoundType.SAND)
-                            .hardnessAndResistance(0.5f)
-                            .harvestTool(ToolType.SHOVEL)
+            AbstractBlock.Properties.create(Material.SAND, MaterialColor.BLUE_TERRACOTTA)
+                                    .sound(SoundType.SAND)
+                                    .hardnessAndResistance(0.5f)
+                                    .harvestTool(ToolType.SHOVEL)
         ));
     }
 
     private static Block water(String id, Supplier<FlowingFluid> fluid) {
         return block(id, new FlowingFluidBlock(
             fluid,
-            Block.Properties.create(Material.WATER)
-                            .hardnessAndResistance(100)
+            AbstractBlock.Properties.create(Material.WATER)
+                                    .hardnessAndResistance(100)
         ));
     }
 
     private static MnPlantBlock plant(String id, double hardness, double resistance, Material material, MaterialColor color) {
         return block(id, new MnPlantBlock(
-            Block.Properties.create(material, color)
-                            .notSolid()
-                            .sound(SoundType.PLANT)
-                            .hardnessAndResistance((float) hardness, (float) resistance)
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }
 
     private static MnPlantBlock emissivePlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
         return block(id, new MnPlantBlock(
-            Block.Properties.create(material, color)
-                            .notSolid()
-                            .sound(SoundType.PLANT)
-                            .lightValue(emission)
-                            .hardnessAndResistance((float) hardness, (float) resistance)
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .luminance(state -> emission)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }
 
     private static MnDoublePlantBlock tallPlant(String id, double hardness, double resistance, Material material, MaterialColor color) {
         return block(id, new MnDoublePlantBlock(
-            Block.Properties.create(material, color)
-                            .notSolid()
-                            .sound(SoundType.PLANT)
-                            .hardnessAndResistance((float) hardness, (float) resistance)
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }
 
     private static MnPlantBlock smallGrowable(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
         return block(id, new SmallGrowablePlantBlock(
-            Block.Properties.create(material, color)
-                            .notSolid()
-                            .sound(SoundType.PLANT)
-                            .hardnessAndResistance((float) hardness, (float) resistance),
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance((float) hardness, (float) resistance),
             tall
         ));
     }
 
     private static Block giantGhostPlant(String id, Function<Block.Properties, Block> factory) {
         return block(id, factory.apply(
-            Block.Properties.create(Material.WOOD, MaterialColor.SNOW)
-                            .notSolid()
-                            .sound(SoundType.WOOD)
-                            .hardnessAndResistance(0.3f)
-                            .lightValue(15)
+            AbstractBlock.Properties.create(Material.WOOD, MaterialColor.SNOW)
+                                    .nonOpaque()
+                                    .sound(SoundType.WOOD)
+                                    .hardnessAndResistance(0.3f)
+                                    .luminance(state -> 15)
         ));
     }
 

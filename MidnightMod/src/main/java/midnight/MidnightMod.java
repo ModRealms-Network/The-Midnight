@@ -1,5 +1,8 @@
 package midnight;
 
+import midnight.client.MidnightClient;
+import midnight.common.Midnight;
+import midnight.server.MidnightServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -9,10 +12,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import midnight.client.MidnightClient;
-import midnight.common.Midnight;
-import midnight.server.MidnightServer;
 
 /**
  * Bootstrap class of the Midnight. This is the first class of the Midnight that is being loaded by Forge. From here we
@@ -25,7 +24,7 @@ public class MidnightMod {
     /**
      * The general {@link Midnight} instance. Don't use - use {@link Midnight#get()} instead.
      */
-    public static final Midnight MIDNIGHT = DistExecutor.runForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
+    public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::dataOrClient, () -> MidnightServer::new);
 
     public MidnightMod() {
         printVersion();
@@ -66,7 +65,4 @@ public class MidnightMod {
         MIDNIGHT.postInit();
         LOGGER.debug("Midnight post-initialized");
     }
-
-    public static final String DEV_WARNING = "The Midnight: Rewritten is still under active development. " +
-            "Many features will be missing and/or completely unusable. You have been warned!";
 }

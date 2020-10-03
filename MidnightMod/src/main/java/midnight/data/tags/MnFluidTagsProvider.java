@@ -5,7 +5,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagCollection;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
@@ -19,12 +18,7 @@ public class MnFluidTagsProvider extends TagsProvider<Fluid> {
 
     @Override
     protected void registerTags() {
-        getBuilder(FluidTags.WATER).replace(false).add(MnFluids.DARK_WATER, MnFluids.FLOWING_DARK_WATER);
-    }
-
-    @Override
-    protected void setCollection(TagCollection<Fluid> collection) {
-        FluidTags.setCollection(collection);
+        getOrCreateTagBuilder(FluidTags.WATER).replace(false).add(MnFluids.DARK_WATER, MnFluids.FLOWING_DARK_WATER);
     }
 
     @Override
