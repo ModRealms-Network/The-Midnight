@@ -42,7 +42,7 @@ Give a full explanation of the feature. Be obvious. Tell us everything about the
 <!-- If your enhancement involves code and you have an idea of how you would implement it, share your thoughts here. -->
 
 <!--
-FOR ANYONE WRITING ISSUES FOR THE 1.15.2 VERSION OF THE MIDNIGHT SINCE VERSION 0.6.0
+FOR ANYONE WRITING ISSUES FOR ANY DEVELOPMENT VERSIONS OF THE MIDNIGHT 0.6.0
 Please keep in mind the following except from our terms and conditions:
 
 ## _Contribution_
