@@ -39,7 +39,7 @@ jobs:
       uses: eskatos/gradle-command-action@v1
       with:
         gradle-version: 4.10.3
-        arguments: build
+        arguments: build --no-daemon
 
     - name: Upload The Midnight API to GitHub
       uses: actions/upload-artifact@v2

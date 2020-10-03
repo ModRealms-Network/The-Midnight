@@ -4,11 +4,13 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
@@ -24,6 +26,7 @@ allprojects {
     project.ext.implName = "The Midnight"
 
     apply plugin: 'net.minecraftforge.gradle'
+    apply plugin: 'org.spongepowered.mixin'
     apply plugin: 'midnight.gradle' // See 'buildSrc'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
@@ -32,12 +35,49 @@ allprojects {
     // Initialize basic environment properties
     apply from: "$rootDir/environment.gradle"
 
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        flatDir {
+            dirs "$rootDir/dependencies"
+        }
+        maven {
+            name = "Cryptic Mushroom Maven Repository"
+            url = "https://maven.crypticmushroom.com/artifactory/jcenter/"
+        }
+        maven {
+            name = "Shadew's Maven Repository"
+            url = "http://maven.shadew.net/"
+        }
+        maven {
+            name = "tterrag's maven"
+            url = "https://maven.tterrag.com/"
+        }
+        maven {
+            name = "Progwml6 maven"
+            url = "https://dvs1.progwml6.com/files/maven/"
+        }
+        maven {
+            name = "ModMaven"
+            url = "https://modmaven.k-4u.nl/"
+        }
+//        maven {
+//            name = "TerraForged Maven Repository"
+//            url = "https://io.terraforged.com/repository/maven/"
+//        }
+    }
+
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20200921-1.15.1'
+        mappings channel: 'snapshot', version: '20201003-mixed-1.16.3'
 
         // Access transformer
         accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    }
+
+    // mixin setup
+    mixin {
+        add sourceSets.main, "midnight.refmap.json"
     }
 
     midnight {
@@ -56,34 +96,6 @@ allprojects {
         }
     }
 
-    repositories {
-        mavenLocal()
-        mavenCentral()
-		flatDir {
-            dirs "$rootDir/dependencies"
-        }
-		maven {
-            name = "Cryptic Mushroom Maven Repository"
-            url = "https://maven.crypticmushroom.com/artifactory/jcenter/"
-        }
-		maven {
-            name = "Shadew's Maven Repository"
-            url = "http://maven.shadew.net/"
-        }
-//        maven {
-//            name = "Progwml6 maven"
-//            url = "https://dvs1.progwml6.com/files/maven/"
-//        }
-        maven {
-            name = "ModMaven"
-            url = "https://modmaven.k-4u.nl/"
-        }
-        maven {
-			name = "TerraForged Maven Repository"
-            url "https://io.terraforged.com/repository/maven/"
-        }
-    }
-
     configurations {
         embed // External deps embedded into the JAR file
         compile.extendsFrom(embed)
@@ -93,7 +105,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.15.2-31.2.0'
+        minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
 
         embed("net.shadew:ptg:1.2.2") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
@@ -101,13 +113,13 @@ allprojects {
             transitive false
         }
 
-        compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.3.15:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.3.15")
+        compileOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36:api")
+        runtimeOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36")
 
-        implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
+        // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
 
-        compileOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:api")
-        runtimeOnly fg.deobf("local:BiomesOPlenty:1.15.2-10.0.0.366:universal")
+        compileOnly fg.deobf("local:BiomesOPlenty:1.16.3-12.0.0.400:api")
+        runtimeOnly fg.deobf("local:BiomesOPlenty:1.16.3-12.0.0.400:universal")
     }
 
     jar {
@@ -131,7 +143,8 @@ allprojects {
                             "Implementation-Title"    : project.ext.implName,
                             "Implementation-Version"  : "${version}",
                             "Implementation-Vendor"   : "Cryptic Mushroom",
-                            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                            "MixinConfigs": "midnight.mixins.json"
                     ]
             )
         }
@@ -167,6 +180,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run/client')
+            arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -181,6 +195,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run/server')
+            arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -197,6 +212,7 @@ minecraft {
 
         testServer {
             workingDirectory project.file('run/server')
+            arg "-mixin.config=midnight.mixins.json"
 
             parent minecraft.runs.server
 
