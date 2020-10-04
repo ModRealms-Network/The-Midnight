@@ -1,0 +1,1 @@
+MixinConnector: midnight.core.MixinConnector

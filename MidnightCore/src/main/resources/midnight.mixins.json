@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "midnight.core.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "midnight.refmap.json",
+  "mixins": [
+    "BiomeMixin",
+    "BOPDimensionTypeMixin",
+    "DimensionGeneratorSettingsMixin",
+    "DimensionMixin",
+    "DimensionTypeMixin"
+  ],
+  "minVersion": "0.8.1"
+}

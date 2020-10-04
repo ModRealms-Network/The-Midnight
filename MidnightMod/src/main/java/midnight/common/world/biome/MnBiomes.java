@@ -1,41 +1,28 @@
 package midnight.common.world.biome;
 
-import net.minecraftforge.registries.ObjectHolder;
+import midnight.common.Midnight;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.registries.IForgeRegistry;
 
-@ObjectHolder("midnight")
 public final class MnBiomes {
-    // TODO Biomes
-//    public static final Biome NIGHT_PLAINS = inj();
-//    public static final Biome VIGILANT_FOREST = inj();
-//    public static final Biome DECEITFUL_BOG = inj();
-//
-//    public static void registerBiomes(IForgeRegistry<Biome> registry) {
-//        registry.registerAll(
-//            biome("night_plains", new NightPlainsBiome()),
-//            biome("vigilant_forest", new VigilantForestBiome()),
-//            biome("deceitful_bog", new DeceitfulBogBiome())
-//        );
-//    }
-//
-//    private MnBiomes() {
-//    }
-//
-//    private static <B extends Biome> B biome(String id, B biome) {
-//        biome.setRegistryName(Midnight.resLoc(id));
-//        return biome;
-//    }
-//
-//    public static int id(Biome biome) {
-//        return ((ForgeRegistry<Biome>) ForgeRegistries.BIOMES).getID(biome);
-//    }
-//
-//    public static Biome biome(int id) {
-//        return ((ForgeRegistry<Biome>) ForgeRegistries.BIOMES).getValue(id);
-//    }
-//
-//    @Nonnull
-//    @SuppressWarnings("ConstantConditions")
-//    private static Biome inj() {
-//        return null;
-//    }
+    public static final RegistryKey<Biome> NIGHT_PLAINS = key("night_plains");
+    public static final RegistryKey<Biome> VIGILANT_FOREST = key("vigilant_forest");
+    public static final RegistryKey<Biome> DECEITFUL_BOG = key("deceitful_bog");
+
+    private static RegistryKey<Biome> key(String key) {
+        return RegistryKey.of(Registry.BIOME_KEY, Midnight.resLoc(key));
+    }
+
+    public static void registerBiomes(IForgeRegistry<Biome> registry) {
+        registry.registerAll(
+            MnBiomeMaker.makeNightPlains("night_plains"),
+            MnBiomeMaker.makeVigilantForest("vigilant_forest"),
+            MnBiomeMaker.makeDeceitfulBog("deceitful_bog")
+        );
+    }
+
+    private MnBiomes() {
+    }
 }

@@ -1,7 +1,7 @@
 package midnight.common.handler;
 
-import midnight.Constants;
 import midnight.MidnightInfo;
+import midnight.MnConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.text.TextFormatting;
@@ -36,9 +36,9 @@ public final class WarningMessageHandler {
 
         // Null-check the player
         if (player != null) {
-            LOGGER.warn(Constants.DEV_WARNING);
+            LOGGER.warn(MnConstants.DEV_WARNING);
             Minecraft.getInstance().ingameGUI.getChatGUI().printChatMessage(
-                new TranslationTextComponent(Constants.DEV_WARNING).formatted(TextFormatting.RED)
+                new TranslationTextComponent(MnConstants.DEV_WARNING).formatted(TextFormatting.RED)
             );
         }
     }
@@ -51,6 +51,6 @@ public final class WarningMessageHandler {
     @OnlyIn(Dist.DEDICATED_SERVER)
     public static void serverStarting(FMLServerStartingEvent event) {
         // TODO This event fires twice. Not sure why.
-        LOGGER.warn(Constants.DEV_WARNING);
+        LOGGER.warn(MnConstants.DEV_WARNING);
     }
 }

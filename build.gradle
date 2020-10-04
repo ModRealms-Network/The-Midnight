@@ -15,7 +15,7 @@ buildscript {
 }
 
 ext {
-    timeOfExecution = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+    timeOfExecution = new Date().format( "yyyy-MM-dd'T'HH:mm:ssZ" )
 }
 
 // ==================
@@ -61,10 +61,10 @@ allprojects {
             name = "ModMaven"
             url = "https://modmaven.k-4u.nl/"
         }
-//        maven {
-//            name = "TerraForged Maven Repository"
-//            url = "https://io.terraforged.com/repository/maven/"
-//        }
+        //        maven {
+        //            name = "TerraForged Maven Repository"
+        //            url = "https://io.terraforged.com/repository/maven/"
+        //        }
     }
 
     // ForgeGradle setup
@@ -72,7 +72,7 @@ allprojects {
         mappings channel: 'snapshot', version: '20201003-mixed-1.16.3'
 
         // Access transformer
-        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        accessTransformer = file( "$rootDir/accesstransformer.cfg" )
     }
 
     // mixin setup
@@ -81,71 +81,72 @@ allprojects {
     }
 
     midnight {
-        shade('net.rgsw.ptg', 'midnight.internal.net.rgsw.ptg')
+        shade( 'net.rgsw.ptg', 'midnight.internal.net.rgsw.ptg' )
 
-        changelogJson file("$rootDir/changelog.json")
+        changelogJson file( "$rootDir/changelog.json" )
 
-        constant('mod_id', project.ext.modid)
-        constant('mod_name', project.ext.implName)
-        constant('version', changelogInfo.versionNumber)
-        constant('version_name', changelogInfo.versionName)
-        constant('group', project.group)
-        constant('build_time', project.ext.timeOfExecution)
-        constant('sha1') {
+        constant( 'mod_id', project.ext.modid )
+        constant( 'mod_name', project.ext.implName )
+        constant( 'version', changelogInfo.versionNumber )
+        constant( 'version_name', changelogInfo.versionName )
+        constant( 'group', project.group )
+        constant( 'build_time', project.ext.timeOfExecution )
+        constant( 'sha1' ) {
             !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
         }
     }
 
     configurations {
         embed // External deps embedded into the JAR file
-        compile.extendsFrom(embed)
+        compile.extendsFrom( embed )
 
         internal // Internal deps (subprojects) embedded into the JAR file
-        compile.extendsFrom(internal)
+        compile.extendsFrom( internal )
     }
 
     dependencies {
         minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
 
-        embed("net.shadew:ptg:1.2.2") {
+        embed( "net.shadew:ptg:1.2.2" ) {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
             // need to embed it
             transitive false
         }
 
-        compileOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36")
+        compileOnly fg.deobf( "mezz.jei:jei-1.16.3:7.3.2.36:api" )
+        runtimeOnly fg.deobf( "mezz.jei:jei-1.16.3:7.3.2.36" )
 
         // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
 
-        compileOnly fg.deobf("local:BiomesOPlenty:1.16.3-12.0.0.400:api")
-        runtimeOnly fg.deobf("local:BiomesOPlenty:1.16.3-12.0.0.400:universal")
+        compileOnly fg.deobf( "local:BiomesOPlenty:1.16.3-12.0.0.400:api" )
+        compile fg.deobf( "local:BiomesOPlenty:1.16.3-12.0.0.400:universal" )
     }
 
     jar {
         doFirst {
             // Include necessary dependencies
-            if (!project.name.endsWith("MidnightAPI")) {
-                from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
-            } else {
+            if( !project.name.endsWith( "MidnightAPI" ) ) {
+                from configurations.embed.collect { it.isDirectory() ? it : zipTree( it ) }
+            }
+            else {
                 println "Skipping dependency embedding for MidnightAPI build - they come with Maven"
             }
 
-            from configurations.internal.collect { it.isDirectory() ? it : zipTree(it) }
+            from configurations.internal.collect { it.isDirectory() ? it : zipTree( it ) }
         }
 
         manifest {
             attributes(
-                    [
-                            "Specification-Title"     : "The Midnight",
-                            "Specification-Vendor"    : "Cryptic Mushroom",
-                            "Specification-Version"   : "${version}",
-                            "Implementation-Title"    : project.ext.implName,
-                            "Implementation-Version"  : "${version}",
-                            "Implementation-Vendor"   : "Cryptic Mushroom",
-                            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                            "MixinConfigs": "midnight.mixins.json"
-                    ]
+                [
+                    "Specification-Title"     : "The Midnight",
+                    "Specification-Vendor"    : "Cryptic Mushroom",
+                    "Specification-Version"   : "${ version }",
+                    "Implementation-Title"    : project.ext.implName,
+                    "Implementation-Version"  : "${ version }",
+                    "Implementation-Vendor"   : "Cryptic Mushroom",
+                    "Implementation-Timestamp": new Date().format( "yyyy-MM-dd'T'HH:mm:ssZ" ),
+                    "MixinConnector"          : "midnight.core.MixinConnector"
+                ]
             )
         }
     }
@@ -156,7 +157,7 @@ allprojects {
         }
     }
 
-    project.shade.create("jar")
+    project.shade.create( "jar" )
 
     apply from: "$rootDir/gensources.gradle"
 }
@@ -179,7 +180,7 @@ build {
 minecraft {
     runs {
         client {
-            workingDirectory project.file('run/client')
+            workingDirectory project.file( 'run/client' )
             arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -194,7 +195,7 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run/server')
+            workingDirectory project.file( 'run/server' )
             arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -211,7 +212,7 @@ minecraft {
         }
 
         testServer {
-            workingDirectory project.file('run/server')
+            workingDirectory project.file( 'run/server' )
             arg "-mixin.config=midnight.mixins.json"
 
             parent minecraft.runs.server
@@ -220,7 +221,7 @@ minecraft {
         }
 
         data {
-            workingDirectory project.file('run/data')
+            workingDirectory project.file( 'run/data' )
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -228,11 +229,11 @@ minecraft {
             property 'midnight.datagen', 'true'
 
             // Workaround for https://github.com/MinecraftForge/ForgeGradle/issues/690
-            if (project.ext.isOsx()) {
-                jvmArg("-XstartOnFirstThread")
+            if( project.ext.isOsx() ) {
+                jvmArg( "-XstartOnFirstThread" )
             }
 
-            args '--mod', 'midnight', '--all', '--output', file("MidnightMod/src/generated/resources/")
+            args '--mod', 'midnight', '--all', '--output', file( "MidnightMod/src/generated/resources/" )
 
             mods {
                 midnight {
@@ -244,30 +245,30 @@ minecraft {
 }
 
 midnight {
-    updateJson file('versioninfo/update.json')
-    markdownChangelog file('versioninfo/latest_changelog.md')
-    markdownChangelog file("versioninfo/${changelogInfo.versionNumber}_changelog.md")
+    updateJson file( 'versioninfo/update.json' )
+    markdownChangelog file( 'versioninfo/latest_changelog.md' )
+    markdownChangelog file( "versioninfo/${ changelogInfo.versionNumber }_changelog.md" )
 }
 
 
 // Depend on all subprojects
 dependencies {
-    internal(project(':MidnightAPI')) {
+    internal( project( ':MidnightAPI' ) ) {
         transitive false
     }
-    internal(project(':MidnightCore')) {
+    internal( project( ':MidnightCore' ) ) {
         transitive false
     }
-    internal(project(':MidnightMod')) {
+    internal( project( ':MidnightMod' ) ) {
         transitive false
     }
 }
 
 // Collect classes and resources from other projects so that running includes all classes
 
-def remake(String path) {
+def remake( String path ) {
     delete path
-    file(path).mkdirs()
+    file( path ).mkdirs()
 }
 
 task collectClassPath {
@@ -292,21 +293,21 @@ task collectClassPath {
         }.each {
             ProjectDependency dep = (ProjectDependency) it
             copy {
-                from("$dep.dependencyProject.buildDir/resources/main")
-                into("$buildDir/resources/main")
+                from( "$dep.dependencyProject.buildDir/resources/main" )
+                into( "$buildDir/resources/main" )
             }
             copy {
-                from("$dep.dependencyProject.buildDir/classes/java/main")
-                into("$buildDir/classes/java/main")
+                from( "$dep.dependencyProject.buildDir/classes/java/main" )
+                into( "$buildDir/classes/java/main" )
             }
         }
         copy {
-            from("$buildDir/resources/main")
-            into("out/production/resources")
+            from( "$buildDir/resources/main" )
+            into( "out/production/resources" )
         }
         copy {
-            from("$buildDir/classes/java/main")
-            into("out/production/classes")
+            from( "$buildDir/classes/java/main" )
+            into( "out/production/classes" )
         }
     }
 }
@@ -333,21 +334,21 @@ task collectTestClassPath {
         }.each {
             ProjectDependency dep = (ProjectDependency) it
             copy {
-                from("$dep.dependencyProject.buildDir/resources/test")
-                into("$buildDir/resources/test")
+                from( "$dep.dependencyProject.buildDir/resources/test" )
+                into( "$buildDir/resources/test" )
             }
             copy {
-                from("$dep.dependencyProject.buildDir/classes/java/test")
-                into("$buildDir/classes/java/test")
+                from( "$dep.dependencyProject.buildDir/classes/java/test" )
+                into( "$buildDir/classes/java/test" )
             }
         }
         copy {
-            from("$buildDir/resources/test")
-            into("out/test/resources")
+            from( "$buildDir/resources/test" )
+            into( "out/test/resources" )
         }
         copy {
-            from("$buildDir/classes/java/test")
-            into("out/test/classes")
+            from( "$buildDir/classes/java/test" )
+            into( "out/test/classes" )
         }
     }
 }

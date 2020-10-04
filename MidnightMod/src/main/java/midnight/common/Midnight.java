@@ -8,6 +8,7 @@ import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
 import midnight.client.MidnightClient;
+import midnight.common.world.dimension.MnDimensions;
 import midnight.core.plugin.PluginManager;
 import midnight.data.MidnightData;
 import midnight.server.MidnightServer;
@@ -56,6 +57,7 @@ public abstract class Midnight implements IMidnight {
             pluginManager.loadPlugins();
             EVENT_BUS.post(new MidnightPreInitEvent(this, getRuntimeDist()));
         }
+        MnDimensions.init();
     }
 
     /**

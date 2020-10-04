@@ -1,5 +1,6 @@
 package midnight.client;
 
+import midnight.client.environment.MidnightEnvironmentRenderer;
 import midnight.client.util.BiomeColorCache;
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
@@ -19,6 +20,8 @@ public class MidnightClient extends Midnight {
     public void init() {
         MnBlocks.setupRenderers();
         MnFluids.setupRenderers();
+
+        MidnightEnvironmentRenderer.init();
     }
 
     @Override

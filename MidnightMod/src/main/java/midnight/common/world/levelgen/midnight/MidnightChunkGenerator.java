@@ -2,6 +2,8 @@ package midnight.common.world.levelgen.midnight;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import midnight.common.Midnight;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.provider.BiomeProvider;
@@ -19,21 +21,18 @@ public class MidnightChunkGenerator extends ChunkGenerator {
                       .stable()
                       .forGetter(gen -> gen.seed),
             BiomeProvider.CODEC.fieldOf("biome_source")
-                               .forGetter(gen -> gen.biomeProvider),
-            DimensionStructuresSettings.CODEC.fieldOf("structurees")
-                                             .forGetter(gen -> gen.structuresSettings)
-        ).apply(instance, instance.stable(MidnightChunkGenerator::new)));
+                               .forGetter(gen -> gen.biomeProvider)
+        ).apply(instance, instance.stable(MidnightChunkGenerator::new))
+    );
 
     private final long seed;
-    private final DimensionStructuresSettings structuresSettings;
     private final MidnightTerrainGenerator terrainGen;
     private final MidnightSurfaceGenerator surfaceGen;
     private final MidnightBedrockGenerator bedrockGen;
 
-    public MidnightChunkGenerator(long seed, BiomeProvider biomes, DimensionStructuresSettings settings) {
-        super(biomes, settings);
+    public MidnightChunkGenerator(long seed, BiomeProvider biomes) {
+        super(biomes, new DimensionStructuresSettings(false));
         this.seed = seed;
-        this.structuresSettings = settings;
 
         terrainGen = new MidnightTerrainGenerator(seed, biomes, this, 72);
         surfaceGen = new MidnightSurfaceGenerator(seed, biomes, this);
@@ -47,7 +46,7 @@ public class MidnightChunkGenerator extends ChunkGenerator {
 
     @Override
     public ChunkGenerator withSeed(long seed) {
-        return new MidnightChunkGenerator(seed, biomeProvider, structuresSettings);
+        return new MidnightChunkGenerator(seed, biomeProvider);
     }
 
     @Override
@@ -83,5 +82,9 @@ public class MidnightChunkGenerator extends ChunkGenerator {
     @Override
     public IBlockReader getColumnSample(int x, int z) {
         return null; // TODO Fine to be null but for datapack support this is mandatory some day (otherwise NPEs occur)
+    }
+
+    static {
+        Registry.register(Registry.CHUNK_GENERATOR, Midnight.resLoc("midnight"), CODEC);
     }
 }

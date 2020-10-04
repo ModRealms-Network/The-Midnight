@@ -1,2 +1,0 @@
-This placeholder exists so the mixin package is not lost in the git repository.
-Mixins classes will be added soon, if necessary.

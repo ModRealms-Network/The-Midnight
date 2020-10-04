@@ -8,6 +8,7 @@ import java.util.HashMap;
  * Default wrapper for vanilla biomes and other biomes not implementing the {@link IMidnightBiome} interface, to be
  * returned by {@link IMidnightBiome#get}.
  */
+// TODO Delete this?
 class DefaultMidnightBiomeWrapper implements IMidnightBiome {
     // Cache instances to reduce overloads of GC operations.
     private static final HashMap<Biome, DefaultMidnightBiomeWrapper> CACHE = new HashMap<>();
@@ -30,7 +31,7 @@ class DefaultMidnightBiomeWrapper implements IMidnightBiome {
 
     @Override
     public int getMidnightWaterColor(double x, double z) {
-        return 0x22517D;
+        return 0xFFFFFF;
     }
 
     @Override

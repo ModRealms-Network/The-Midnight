@@ -3,11 +3,14 @@ package midnight.common.handler;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.sound.MnSoundEvents;
+import midnight.common.world.biome.MnBiomes;
+import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -48,7 +51,11 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        // TODO Biomes
-//        MnBiomes.registerBiomes(event.getRegistry());
+        MnBiomes.registerBiomes(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void registerSurfaceBuilders(RegistryEvent.Register<SurfaceBuilder<?>> event) {
+        MnSurfaceBuilders.registerSurfaceBuilders(event.getRegistry());
     }
 }
