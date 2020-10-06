@@ -22,6 +22,9 @@ import org.apache.logging.log4j.Logger;
 public final class WarningMessageHandler {
     private static final Logger LOGGER = LogManager.getLogger("Midnight/WarningMessageHandler");
 
+    // Only meant for server at the current moment, since the event fires twice.
+    private static boolean warningShown = false;
+
     private WarningMessageHandler() {
     }
 
@@ -35,7 +38,7 @@ public final class WarningMessageHandler {
         ClientPlayerEntity player = event.getPlayer();
 
         // Null-check the player
-        if (player != null) {
+        if(player != null) {
             LOGGER.warn(MnConstants.DEV_WARNING);
             Minecraft.getInstance().ingameGUI.getChatGUI().printChatMessage(
                 new TranslationTextComponent(MnConstants.DEV_WARNING).formatted(TextFormatting.RED)
@@ -50,7 +53,9 @@ public final class WarningMessageHandler {
     @SubscribeEvent
     @OnlyIn(Dist.DEDICATED_SERVER)
     public static void serverStarting(FMLServerStartingEvent event) {
-        // TODO This event fires twice. Not sure why.
-        LOGGER.warn(MnConstants.DEV_WARNING);
+        if(!warningShown) {
+            LOGGER.warn(MnConstants.DEV_WARNING);
+            warningShown = true;
+        }
     }
 }
