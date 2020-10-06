@@ -57,10 +57,10 @@ allprojects {
             name = "ModMaven"
             url = "https://modmaven.k-4u.nl/"
         }
-        //        maven {
-        //            name = "TerraForged Maven Repository"
-        //            url = "https://io.terraforged.com/repository/maven/"
-        //        }
+//        maven {
+//            name = "TerraForged Maven Repository"
+//            url = "https://io.terraforged.com/repository/maven/"
+//        }
     }
 
     // ForgeGradle setup
@@ -114,8 +114,8 @@ allprojects {
 
         // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
 
-        compileOnly fg.deobf( "com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.16.3-12.0.0.400:api" )
-        compile fg.deobf( "com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.16.3-12.0.0.400:universal" )
+        compileOnly fg.deobf( "com.github.glitchfiend:biomesoplenty:1.16.3-12.0.0.404:api-obf" )
+        compile fg.deobf( "com.github.glitchfiend:biomesoplenty:1.16.3-12.0.0.404:universal-obf" )
     }
 
     jar {
