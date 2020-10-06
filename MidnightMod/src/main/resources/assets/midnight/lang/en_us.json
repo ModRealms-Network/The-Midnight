@@ -9,9 +9,15 @@
   "block.midnight.strange_sand": "Strange Sand",
   "block.midnight.dark_water": "Dark Water",
   "block.midnight.coarse_night_dirt": "Coarse Night Dirt",
+  "block.midnight.ghost_plant_stem": "Ghost Plant Stem",
+  "block.midnight.ghost_plant_leaf": "Ghost Plant Leaves",
 
   "itemGroup.midnight.blocks": "Midnight Blocks",
   "itemGroup.midnight.decor": "Midnight Decorations",
+
+  "block.midnight.night_grass": "Night Grass",
+  "block.midnight.night_tall_grass": "Night Tall Grass",
+  "block.midnight.night_ghost_plant": "Ghost Plant",
 
   "biome.midnight.night_plains": "Night Plains"
 }
