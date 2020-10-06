@@ -11,6 +11,9 @@ import net.minecraftforge.api.distmarker.Dist;
 
 /**
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public class MidnightClient extends Midnight {
     private final BiomeColorCache darkWaterColorCache = new BiomeColorCache();
@@ -46,7 +49,8 @@ public class MidnightClient extends Midnight {
     }
 
     /**
-     * Creates the proper instance of {@link MidnightClient}, using {@link MidnightData} when on data generation mode.
+     * Creates the proper instance of {@link MidnightClient} by using {@link MidnightData}
+     * when on data generation mode, and returns it
      */
     public static MidnightClient dataOrClient() {
         return MnUtil.callForDatagen(() -> MidnightData::new, () -> MidnightClient::new);

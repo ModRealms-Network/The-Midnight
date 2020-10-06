@@ -88,6 +88,8 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     /**
      * Computes the noise value at a given block coordinate, by interpolating the nearest values from the current
      * buffer.
+     *
+     * @return The result of the noise computation.
      */
     protected double getNoiseAt(BlockPos pos) {
         double[] buf = noiseBuffer.get();
@@ -131,7 +133,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     }
 
     /**
-     * Generate the biome field for the given chunk and nearby.
+     * Generates the biome field for the given chunk and nearby.
      */
     protected void generateBiomeField(int cx, int cz) {
         Biome[] buf = biomeBuffer.get();
@@ -191,6 +193,8 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
      * Generate the range of interpolation for a given noise column. This blends the biome terrain factors at the given
      * coordinates and uses them to generate a lower and a higher value. The final noise field is interpolated between
      * these two values.
+     *
+     * @return The generated lower and higher values.
      */
     protected double[] getTerrainInterpolationRange(int rx, int rz, int x, int z) {
         Biome[] biomes = biomeBuffer.get();

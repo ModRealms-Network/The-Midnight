@@ -6,6 +6,7 @@ import net.minecraft.world.biome.Biome;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO Since this is in Midnight Core, we might want to document this.
 public final class BiomeConfigLookup {
     private static final Map<ResourceLocation, BiomeColoring> COLORING_MAP = new HashMap<>();
     private static final Map<ResourceLocation, TerrainFactors> TERRAIN_FACTORS_MAP = new HashMap<>();

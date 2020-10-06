@@ -16,6 +16,9 @@ import org.apache.logging.log4j.Logger;
 /**
  * Bootstrap class of the Midnight. This is the first class of the Midnight that is being loaded by Forge. From here we
  * start interfacing with Minecraft.
+ *
+ * @author Shadew
+ * @author Jonathing
  */
 @Mod(MidnightInfo.MODID)
 public class MidnightMod {

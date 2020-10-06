@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.Mod;
 
 /**
  * Event handler responsible for handling all registry events and passing them to their respective object holders.
+ *
+ * @author Shadew
  */
 @Mod.EventBusSubscriber(modid = "midnight", bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class RegistryHandler {

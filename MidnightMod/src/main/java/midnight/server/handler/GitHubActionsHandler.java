@@ -16,6 +16,8 @@ import java.io.IOException;
 /**
  * Event handler responsible for crashing the dedicated server on GitHub Actions so that it is not in an infinite loop
  * of keeping the server open.
+ *
+ * @author Jonathing
  */
 @Mod.EventBusSubscriber(value = Dist.DEDICATED_SERVER, modid = MidnightInfo.MODID)
 public final class GitHubActionsHandler {

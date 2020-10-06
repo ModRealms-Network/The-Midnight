@@ -1,5 +1,6 @@
 package midnight.core.util;
 
+// TODO There's a lot of generic stuff in here. Do you want to add this to the PTG library as well?
 public final class MnMath {
     public static final float PI = (float) Math.PI;
     public static final float E = (float) Math.E;

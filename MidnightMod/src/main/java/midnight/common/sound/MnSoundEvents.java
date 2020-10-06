@@ -8,6 +8,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Registers and stores the list of Midnight sound events.
+ *
+ * @author Shadew
+ */
 public final class MnSoundEvents {
     private static final List<SoundEvent> SOUNDS = new ArrayList<>();
 

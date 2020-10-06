@@ -14,6 +14,8 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 /**
  * The data-generation-only main class of the Midnight, to handle initialization during data generation and to prevent
  * unnecessary initialization done by the client which is not used during data-generation.
+ *
+ * @author Shadew
  */
 public class MidnightData extends MidnightClient {
     @Override

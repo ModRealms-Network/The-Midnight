@@ -2,6 +2,7 @@ package midnight.core.util;
 
 // SHADEW: Gonna include this in my PTG library when I know it's stable. I've been fixing countless bugs in this
 //         already...
+// JONATHING: Whenever you do, give me the signal and I'll update the build.gradle and remove this.
 public final class ColorUtil {
     private ColorUtil() {
     }

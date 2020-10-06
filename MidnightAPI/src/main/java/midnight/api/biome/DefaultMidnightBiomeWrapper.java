@@ -4,11 +4,16 @@ import net.minecraft.world.biome.Biome;
 
 import java.util.HashMap;
 
+// TODO Delete this?
+// It depends. If we can pass these in as arguments when we create the biomes, we might not need it,
+// but we also need to keep people who would make midnight plugins in mind.
 /**
  * Default wrapper for vanilla biomes and other biomes not implementing the {@link IMidnightBiome} interface, to be
  * returned by {@link IMidnightBiome#get}.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
-// TODO Delete this?
 class DefaultMidnightBiomeWrapper implements IMidnightBiome {
     // Cache instances to reduce overloads of GC operations.
     private static final HashMap<Biome, DefaultMidnightBiomeWrapper> CACHE = new HashMap<>();

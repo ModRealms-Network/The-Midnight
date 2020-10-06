@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+// TODO Jonathing: JavaDoc the mixin classes?
 @Mixin(DimensionGeneratorSettings.class)
 public abstract class DimensionGeneratorSettingsMixin {
     @Inject(method = "method_28611", at = @At("HEAD"), cancellable = true)

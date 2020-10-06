@@ -11,6 +11,9 @@ import java.lang.annotation.Target;
  * not try to load your plugins yourself as it might result in random {@link NoClassDefFoundError}s and {@link
  * ClassNotFoundException}s when the Midnight is not installed. Do not make a plugin only to subscribe to the Midnight
  * event bus. Use {@link MidnightEventSubscriber} instead.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

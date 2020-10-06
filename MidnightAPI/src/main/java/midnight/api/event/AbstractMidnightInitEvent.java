@@ -8,6 +8,9 @@ import midnight.api.IMidnight;
 /**
  * The generic event to stay up-to-date with the loading lifecycle of the Midnight. Since plugins inject directly into
  * the Midnight, they should be triggered from the Midnight's loading thread, and not from that of your own mod.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public abstract class AbstractMidnightInitEvent extends Event {
     private final IMidnight midnight;

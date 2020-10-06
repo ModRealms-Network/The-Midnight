@@ -2,6 +2,9 @@ package midnight.api;
 
 /**
  * Holds information about the Midnight build.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public interface IMidnightInfo {
     /**

@@ -9,6 +9,9 @@ package midnight.core.plugin;
 
 /**
  * Checked exception that is thrown for any failures in plugin loading.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public class PluginException extends Exception {
     public PluginException() {

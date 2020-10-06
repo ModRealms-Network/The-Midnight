@@ -9,6 +9,9 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 /**
  * Replacement for the removed {@code BlockRenderLayer}. We use this in block builders to dynamically set the block
  * render layer and delegate that to the {@link RenderTypeLookup} when available.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public enum BlockLayer {
     SOLID,

@@ -7,6 +7,8 @@ import midnight.common.Midnight;
 /**
  * The dedicated-server-only main class of the Midnight, just to indicate the dedicated server. Everything just
  * delegates to {@link Midnight} currently.
+ *
+ * @author Shadew
  */
 public class MidnightServer extends Midnight {
     @Override

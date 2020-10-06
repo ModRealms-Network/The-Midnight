@@ -6,6 +6,7 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
+// TODO Since this is in Midnight Core, we might want to document this.
 public class MnBiomeBuilder extends Biome.Builder {
     private final ResourceLocation id;
     private BiomeColoring coloring;

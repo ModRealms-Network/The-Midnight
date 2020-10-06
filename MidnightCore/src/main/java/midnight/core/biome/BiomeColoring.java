@@ -3,6 +3,7 @@ package midnight.core.biome;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+// TODO Since this is in Midnight Core, we might want to document this.
 public class BiomeColoring {
     public static final Codec<BiomeColoring> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(

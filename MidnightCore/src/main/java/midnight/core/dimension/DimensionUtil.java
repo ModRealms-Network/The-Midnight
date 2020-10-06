@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+// TODO Since this is in Midnight Core, we might want to document this.
 public final class DimensionUtil {
     public static final Set<RegistryKey<Dimension>> DIMENSIONS = new HashSet<>();
     public static final Map<RegistryKey<DimensionType>, DimensionType> DIMENSION_TYPES = new HashMap<>();

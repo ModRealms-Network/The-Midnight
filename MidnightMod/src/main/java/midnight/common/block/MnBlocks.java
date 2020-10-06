@@ -32,6 +32,11 @@ import javax.annotation.Nonnull;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * This class holds all the biomes for the midnight.
+ *
+ * @author Shadew
+ */
 @ObjectHolder("midnight")
 public final class MnBlocks {
 

@@ -8,6 +8,9 @@ import java.util.function.Supplier;
 
 /**
  * General utility class for the Midnight.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public final class MnUtil {
     private MnUtil() {

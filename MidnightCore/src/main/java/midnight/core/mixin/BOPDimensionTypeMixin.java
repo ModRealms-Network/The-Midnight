@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
 
+// TODO Jonathing: JavaDoc the mixin classes?
 // For some reason BOP registers dimensions itself, therefore mix into BOP too
 @Mixin(value = BOPDimensionType.class, remap = false)
 public class BOPDimensionTypeMixin {

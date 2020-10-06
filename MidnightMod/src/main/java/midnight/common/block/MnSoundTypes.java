@@ -3,6 +3,13 @@ package midnight.common.block;
 import midnight.common.sound.MnSoundEvents;
 import net.minecraft.block.SoundType;
 
+/**
+ * This class holds all the different sound types for various blocks,
+ * entities, the dimension, etc.
+ *
+ * @author Shadew
+ * @author Jonathing
+ */
 public final class MnSoundTypes {
     /*
      * Here are the parameters for adding new SoundTypes.

@@ -9,6 +9,9 @@ import java.lang.annotation.Target;
  * Subscribes a class to the Midnight event bus when the Midnight is being loaded. Make sure you don't load this class
  * yourself as it might result in random {@link NoClassDefFoundError}s and {@link ClassNotFoundException}s when the
  * Midnight is not installed.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

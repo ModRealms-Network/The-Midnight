@@ -6,6 +6,9 @@ import net.minecraftforge.api.distmarker.Dist;
  * The distribution sides a plugin can be on. Specify in {@link MidnightPlugin} and {@link MidnightEventSubscriber} to
  * make them exclusive to a specific distribution.
  *
+ * @author Shadew
+ * @since 0.6.0
+ *
  * @see Dist
  */
 public enum Side {

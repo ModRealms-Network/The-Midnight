@@ -4,6 +4,11 @@ import midnight.common.block.MnBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
+/**
+ * This class holds all the item groups for the Midnight's creative tabs.
+ *
+ * @author Shadew
+ */
 public class MnItemGroups {
     public static final ItemGroup BLOCKS = new ItemGroup("midnight.blocks") {
         @Override

@@ -36,6 +36,8 @@ import org.apache.logging.log4j.Logger;
  * such as rendering and the loading of plugins.
  * </li>
  * </ul>
+ *
+ * @author Shadew
  */
 public abstract class Midnight implements IMidnight {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
@@ -81,7 +83,9 @@ public abstract class Midnight implements IMidnight {
      */
 
     /**
-     * Returns the {@link PluginManager} of the current Midnight runtime.
+     * Gets the {@link PluginManager} of the current Minecraft runtime.
+     *
+     * @return The {@link PluginManager} of the current Midnight runtime.
      */
     public PluginManager getPluginManager() {
         return pluginManager;

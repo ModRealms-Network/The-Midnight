@@ -16,6 +16,9 @@ import java.lang.reflect.Modifier;
 /**
  * Holder of a plugin. This holds the {@link MidnightPlugin @MidnightPlugin} annotation instance, the plugin {@link
  * Class} and the instance once created.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public class PluginHolder {
     private final MidnightPlugin plugin;

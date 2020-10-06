@@ -17,6 +17,9 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Event handler responsible for sending the warning message about the incompleteness of 0.6.0.
+ *
+ * @author Jonathing
+ * @author Shadew
  */
 @Mod.EventBusSubscriber(modid = MidnightInfo.MODID)
 public final class WarningMessageHandler {

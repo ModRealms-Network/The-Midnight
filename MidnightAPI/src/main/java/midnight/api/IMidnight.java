@@ -12,6 +12,9 @@ import java.lang.reflect.Field;
 /**
  * The main interface of the Midnight mod. Get all Midnight-related information and APIs from here. You may obtain an
  * instance of this class by calling {@link #get()}.
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 public interface IMidnight {
     /**

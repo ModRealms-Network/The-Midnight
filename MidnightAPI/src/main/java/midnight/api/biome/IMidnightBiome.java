@@ -9,6 +9,9 @@ import net.minecraft.world.biome.Biome;
  * <p>
  * Implementing this interface on a class that does not extend {@link Biome} may cause unexpected behaviour.
  * </p>
+ *
+ * @author Shadew
+ * @since 0.6.0
  */
 // TODO Mix this class into Biome
 /* (Removed part of javadoc)

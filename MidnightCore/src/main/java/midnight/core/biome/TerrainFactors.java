@@ -1,9 +1,9 @@
 package midnight.core.biome;
 
-
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+// TODO Since this is in Midnight Core, we might want to document this.
 public class TerrainFactors {
     public static final Codec<TerrainFactors> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(

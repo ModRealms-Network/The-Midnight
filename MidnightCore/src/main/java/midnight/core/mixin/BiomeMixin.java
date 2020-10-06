@@ -7,6 +7,7 @@ import midnight.core.biome.TerrainFactors;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 
+// TODO Jonathing: JavaDoc the mixin classes?
 @Mixin(Biome.class)
 public class BiomeMixin implements IMidnightBiome {
     private BiomeColoring coloring;

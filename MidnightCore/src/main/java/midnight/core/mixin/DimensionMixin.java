@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.LinkedHashSet;
 
+// TODO Jonathing: JavaDoc the mixin classes?
 @Mixin(Dimension.class)
 public abstract class DimensionMixin {
     @Shadow
