@@ -63,7 +63,7 @@ jobs:
       uses: eskatos/gradle-command-action@v1
       with:
         gradle-version: 4.10.3
-        arguments: build --no-daemon
+        arguments: build
 
     - name: Upload The Midnight API to GitHub
       uses: actions/upload-artifact@v2
@@ -121,7 +121,7 @@ jobs:
           architecture: x64
 
       - name: Set up test server
-        run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+        run: mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
