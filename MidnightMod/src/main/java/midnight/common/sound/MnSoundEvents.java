@@ -21,6 +21,12 @@ public final class MnSoundEvents {
     private MnSoundEvents() {
     }
 
+    /**
+     * Grabs the sounds from a group in sounds.json to make into a SoundEvent.
+     *
+     * @param type The sound group from sounds.json to use.
+     * @return The SoundEvent to be used in game.
+     */
     private static SoundEvent make(String type) {
         ResourceLocation id = Midnight.resLoc(type);
         SoundEvent event = new SoundEvent(id).setRegistryName(id);
