@@ -14,7 +14,6 @@ out
 # CM: we include the .idea directory itself to include code styles and inspection profiles.
 .idea/*.xml
 .idea/modules
-.idea/.name
 .idea/shelf
 .idea/runConfigurations/*
 

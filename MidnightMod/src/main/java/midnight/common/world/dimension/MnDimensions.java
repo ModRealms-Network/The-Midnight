@@ -15,7 +15,7 @@ import java.util.OptionalLong;
 @Mod.EventBusSubscriber(modid = "midnight")
 public final class MnDimensions {
     public static final DimensionType MIDNIGHT = new MidnightType(
-        OptionalLong.of(12000),
+        OptionalLong.of(18000),
         false,
         false,
         false,
