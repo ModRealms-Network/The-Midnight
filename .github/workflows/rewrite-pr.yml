@@ -43,17 +43,21 @@ jobs:
         echo "Ready to build The Midnight!"
         echo "Please note that this build of The Midnight will not be signed, as it is from a pull request."
 
+    - name: Retrieve any cached dependencies
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-PR-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-PR-
+
     - name: Build The Midnight
       uses: eskatos/gradle-command-action@v1
       with:
         gradle-version: 4.10.3
-        arguments: build --no-daemon
-
-    - name: Generate JavaDocs
-      uses: eskatos/gradle-command-action@v1
-      with:
-        gradle-version: 4.10.3
-        arguments: javadoc --no-daemon
+        arguments: build javadoc --no-daemon
 
     - name: Upload The Midnight API to GitHub
       uses: actions/upload-artifact@v2
@@ -136,6 +140,16 @@ jobs:
 
       - name: Set up test server
         run: mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+
+      - name: Retrieve any cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-PR-serverTest-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
