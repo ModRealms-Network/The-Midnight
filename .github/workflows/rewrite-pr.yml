@@ -21,111 +21,149 @@ on:
 
 jobs:
   build:
-
+    name: Build (Unsigned)
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update CI Workspace
-      uses: actions/checkout@v1
+      - name: Update CI Workspace
+        uses: actions/checkout@v1
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-        java-package: jdk
-        architecture: x64
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          java-package: jdk
+          architecture: x64
 
-    - name: Prepare to build The Midnight
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-        echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-        echo "Ready to build The Midnight!"
-        echo "Please note that this build of The Midnight will not be signed, as it is from a pull request."
+      - name: Retrieve any cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-PR-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-PR-
 
-    - name: Retrieve any cached dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-PR-${{ hashFiles('**/*.gradle*') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-PR-
+      - name: Build The Midnight
+        uses: eskatos/gradle-command-action@v1
+        with:
+          gradle-version: 4.10.3
+          arguments: build --no-daemon
 
-    - name: Build The Midnight
-      uses: eskatos/gradle-command-action@v1
-      with:
-        gradle-version: 4.10.3
-        arguments: build javadoc --no-daemon
+      - name: Prepare to upload the build outputs
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+          echo "Ready to upload the build output to GitHub."
 
-    - name: Upload The Midnight API to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-api-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightAPI/build/libs/*.jar
+      - name: Upload The Midnight API to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-api-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightAPI/build/libs/*.jar
 
-    - name: Upload The Midnight API Documentation to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-api-javadoc-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightAPI/build/docs/javadoc
+      - name: Upload The Midnight Core to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-core-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightCore/build/libs/*.jar
 
-    - name: Upload The Midnight Core to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-core-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightCore/build/libs/*.jar
+      - name: Upload The Midnight Client to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-client-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightMod/build/libs/*client*.jar
 
-    - name: Upload The Midnight Core Documentation to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-core-javadoc-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightCore/build/docs/javadoc
+      - name: Upload The Midnight Server to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-server-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightMod/build/libs/*server*.jar
 
-    - name: Upload The Midnight Client to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-client-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightMod/build/libs/*client*.jar
+      - name: Upload The Midnight to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-universal-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightMod/build/libs/*universal*.jar
 
-    - name: Upload The Midnight Server to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-server-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightMod/build/libs/*server*.jar
-
-    - name: Upload The Midnight to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-universal-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightMod/build/libs/*universal*.jar
-
-    - name: Upload The Midnight Documentation to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-javadoc-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: MidnightMod/build/docs/javadoc
-
-  test:
-
+  javadoc:
+    name: Javadoc Documentation
     runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Update CI Workspace
+        uses: actions/checkout@v1
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          java-package: jdk
+          architecture: x64
+
+      - name: Retrieve any cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-PR-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-PR-
+
+      - name: Generate The Midnight Javadoc Documentation
+        uses: eskatos/gradle-command-action@v1
+        with:
+          gradle-version: 4.10.3
+          arguments: javadoc --no-daemon
+
+      - name: Prepare to upload the build outputs
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+          echo "Ready to upload the javadocs to GitHub."
+
+      - name: Upload The Midnight API Javadoc Documentation to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-api-javadoc-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightAPI/build/docs/javadoc
+
+      - name: Upload The Midnight Core Javadoc Documentation to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-core-javadoc-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightCore/build/docs/javadoc
+
+      - name: Upload The Midnight Javadoc Documentation to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-javadoc-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: MidnightMod/build/docs/javadoc
+
+  testWindows:
+    name: Server Test (Windows Server)
+    runs-on: windows-latest
 
     steps:
       - name: Update CI workspace
@@ -138,8 +176,14 @@ jobs:
           java-package: jdk
           architecture: x64
 
-      - name: Set up test server
-        run: mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+      - name: Prepare to test a Minecraft Server with The Midnight
+        shell: pwsh
+        run: |
+          Write-Host "Generating the Minecraft Server's runtime environment..."
+          New-Item run/server -ItemType Directory -ea 0
+          "eula=true" | Out-File run/server/eula.txt
+          "TEST FAILED" | Out-File run/server/TESTSERVER.txt
+          Write-Host "Ready to test the Minecraft Server."
 
       - name: Retrieve any cached dependencies
         uses: actions/cache@v2
@@ -166,4 +210,111 @@ jobs:
 
       - name: Determine if server test was unsuccessful
         if: contains(steps.log.outputs.contents, 'TEST FAILED')
-        run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
+        shell: pwsh
+        run: |
+          Write-Host "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the `"Run test server`" step to see what went wrong."
+          exit 1
+
+  testMacOS:
+    name: Server Test (macOS)
+    runs-on: macos-latest
+
+    steps:
+      - name: Update CI workspace
+        uses: actions/checkout@v1
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          java-package: jdk
+          architecture: x64
+
+      - name: Prepare to test a Minecraft Server with The Midnight
+        run: |
+          echo "Generating the Minecraft Server's runtime environment..."
+          mkdir run/server
+          echo "eula=true" >> run/server/eula.txt
+          echo "TEST FAILED" >> run/server/TESTSERVER.txt
+          echo "Ready to test the Minecraft Server."
+
+      - name: Retrieve any cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-PR-serverTest-
+
+      - name: Run test server
+        uses: eskatos/gradle-command-action@v1
+        continue-on-error: true
+        with:
+          gradle-version: 4.10.3
+          arguments: runTestServer --max-workers 1 -x downloadAssets
+
+      - name: Read server test result
+        id: log
+        uses: andstor/file-reader-action@v1
+        with:
+          path: run/server/TESTSERVER.txt
+
+      - name: Determine if server test was unsuccessful
+        if: contains(steps.log.outputs.contents, 'TEST FAILED')
+        run: |
+          echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."
+          exit 1
+
+  testLinux:
+    name: Server Test (Ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update CI workspace
+        uses: actions/checkout@v1
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          java-package: jdk
+          architecture: x64
+
+      - name: Prepare to test a Minecraft Server with The Midnight
+        run: |
+          echo "Generating the Minecraft Server's runtime environment..."
+          mkdir run/server
+          echo "eula=true" >> run/server/eula.txt
+          echo "TEST FAILED" >> run/server/TESTSERVER.txt
+          echo "Ready to test the Minecraft Server."
+
+      - name: Retrieve any cached dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-PR-serverTest-
+
+      - name: Run test server
+        uses: eskatos/gradle-command-action@v1
+        continue-on-error: true
+        with:
+          gradle-version: 4.10.3
+          arguments: runTestServer --max-workers 1 -x downloadAssets
+
+      - name: Read server test result
+        id: log
+        uses: andstor/file-reader-action@v1
+        with:
+          path: run/server/TESTSERVER.txt
+
+      - name: Determine if server test was unsuccessful
+        if: contains(steps.log.outputs.contents, 'TEST FAILED')
+        run: |
+          echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."
+          exit 1
