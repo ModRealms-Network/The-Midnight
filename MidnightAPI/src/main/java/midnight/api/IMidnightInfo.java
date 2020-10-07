@@ -18,8 +18,8 @@ public interface IMidnightInfo {
     String name();
 
     /**
-     * Returns the build version number of the Midnight, in the following format:<br/>
-     * <code><i>major</i>.<i>minor</i>.<i>patch</i><i>[</i>-<i>hotfix]</i></code><br/>
+     * Returns the build version number of the Midnight, in the following format:<br>
+     * <code><i>major</i>.<i>minor</i>.<i>patch</i><i>[</i>-<i>hotfix]</i></code><br>
      */
     String version();
 

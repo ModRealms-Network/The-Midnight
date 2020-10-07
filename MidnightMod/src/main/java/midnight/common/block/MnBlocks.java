@@ -33,7 +33,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * This class holds all the biomes for the midnight.
+ * This class holds all the blocks for the midnight.
  *
  * @author Shadew
  */
