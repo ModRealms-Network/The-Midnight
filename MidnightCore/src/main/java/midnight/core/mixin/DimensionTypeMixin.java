@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
 
-// TODO Jonathing: JavaDoc the mixin classes?
+// TODO Not sure exactly what this does. Do you mind making a Javadoc comment for this, Shadew?
 @Mixin(DimensionType.class)
 public abstract class DimensionTypeMixin {
     @Inject(method = "addRegistryDefaults", at = @At("RETURN"))

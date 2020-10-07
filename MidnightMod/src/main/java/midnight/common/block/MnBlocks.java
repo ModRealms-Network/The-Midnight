@@ -33,9 +33,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * This class holds all the blocks for the midnight.
+ * This class registers and stores the list of Midnight blocks and their respective block items.
  *
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 @ObjectHolder("midnight")
 public final class MnBlocks {

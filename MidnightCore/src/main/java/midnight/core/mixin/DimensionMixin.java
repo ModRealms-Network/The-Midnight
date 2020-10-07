@@ -9,9 +9,17 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.LinkedHashSet;
 
-// TODO Jonathing: JavaDoc the mixin classes?
+/**
+ * This mixin class shadows in the {@link LinkedHashSet} containing the dimensions,
+ * then and we inject our dimensions into it.
+ *
+ * @author Shadew
+ */
 @Mixin(Dimension.class)
 public abstract class DimensionMixin {
+    /**
+     * The {@link LinkedHashSet} containing every dimension registry key.
+     */
     @Shadow
     @Final
     private static LinkedHashSet<RegistryKey<Dimension>> BASE_DIMENSIONS;

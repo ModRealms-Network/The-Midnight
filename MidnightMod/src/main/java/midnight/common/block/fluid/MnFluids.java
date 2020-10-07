@@ -12,6 +12,13 @@ import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
 
+/**
+ * This class registers and stores the list of Midnight fluids and their respective blocks.
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 @ObjectHolder("midnight")
 public final class MnFluids {
     public static final FlowingFluid DARK_WATER = inj();

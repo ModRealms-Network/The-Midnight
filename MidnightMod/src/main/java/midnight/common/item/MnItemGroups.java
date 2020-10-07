@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
  * This class holds all the item groups for the Midnight's creative tabs.
  *
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 public class MnItemGroups {
     public static final ItemGroup BLOCKS = new ItemGroup("midnight.blocks") {

@@ -7,7 +7,7 @@ import midnight.core.biome.TerrainFactors;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 
-// TODO Jonathing: JavaDoc the mixin classes?
+// TODO This is a mixin class, but there's no injections in it. What is this used for??
 @Mixin(Biome.class)
 public class BiomeMixin implements IMidnightBiome {
     private BiomeColoring coloring;

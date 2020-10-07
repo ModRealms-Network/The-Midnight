@@ -6,6 +6,13 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.registries.IForgeRegistry;
 
+/**
+ * This class registers and stores the list of Midnight biomes.
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 public final class MnBiomes {
     public static final RegistryKey<Biome> NIGHT_PLAINS = key("night_plains");
     public static final RegistryKey<Biome> VIGILANT_FOREST = key("vigilant_forest");

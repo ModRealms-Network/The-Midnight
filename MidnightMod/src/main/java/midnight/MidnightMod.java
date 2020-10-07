@@ -19,6 +19,8 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Shadew
  * @author Jonathing
+ * @version 0.6.0
+ * @since 0.6.0
  */
 @Mod(MidnightInfo.MODID)
 public class MidnightMod {

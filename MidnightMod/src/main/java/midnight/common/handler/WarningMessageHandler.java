@@ -20,6 +20,8 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Jonathing
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 @Mod.EventBusSubscriber(modid = MidnightInfo.MODID)
 public final class WarningMessageHandler {

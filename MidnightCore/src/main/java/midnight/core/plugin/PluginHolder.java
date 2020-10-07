@@ -18,6 +18,7 @@ import java.lang.reflect.Modifier;
  * Class} and the instance once created.
  *
  * @author Shadew
+ * @version 0.6.0
  * @since 0.6.0
  */
 public class PluginHolder {

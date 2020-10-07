@@ -10,10 +10,25 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
+/**
+ * This class is used to generate the biomes and their settings when they are registered in the biome registry.
+ *
+ * @see midnight.common.world.biome.MnBiomes
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 public final class MnBiomeMaker {
     private MnBiomeMaker() {
     }
 
+    /**
+     * This method is used to make the night plains biome and contains the settings used for it.
+     *
+     * @param id The biome id given to the biome.
+     * @return The biome with its settings to be registered into the game.
+     */
     public static Biome makeNightPlains(String id) {
         return new MnBiomeBuilder(Midnight.resLoc(id))
                    .depth(0.1f).scale(0.1f)
@@ -52,6 +67,12 @@ public final class MnBiomeMaker {
                    .build();
     }
 
+    /**
+     * This method is used to make the vigilant forest biome and contains the settings used for it.
+     *
+     * @param id The biome id given to the biome.
+     * @return The biome with its settings to be registered into the game.
+     */
     public static Biome makeVigilantForest(String id) {
         return new MnBiomeBuilder(Midnight.resLoc(id))
                    .depth(0.1f).scale(0.1f)
@@ -90,6 +111,12 @@ public final class MnBiomeMaker {
                    .build();
     }
 
+    /**
+     * This method is used to make the deceitful bog biome and contains the settings used for it.
+     *
+     * @param id The biome id given to the biome.
+     * @return The biome with its settings to be registered into the game.
+     */
     public static Biome makeDeceitfulBog(String id) {
         return new MnBiomeBuilder(Midnight.resLoc(id))
                    .depth(0.1f).scale(0.1f)

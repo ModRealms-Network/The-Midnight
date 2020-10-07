@@ -6,9 +6,21 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-// TODO Jonathing: JavaDoc the mixin classes?
+/**
+ * This mixin skips the check for modification of the default dimension settings. When the target method returns false,
+ * MC shows a popup saying that we're using experimental settings. But, this is Modding, it's all experimenting so
+ * whoever cares!
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 @Mixin(DimensionGeneratorSettings.class)
 public abstract class DimensionGeneratorSettingsMixin {
+    /**
+     * Injects into the head of the onCheckExperimental to return true and ignore that the default generation
+     * settings have been modified.
+     */
     @Inject(method = "method_28611", at = @At("HEAD"), cancellable = true)
     private void onCheckExperimental(CallbackInfoReturnable<Boolean> info) {
         // This mixin skips the check for modification of the default dimension settings.

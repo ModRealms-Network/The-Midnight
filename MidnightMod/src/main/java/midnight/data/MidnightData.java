@@ -16,6 +16,8 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
  * unnecessary initialization done by the client which is not used during data-generation.
  *
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 public class MidnightData extends MidnightClient {
     @Override

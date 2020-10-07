@@ -2,6 +2,14 @@ package midnight;
 
 import midnight.api.IMidnightInfo;
 
+/**
+ * Contains various important pieces of information about the instance of The Midnight.
+ *
+ * @author Shadew
+ * @author Jonathing
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 public final class MidnightInfo implements IMidnightInfo {
     public static final MidnightInfo INSTANCE = new MidnightInfo();
 

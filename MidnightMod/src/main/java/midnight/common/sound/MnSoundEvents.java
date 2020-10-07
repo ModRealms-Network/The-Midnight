@@ -12,6 +12,8 @@ import java.util.List;
  * Registers and stores the list of Midnight sound events.
  *
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 public final class MnSoundEvents {
     private static final List<SoundEvent> SOUNDS = new ArrayList<>();

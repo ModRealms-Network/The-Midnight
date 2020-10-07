@@ -26,6 +26,13 @@ import java.lang.annotation.ElementType;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The Midnight plugin manager.
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
+ */
 public final class PluginManager {
     private static final Logger LOGGER = LogManager.getLogger("Midnight Plugin Manager");
 

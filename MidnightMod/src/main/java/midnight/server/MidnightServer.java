@@ -9,6 +9,8 @@ import midnight.common.Midnight;
  * delegates to {@link Midnight} currently.
  *
  * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 public class MidnightServer extends Midnight {
     @Override

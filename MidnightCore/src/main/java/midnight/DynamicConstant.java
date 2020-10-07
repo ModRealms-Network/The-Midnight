@@ -10,6 +10,10 @@ import java.lang.annotation.Target;
  * <code>
  * {@literal @}DynamicConstant("version")<br> public static String VERSION = "-uninjected-";
  * </code>
+ *
+ * @author Shadew
+ * @version 0.6.0
+ * @since 0.6.0
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.CLASS)
