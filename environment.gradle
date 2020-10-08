@@ -21,6 +21,7 @@ def canJarBeSigned() {
 }
 
 // Returns the public fingerprint, may be empty ("")
+// TODO All this does is get a variable from gradle.properties. Is there another way we can do this?
 def getProjectFingerprint() {
     if (canJarBeSigned()) {
         def sha1 = getVariable('mnSignSHA1')

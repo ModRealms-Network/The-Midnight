@@ -35,7 +35,8 @@ local.properties
 forge*changelog.txt
 
 # Java Keystores
-*.jsk
+Midnight*/*.jks
+*.jks
 
 # VSCode Workspaces
 # I use this to edit files that have nothing to with Java code or the mod. - Jonathing
