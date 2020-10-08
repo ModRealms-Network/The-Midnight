@@ -13,6 +13,7 @@ out
 *.iml
 # CM: we include the .idea directory itself to include code styles and inspection profiles.
 .idea/*.xml
+.idea/.name
 .idea/modules
 .idea/shelf
 .idea/runConfigurations/*
