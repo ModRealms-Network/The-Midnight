@@ -9,6 +9,7 @@ import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.WaterFluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particles.IParticleData;
@@ -29,6 +30,13 @@ import net.minecraftforge.fluids.FluidAttributes;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+/**
+ * The base type of the Dark Water fluid. Behaves just like {@linkplain WaterFluid vanilla water}, except has a
+ * different color and most blocks are not waterloggable in Dark Water.
+ *
+ * @author shadew
+ * @since 0.6.0
+ */
 public abstract class DarkWaterFluid extends FlowingFluid {
     @Override
     public Fluid getFlowingFluid() {
@@ -42,8 +50,8 @@ public abstract class DarkWaterFluid extends FlowingFluid {
 
     @Override
     public Item getFilledBucket() {
-        return Items.WATER_BUCKET;
-    } // TODO This sucks
+        return Items.WATER_BUCKET; // TODO This sucks
+    }
 
     @Override
     @OnlyIn(Dist.CLIENT)
@@ -128,6 +136,12 @@ public abstract class DarkWaterFluid extends FlowingFluid {
         return new Attributes(this);
     }
 
+    /**
+     * Fluid attributes of {@linkplain DarkWaterFluid Dark Water}.
+     *
+     * @author shadew
+     * @since 0.6.0
+     */
     private static class Attributes extends FluidAttributes {
         Attributes(Fluid fluid) {
             super(
@@ -146,6 +160,12 @@ public abstract class DarkWaterFluid extends FlowingFluid {
         }
     }
 
+    /**
+     * Flowing variant of {@link DarkWaterFluid}.
+     *
+     * @author shadew
+     * @since 0.6.0
+     */
     public static class Flowing extends DarkWaterFluid {
         @Override
         protected void fillStateContainer(StateContainer.Builder<Fluid, FluidState> builder) {
@@ -164,6 +184,12 @@ public abstract class DarkWaterFluid extends FlowingFluid {
         }
     }
 
+    /**
+     * Source variant of {@link DarkWaterFluid}.
+     *
+     * @author shadew
+     * @since 0.6.0
+     */
     public static class Source extends DarkWaterFluid {
         @Override
         public int getLevel(FluidState state) {
