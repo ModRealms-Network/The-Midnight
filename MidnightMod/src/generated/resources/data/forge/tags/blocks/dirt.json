@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:night_dirt",
+    "midnight:coarse_night_dirt",
+    "midnight:deceitful_mud",
+    "midnight:deceitful_peat",
+    "midnight:night_grass_block"
+  ]
+}

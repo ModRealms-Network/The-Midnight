@@ -7,6 +7,7 @@ import net.minecraft.data.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.common.Tags;
 
 import java.nio.file.Path;
 
@@ -18,6 +19,13 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
 
     @Override
     protected void registerTags() {
+        getOrCreateTagBuilder(Tags.Blocks.DIRT).replace(false).add(
+            MnBlocks.NIGHT_DIRT,
+            MnBlocks.COARSE_NIGHT_DIRT,
+            MnBlocks.DECEITFUL_MUD,
+            MnBlocks.DECEITFUL_PEAT,
+            MnBlocks.NIGHT_GRASS_BLOCK
+        );
         getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).replace(false).add(
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
