@@ -13,6 +13,7 @@ out
 *.iml
 # CM: we include the .idea directory itself to include code styles and inspection profiles.
 .idea/*.xml
+.idea/.name
 .idea/modules
 .idea/shelf
 .idea/runConfigurations/*
@@ -34,7 +35,8 @@ local.properties
 forge*changelog.txt
 
 # Java Keystores
-*.jsk
+Midnight*/*.jks
+*.jks
 
 # VSCode Workspaces
 # I use this to edit files that have nothing to with Java code or the mod. - Jonathing

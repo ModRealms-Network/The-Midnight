@@ -68,7 +68,7 @@ allprojects {
         mappings channel: 'snapshot', version: '20201003-mixed-1.16.3'
 
         // Access transformer
-        accessTransformer = file( "$rootDir/accesstransformer.cfg" )
+        accessTransformer = file( "$rootDir/MidnightCore/src/main/resources/META-INF/accesstransformer.cfg" )
     }
 
     // mixin setup
