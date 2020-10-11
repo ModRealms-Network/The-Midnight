@@ -1,13 +1,13 @@
 package midnight.common.block.fluid;
 
 import midnight.common.Midnight;
+import midnight.core.util.IRegistry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
@@ -25,7 +25,7 @@ public final class MnFluids {
     public static final FlowingFluid FLOWING_DARK_WATER = inj();
 
 
-    public static void registerFluids(IForgeRegistry<Fluid> registry) {
+    public static void registerFluids(IRegistry<Fluid> registry) {
         registry.registerAll(
             fluid("dark_water", new DarkWaterFluid.Source()),
             fluid("flowing_dark_water", new DarkWaterFluid.Flowing())

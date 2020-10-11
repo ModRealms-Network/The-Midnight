@@ -1,9 +1,9 @@
 package midnight.common.world.levelgen.surface;
 
 import midnight.common.Midnight;
+import midnight.core.util.IRegistry;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public final class MnSurfaceBuilders {
     private MnSurfaceBuilders() {
     }
 
-    public static void registerSurfaceBuilders(IForgeRegistry<SurfaceBuilder<?>> registry) {
+    public static void registerSurfaceBuilders(IRegistry<SurfaceBuilder<?>> registry) {
         REGISTRY.forEach(registry::register);
     }
 

@@ -28,3 +28,29 @@ sourceSets {
         }
     }
 }
+
+task genData(type: JavaExec) {
+    dependsOn ':MidnightAPI:compileJava'
+    dependsOn ':MidnightCore:compileJava'
+    dependsOn 'compileJava'
+
+    // We must give the classpath as a raw path, otherwise gradle adds :classes as a dependency to this task. Since we
+    // are a dependency of :classes itself this causes a circular dependency and therefore we must not have :classes as
+    // dependency. Make sure not to use 'sourceSets.main.runtimeClasspath' or something relevant here
+    classpath files("$rootDir/MidnightAPI/build/classes/java/main")      \
+                + files("$rootDir/MidnightCore/build/classes/java/main") \
+                + files("$rootDir/MidnightMod/build/classes/java/main")  \
+                + configurations.runtime
+
+    main "midnight.data.DataGen"
+    args(
+        "--all",
+        "--output", "$projectDir/src/generated/resources",
+        "--gameDir", "."
+    )
+    workingDir file("$rootDir/run")
+}
+
+processResources {
+    dependsOn 'genData'
+}

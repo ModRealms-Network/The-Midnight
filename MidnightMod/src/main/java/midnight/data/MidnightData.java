@@ -4,6 +4,8 @@ import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.data.loottables.MnLootTableProvider;
 import midnight.data.models.MnStateModelProvider;
+import midnight.data.recipes.MnRecipeProvider;
+import midnight.data.recipes.MnStonecuttingRecipeProvider;
 import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -36,6 +38,8 @@ public class MidnightData extends MidnightClient {
         }
         if (event.includeServer()) {
             gen.addProvider(new MnLootTableProvider(gen));
+            gen.addProvider(new MnRecipeProvider(gen));
+            gen.addProvider(new MnStonecuttingRecipeProvider(gen));
             gen.addProvider(new MnBlockTagsProvider(gen));
             gen.addProvider(new MnFluidTagsProvider(gen));
         }

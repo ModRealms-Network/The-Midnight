@@ -7,7 +7,7 @@ import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.util.registry.Registry;
 
 public class MnBlockLootTables extends BlockLootTables {
 
@@ -35,13 +35,16 @@ public class MnBlockLootTables extends BlockLootTables {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected Iterable<Block> getKnownBlocks() {
-        return ForgeRegistries.BLOCKS.getValues()
-                                     .stream()
-                                     .filter(block -> {
-                                         ResourceLocation loc = block.getRegistryName();
-                                         assert loc != null;
-                                         return loc.getNamespace().equals("midnight");
-                                     })::iterator;
+        return Registry.BLOCK
+                   .stream()
+                   .filter(block -> {
+                       ResourceLocation loc = block.getRegistryName();
+                       assert loc != null;
+                       return loc.getNamespace().equals("midnight");
+                   })
+                   .distinct()
+                   ::iterator;
     }
 }

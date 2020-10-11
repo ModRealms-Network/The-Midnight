@@ -1,9 +1,9 @@
 package midnight.common.sound;
 
 import midnight.common.Midnight;
+import midnight.core.util.IRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public final class MnSoundEvents {
     public static final SoundEvent BLOCK_MUD_BREAK = make("block.mud.break");
     public static final SoundEvent BLOCK_MUD_STEP = make("block.mud.step");
 
-    public static void registerSoundEvents(IForgeRegistry<SoundEvent> registry) {
+    public static void registerSoundEvents(IRegistry<SoundEvent> registry) {
         SOUNDS.forEach(registry::register);
     }
 

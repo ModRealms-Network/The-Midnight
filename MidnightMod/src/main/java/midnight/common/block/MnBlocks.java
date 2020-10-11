@@ -6,6 +6,7 @@ import midnight.common.block.fluid.MnFluids;
 import midnight.common.item.MnItemGroups;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
+import midnight.core.util.IRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowingFluidBlock;
@@ -25,7 +26,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
@@ -62,7 +62,7 @@ public final class MnBlocks {
     public static final Block GHOST_PLANT_LEAF = inj();
     public static final Block GHOST_PLANT = inj();
 
-    public static void registerBlocks(IForgeRegistry<Block> registry) {
+    public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
             stone("night_bedrock", 1.5, 6, MaterialColor.LIGHT_GRAY_TERRACOTTA),
@@ -86,7 +86,7 @@ public final class MnBlocks {
         );
     }
 
-    public static void registerItems(IForgeRegistry<Item> registry) {
+    public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
             item(NIGHT_STONE, MnItemGroups.BLOCKS),
             item(NIGHT_BEDROCK, MnItemGroups.BLOCKS),

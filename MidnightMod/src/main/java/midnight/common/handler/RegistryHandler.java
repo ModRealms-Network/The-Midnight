@@ -5,6 +5,7 @@ import midnight.common.block.fluid.MnFluids;
 import midnight.common.sound.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
+import midnight.core.util.IRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
@@ -29,7 +30,7 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        MnBlocks.registerBlocks(event.getRegistry());
+        MnBlocks.registerBlocks(IRegistry.forge(event.getRegistry()));
     }
 
       // TODO Dimensions
@@ -40,26 +41,26 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        MnBlocks.registerItems(event.getRegistry());
+        MnBlocks.registerItems(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent
     public static void registerFluids(RegistryEvent.Register<Fluid> event) {
-        MnFluids.registerFluids(event.getRegistry());
+        MnFluids.registerFluids(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent
     public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-        MnSoundEvents.registerSoundEvents(event.getRegistry());
+        MnSoundEvents.registerSoundEvents(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        MnBiomes.registerBiomes(event.getRegistry());
+        MnBiomes.registerBiomes(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent
     public static void registerSurfaceBuilders(RegistryEvent.Register<SurfaceBuilder<?>> event) {
-        MnSurfaceBuilders.registerSurfaceBuilders(event.getRegistry());
+        MnSurfaceBuilders.registerSurfaceBuilders(IRegistry.forge(event.getRegistry()));
     }
 }

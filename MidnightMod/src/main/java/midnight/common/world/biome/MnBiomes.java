@@ -1,10 +1,10 @@
 package midnight.common.world.biome;
 
 import midnight.common.Midnight;
+import midnight.core.util.IRegistry;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.registries.IForgeRegistry;
 
 /**
  * This class registers and stores the list of Midnight biomes.
@@ -22,7 +22,7 @@ public final class MnBiomes {
         return RegistryKey.of(Registry.BIOME_KEY, Midnight.resLoc(key));
     }
 
-    public static void registerBiomes(IForgeRegistry<Biome> registry) {
+    public static void registerBiomes(IRegistry<Biome> registry) {
         registry.registerAll(
             MnBiomeMaker.makeNightPlains("night_plains"),
             MnBiomeMaker.makeVigilantForest("vigilant_forest"),
