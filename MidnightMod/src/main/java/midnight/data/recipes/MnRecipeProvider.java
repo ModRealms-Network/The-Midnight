@@ -1,6 +1,7 @@
 package midnight.data.recipes;
 
 import midnight.common.Midnight;
+import midnight.common.block.MnBlocks;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -21,7 +22,12 @@ public class MnRecipeProvider extends RecipeProvider {
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         this.consumer = consumer;
 
-        // Add non-stonecutting recipes here
+        generic4x4("dead_wood_4x4", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD, 3);
+        generic4x4("stripped_dead_wood_4x4", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.STRIPPED_DEAD_WOOD, 3);
+        generic4x4("dead_wood_planks_from_wood_4x4", MnBlocks.DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        generic4x4("dead_wood_planks_from_log_4x4", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        generic4x4("dead_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        generic4x4("dead_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
     }
 
     private void generic4x4(String id, IItemProvider from, IItemProvider to, int count) {

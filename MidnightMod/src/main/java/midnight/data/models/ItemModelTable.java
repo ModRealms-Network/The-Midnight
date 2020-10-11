@@ -34,6 +34,13 @@ public final class ItemModelTable {
         register(MnBlocks.GHOST_PLANT, item -> generated(name(item, "block/%s")));
         register(MnBlocks.GHOST_PLANT_LEAF, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GHOST_PLANT_STEM, item -> inherit(name(item, "block/%s")));
+
+        register(MnBlocks.DEAD_WOOD_LOG, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEAD_WOOD, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRIPPED_DEAD_WOOD_LOG, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRIPPED_DEAD_WOOD, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEAD_WOOD_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEAD_SAPLING, item -> generated(name(item, "block/%s")));
     }
 
 

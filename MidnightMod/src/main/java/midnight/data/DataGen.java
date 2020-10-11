@@ -16,6 +16,7 @@ import midnight.data.recipes.MnRecipeProvider;
 import midnight.data.recipes.MnStonecuttingRecipeProvider;
 import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
+import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.fluid.Fluid;
@@ -114,7 +115,7 @@ public final class DataGen {
         if(server) {
             MnBlockTagsProvider blockTags = new MnBlockTagsProvider(gen);
             gen.addProvider(blockTags);
-//            gen.addProvider(new MnItemTagsProvider(gen, blockTags));
+            gen.addProvider(new MnItemTagsProvider(gen, blockTags));
             gen.addProvider(new MnFluidTagsProvider(gen));
 
             gen.addProvider(new MnRecipeProvider(gen));

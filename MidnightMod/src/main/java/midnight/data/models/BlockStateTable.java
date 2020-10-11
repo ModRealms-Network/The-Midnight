@@ -19,36 +19,34 @@ public final class BlockStateTable {
     public static void registerBlockStates(BiConsumer<Block, IBlockStateGen> c) {
         consumer = c;
 
+        // Please keep these on single lines for the ease of line duplicating
+
         register(MnBlocks.NIGHT_STONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.NIGHT_BEDROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.TRENCHSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
         register(MnBlocks.NIGHT_DIRT, block -> rotateY(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
-        register(MnBlocks.NIGHT_GRASS_BLOCK, block -> rotateY(name(block, "block/%s"), grassBlock(
-            name(block, "block/%s_top"),
-            name(block, "block/%s_side"),
-            name(block, "block/night_dirt"),
-            name(block, "block/%s_overlay")
-        )));
+        register(MnBlocks.NIGHT_GRASS_BLOCK, block -> rotateY(name(block, "block/%s"), grassBlock(name(block, "block/%s_top"), name(block, "block/%s_side"), name(block, "block/night_dirt"), name(block, "block/%s_overlay"))));
         register(MnBlocks.COARSE_NIGHT_DIRT, block -> rotateY(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DECEITFUL_MUD, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DECEITFUL_PEAT, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.STRANGE_SAND, block -> rotateXY(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
         register(MnBlocks.NIGHT_GRASS, block -> simple(name(block, "block/%s"), tintedCross(name(block, "block/%s"))));
-        register(MnBlocks.TALL_NIGHT_GRASS, block -> doublePlant(
-            name(block, "block/%s_lower"), tintedCross(name(block, "block/%s_lower")),
-            name(block, "block/%s_upper"), tintedCross(name(block, "block/%s_upper"))
-        ));
+        register(MnBlocks.TALL_NIGHT_GRASS, block -> doublePlant(name(block, "block/%s_lower"), tintedCross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), tintedCross(name(block, "block/%s_upper"))));
 
         register(MnBlocks.DARK_WATER, block -> simple(name(block, "block/%s"), IModelGen.EMPTY));
 
         register(MnBlocks.GHOST_PLANT, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.GHOST_PLANT_LEAF, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
-        register(MnBlocks.GHOST_PLANT_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(
-            name(block, "block/%s_end"),
-            name(block, "block/%s_side")
-        )));
+        register(MnBlocks.GHOST_PLANT_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+
+        register(MnBlocks.DEAD_WOOD_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.STRIPPED_DEAD_WOOD_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.DEAD_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.STRIPPED_DEAD_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.DEAD_WOOD_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.DEAD_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen simple(String name, IModelGen model) {

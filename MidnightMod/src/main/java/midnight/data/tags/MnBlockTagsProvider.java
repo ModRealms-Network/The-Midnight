@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.Tags;
@@ -37,6 +38,13 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.COARSE_NIGHT_DIRT,
             MnBlocks.GHOST_PLANT
         );
+        getOrCreateTagBuilder(BlockTags.PLANKS).replace(false).add(
+            MnBlocks.DEAD_WOOD_PLANKS
+        );
+    }
+
+    protected ITag.Builder getBuilder(ITag.INamedTag<Block> namedTag) {
+        return tagToBuilder.computeIfAbsent(namedTag.getId(), id -> new ITag.Builder());
     }
 
     @Override

@@ -27,7 +27,13 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_LEAF);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
-        registerSilkTouch(MnBlocks.NIGHT_BEDROCK);
+        registerDropSelfLootTable(MnBlocks.DEAD_WOOD);
+        registerDropSelfLootTable(MnBlocks.DEAD_WOOD_LOG);
+        registerDropSelfLootTable(MnBlocks.DEAD_WOOD_PLANKS);
+        registerDropSelfLootTable(MnBlocks.DEAD_SAPLING);
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD);
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD_LOG);
+        registerSilkTouch(MnBlocks.NIGHT_BEDROCK); // What?!
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
         registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));

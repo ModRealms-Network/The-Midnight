@@ -7,10 +7,7 @@ import midnight.common.item.MnItemGroups;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
 import midnight.core.util.IRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.Minecraft;
@@ -62,6 +59,13 @@ public final class MnBlocks {
     public static final Block GHOST_PLANT_LEAF = inj();
     public static final Block GHOST_PLANT = inj();
 
+    public static final Block DEAD_WOOD_LOG = inj();
+    public static final Block STRIPPED_DEAD_WOOD_LOG = inj();
+    public static final Block DEAD_WOOD = inj();
+    public static final Block STRIPPED_DEAD_WOOD = inj();
+    public static final Block DEAD_WOOD_PLANKS = inj();
+    public static final Block DEAD_SAPLING = inj();
+
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
@@ -82,7 +86,14 @@ public final class MnBlocks {
 
             giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new),
             giantGhostPlant("ghost_plant_leaf", GhostPlantBlock::new),
-            emissivePlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ)
+            emissivePlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+
+            log("dead_wood_log", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD_LOG),
+            log("stripped_dead_wood_log", MaterialColor.FOLIAGE),
+            log("dead_wood", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD),
+            log("stripped_dead_wood", MaterialColor.FOLIAGE),
+            wood("dead_wood_planks", MaterialColor.FOLIAGE),
+            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
         );
     }
 
@@ -104,7 +115,14 @@ public final class MnBlocks {
 
             item(GHOST_PLANT_STEM, MnItemGroups.BLOCKS),
             item(GHOST_PLANT_LEAF, MnItemGroups.BLOCKS),
-            item(GHOST_PLANT, MnItemGroups.DECOR)
+            item(GHOST_PLANT, MnItemGroups.DECOR),
+
+            item(DEAD_WOOD_LOG, MnItemGroups.BLOCKS),
+            item(STRIPPED_DEAD_WOOD_LOG, MnItemGroups.BLOCKS),
+            item(DEAD_WOOD, MnItemGroups.BLOCKS),
+            item(STRIPPED_DEAD_WOOD, MnItemGroups.BLOCKS),
+            item(DEAD_WOOD_PLANKS, MnItemGroups.BLOCKS),
+            item(DEAD_SAPLING, MnItemGroups.BLOCKS)
         );
     }
 
@@ -118,6 +136,8 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(GHOST_PLANT_STEM, RenderType.getTranslucent());
         RenderTypeLookup.setRenderLayer(GHOST_PLANT_LEAF, RenderType.getTranslucent());
         RenderTypeLookup.setRenderLayer(GHOST_PLANT, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(DEAD_SAPLING, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -269,9 +289,34 @@ public final class MnBlocks {
         return block(id, factory.apply(
             AbstractBlock.Properties.create(Material.WOOD, MaterialColor.SNOW)
                                     .nonOpaque()
-                                    .sound(SoundType.WOOD)
+                                    .sound(SoundType.NETHER_STEM)
                                     .hardnessAndResistance(0.3f)
                                     .luminance(state -> 15)
+        ));
+    }
+
+    private static Block log(String id, MaterialColor color, Supplier<Block> stripped) {
+        return block(id, new StripableRotatedPillarBlock(
+            AbstractBlock.Properties.create(Material.WOOD, color)
+                                    .sound(SoundType.WOOD)
+                                    .hardnessAndResistance(2f),
+            stripped
+        ));
+    }
+
+    private static Block log(String id, MaterialColor color) {
+        return block(id, new RotatedPillarBlock(
+            AbstractBlock.Properties.create(Material.WOOD, color)
+                                    .sound(SoundType.WOOD)
+                                    .hardnessAndResistance(2f)
+        ));
+    }
+
+    private static Block wood(String id, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.WOOD, color)
+                                    .sound(SoundType.WOOD)
+                                    .hardnessAndResistance(2f)
         ));
     }
 
