@@ -18,6 +18,7 @@ import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Bootstrap;
 import net.minecraft.util.registry.Registry;
@@ -96,6 +97,8 @@ public final class DataGen {
         ObjectHolderHacks.hackObjectHolder(MnItems.class, Registry.ITEM, Item.class);
 
         MnFluids.registerFluids(IRegistry.vanilla(Registry.FLUID));
+        ObjectHolderHacks.hackObjectHolder(MnFluids.class, Registry.FLUID, Fluid.class);
+
         MnSoundEvents.registerSoundEvents(IRegistry.vanilla(Registry.SOUND_EVENT));
         MnBiomes.registerBiomes(IRegistry.vanilla(WorldGenRegistries.BIOME));
         MnSurfaceBuilders.registerSurfaceBuilders(IRegistry.vanilla(Registry.SURFACE_BUILDER));
