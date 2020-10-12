@@ -1,6 +1,6 @@
 <!--
 Please note that these Terms and Conditions DO NOT apply to the older versions of The Midnight.
-Those versions are, and will continue to be, under the GNU General Public License (version 3)
+Those versions are, and will continue to be, under the GNU General Public License (version 3).
 -->
 
 # Copyright &copy; 2020 Cryptic Mushroom and contributors
@@ -72,6 +72,7 @@ _Contribution_ to _this mod_ and/or its _sources_ is allowed under the following
 - The _contributor_ must suggest modifications using Issues or Pull Requests on GitHub.
 - The _contributor_ must follow the contribution guidelines.
 - The _contributor_ may NOT contribute when an _owner_ has forbidden the _contributor_ to contribute.
+- The _contributor_ must sign the Contributor License Agreement given to them when they post their GitHub PR.
 - The _contribution_ must be voluntary.
 By contributing, _contributors_ automatically agree that an _owner_ shares and distributes this contribution legally.
 
