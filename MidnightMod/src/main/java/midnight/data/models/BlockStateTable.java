@@ -47,10 +47,35 @@ public final class BlockStateTable {
         register(MnBlocks.STRIPPED_DEAD_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
         register(MnBlocks.DEAD_WOOD_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DEAD_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+
+        register(MnBlocks.SHADOWROOT_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.STRIPPED_SHADOWROOT_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.SHADOWROOT, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.STRIPPED_SHADOWROOT, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.SHADOWROOT_LEAVES, block -> simple(name(block, "block/%s"), leaves(name(block, "block/%s"))));
+        register(MnBlocks.SHADOWROOT_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.SHADOWROOT_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+
+
+        register(MnBlocks.DARK_WILLOW_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.STRIPPED_DARK_WILLOW_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.DARK_WILLOW, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.STRIPPED_DARK_WILLOW, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.DARK_WILLOW_LEAVES, block -> simple(name(block, "block/%s"), leaves(name(block, "block/%s"))));
+        register(MnBlocks.DARK_WILLOW_HANGING_LEAVES, block -> hangingPlant(name(block, "block/%s_tip"), hangingLeavesTip(name(block, "block/%s_inner"), name(block, "block/%s_tip")), name(block, "block/%s"), hangingLeaves(name(block, "block/%s_inner"), name(block, "block/%s_outer"))));
+        register(MnBlocks.DARK_WILLOW_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.DARK_WILLOW_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+
     }
 
     private static IBlockStateGen simple(String name, IModelGen model) {
         return VariantBlockStateGen.create(ModelInfo.create(name, model));
+    }
+
+    private static IBlockStateGen hangingPlant(String tipName, IModelGen tipModel, String name, IModelGen model) {
+        return VariantBlockStateGen.create(
+            "is_tip=true", ModelInfo.create(tipName, tipModel))
+                                   .variant("is_tip=false", ModelInfo.create(name, model));
     }
 
     private static IBlockStateGen rotateY(String name, IModelGen model) {

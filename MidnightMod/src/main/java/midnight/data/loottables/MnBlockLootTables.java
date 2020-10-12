@@ -33,6 +33,21 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.DEAD_SAPLING);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD_LOG);
+        registerDropSelfLootTable(MnBlocks.SHADOWROOT);
+        registerDropSelfLootTable(MnBlocks.SHADOWROOT_LOG);
+        registerDropSelfLootTable(MnBlocks.SHADOWROOT_PLANKS);
+        registerDropSelfLootTable(MnBlocks.SHADOWROOT_SAPLING);
+        registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndSticks(block, MnBlocks.SHADOWROOT_SAPLING)); // TODO Change stick to ShadowStick
+        registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT);
+        registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_LOG);
+        registerDropSelfLootTable(MnBlocks.DARK_WILLOW);
+        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
+        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_PLANKS);
+        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
+        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndSticks(block, MnBlocks.DARK_WILLOW_SAPLING)); // TODO Change stick to ShadowStick
+        registerLootTable(MnBlocks.DARK_WILLOW_HANGING_LEAVES, onlyWithShears(MnBlocks.DARK_WILLOW_HANGING_LEAVES));
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW);
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
         registerSilkTouch(MnBlocks.NIGHT_BEDROCK); // What?!
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));

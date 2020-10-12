@@ -57,12 +57,17 @@ public class InheritingModelGen implements IModelGen {
 
     public static InheritingModelGen cubeAll(String texture) {
         return new InheritingModelGen("block/cube_all")
-                .texture("all", texture);
+                   .texture("all", texture);
+    }
+
+    public static InheritingModelGen leaves(String texture) {
+        return new InheritingModelGen("block/leaves")
+                   .texture("all", texture);
     }
 
     public static InheritingModelGen cubeMirroredAll(String texture) {
         return new InheritingModelGen("block/cube_mirrored_all")
-                .texture("all", texture);
+                   .texture("all", texture);
     }
 
     public static InheritingModelGen cubeColumn(String end, String side) {
@@ -130,6 +135,18 @@ public class InheritingModelGen implements IModelGen {
                    .texture("bottom", bottom)
                    .texture("side", side)
                    .texture("overlay", overlay);
+    }
+
+    public static InheritingModelGen hangingLeaves(String inner, String outer) {
+        return new InheritingModelGen("midnight:block/hanging_leaves")
+                   .texture("inner", inner)
+                   .texture("outer", outer);
+    }
+
+    public static InheritingModelGen hangingLeavesTip(String inner, String tip) {
+        return new InheritingModelGen("midnight:block/hanging_leaves_tip")
+                   .texture("inner", inner)
+                   .texture("tip", tip);
     }
 
     public static InheritingModelGen generated(String... layers) {
