@@ -66,6 +66,14 @@ public final class MnBlocks {
     public static final Block DEAD_WOOD_PLANKS = inj();
     public static final Block DEAD_SAPLING = inj();
 
+    public static final Block SHADOWROOT_LOG = inj();
+    public static final Block STRIPPED_SHADOWROOT_LOG = inj();
+    public static final Block SHADOWROOT = inj();
+    public static final Block STRIPPED_SHADOWROOT = inj();
+    public static final Block SHADOWROOT_LEAVES = inj();
+    public static final Block SHADOWROOT_PLANKS = inj();
+    public static final Block SHADOWROOT_SAPLING = inj();
+
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
@@ -93,7 +101,15 @@ public final class MnBlocks {
             log("dead_wood", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD),
             log("stripped_dead_wood", MaterialColor.FOLIAGE),
             wood("dead_wood_planks", MaterialColor.FOLIAGE),
-            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
+            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14),
+
+            log("shadowroot_log", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT_LOG),
+            log("stripped_shadowroot_log", MaterialColor.FOLIAGE),
+            log("shadowroot", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT),
+            log("stripped_shadowroot", MaterialColor.FOLIAGE),
+            leaves("shadowroot_leaves", MaterialColor.FOLIAGE),
+            wood("shadowroot_planks", MaterialColor.FOLIAGE),
+            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
         );
     }
 
@@ -122,7 +138,15 @@ public final class MnBlocks {
             item(DEAD_WOOD, MnItemGroups.BLOCKS),
             item(STRIPPED_DEAD_WOOD, MnItemGroups.BLOCKS),
             item(DEAD_WOOD_PLANKS, MnItemGroups.BLOCKS),
-            item(DEAD_SAPLING, MnItemGroups.BLOCKS)
+            item(DEAD_SAPLING, MnItemGroups.BLOCKS),
+
+            item(SHADOWROOT_LOG, MnItemGroups.BLOCKS),
+            item(STRIPPED_SHADOWROOT_LOG, MnItemGroups.BLOCKS),
+            item(SHADOWROOT, MnItemGroups.BLOCKS),
+            item(STRIPPED_SHADOWROOT, MnItemGroups.BLOCKS),
+            item(SHADOWROOT_LEAVES, MnItemGroups.BLOCKS),
+            item(SHADOWROOT_PLANKS, MnItemGroups.BLOCKS),
+            item(SHADOWROOT_SAPLING, MnItemGroups.BLOCKS)
         );
     }
 
@@ -138,6 +162,9 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(GHOST_PLANT, RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(DEAD_SAPLING, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(SHADOWROOT_LEAVES, RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(SHADOWROOT_SAPLING, RenderType.getCutoutMipped());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -167,6 +194,18 @@ public final class MnBlocks {
         itemColors.register(
             (stack, tint) -> 0x8C74A1,
             NIGHT_GRASS, TALL_NIGHT_GRASS
+        );
+
+        blockColors.register(
+            (state, world, pos, tint) -> {
+                if(pos == null || world == null) return 0x272139;
+                return MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
+            },
+            SHADOWROOT_LEAVES
+        );
+        itemColors.register(
+            (stack, tint) -> 0x272139,
+            SHADOWROOT_LEAVES
         );
     }
 
@@ -292,6 +331,15 @@ public final class MnBlocks {
                                     .sound(SoundType.NETHER_STEM)
                                     .hardnessAndResistance(0.3f)
                                     .luminance(state -> 15)
+        ));
+    }
+
+    private static Block leaves(String id, MaterialColor color) {
+        return block(id, new LeavesBlock(
+            AbstractBlock.Properties.create(Material.LEAVES, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance(0.2F)
         ));
     }
 

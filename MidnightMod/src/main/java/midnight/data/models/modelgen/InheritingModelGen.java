@@ -57,12 +57,17 @@ public class InheritingModelGen implements IModelGen {
 
     public static InheritingModelGen cubeAll(String texture) {
         return new InheritingModelGen("block/cube_all")
-                .texture("all", texture);
+                   .texture("all", texture);
+    }
+
+    public static InheritingModelGen leaves(String texture) {
+        return new InheritingModelGen("block/leaves")
+                   .texture("all", texture);
     }
 
     public static InheritingModelGen cubeMirroredAll(String texture) {
         return new InheritingModelGen("block/cube_mirrored_all")
-                .texture("all", texture);
+                   .texture("all", texture);
     }
 
     public static InheritingModelGen cubeColumn(String end, String side) {

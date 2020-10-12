@@ -41,6 +41,14 @@ public final class ItemModelTable {
         register(MnBlocks.STRIPPED_DEAD_WOOD, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DEAD_WOOD_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DEAD_SAPLING, item -> generated(name(item, "block/%s")));
+
+        register(MnBlocks.SHADOWROOT_LOG, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHADOWROOT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRIPPED_SHADOWROOT_LOG, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRIPPED_SHADOWROOT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHADOWROOT_LEAVES, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHADOWROOT_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHADOWROOT_SAPLING, item -> generated(name(item, "block/%s")));
     }
 
 
