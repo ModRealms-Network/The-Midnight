@@ -378,7 +378,7 @@ public final class MnBlocks {
         return block(id, new HangingLeavesBlock(
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
-                                    .sound(SoundType.PLANT)
+                                    .sound(SoundType.CROP) // Make them sound a bit less leafier
                                     .hardnessAndResistance(0.1f)
         ));
     }
