@@ -44,6 +44,12 @@ public interface IMidnightBiome {
     int getMidnightWaterColor(double x, double z);
 
     /**
+     * Returns the Shadowroot Leaves color for this biome at a specific position. For most biomes this color is
+     * independent of the position but a single biome may use noise to alter the color for a specific location.
+     */
+    int getShadowrootColor(double x, double z);
+
+    /**
      * Returns the base terrain height of this biome, as an offset from the water level. This height factor is scaled by
      * 4, so if this returns 1 the terrain is raised by 4 blocks.
      */

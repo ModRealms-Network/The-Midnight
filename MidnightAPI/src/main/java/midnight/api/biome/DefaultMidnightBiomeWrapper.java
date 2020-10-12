@@ -36,7 +36,12 @@ class DefaultMidnightBiomeWrapper implements IMidnightBiome {
 
     @Override
     public int getMidnightWaterColor(double x, double z) {
-        return 0xFFFFFF;
+        return 0x22517D;
+    }
+
+    @Override
+    public int getShadowrootColor(double x, double z) {
+        return 0x3A3154;
     }
 
     @Override

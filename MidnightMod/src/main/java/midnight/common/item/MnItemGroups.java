@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
  * @version 0.6.0
  * @since 0.6.0
  */
-public class MnItemGroups {
+public final class MnItemGroups {
     public static final ItemGroup BLOCKS = new ItemGroup("midnight.blocks") {
         @Override
         public ItemStack createIcon() {
@@ -24,4 +24,7 @@ public class MnItemGroups {
             return new ItemStack(MnBlocks.NIGHT_GRASS);
         }
     };
+
+    private MnItemGroups() {
+    }
 }

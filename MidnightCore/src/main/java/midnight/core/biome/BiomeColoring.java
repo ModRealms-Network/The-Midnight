@@ -12,16 +12,21 @@ public class BiomeColoring {
                      .forGetter(BiomeColoring::getGrassColor),
             Codec.INT.fieldOf("water")
                      .orElse(0x22517D)
+                     .forGetter(BiomeColoring::getWaterColor),
+            Codec.INT.fieldOf("shadowroot")
+                     .orElse(0x3A3154)
                      .forGetter(BiomeColoring::getWaterColor)
         ).apply(instance, instance.stable(BiomeColoring::new))
     );
 
     private final int grassColor;
     private final int waterColor;
+    private final int shadowrootColor;
 
-    private BiomeColoring(int grassColor, int waterColor) {
+    private BiomeColoring(int grassColor, int waterColor, int shadowrootColor) {
         this.grassColor = grassColor;
         this.waterColor = waterColor;
+        this.shadowrootColor = shadowrootColor;
     }
 
     public int getGrassColor() {
@@ -32,9 +37,14 @@ public class BiomeColoring {
         return waterColor;
     }
 
+    public int getShadowrootColor() {
+        return shadowrootColor;
+    }
+
     public static class Builder {
         private int grassColor = 0x506C78;
         private int waterColor = 0x22517D;
+        private int shadowrootColor = 0x3A3154;
 
         public Builder grassColor(int grassColor) {
             this.grassColor = grassColor;
@@ -46,8 +56,13 @@ public class BiomeColoring {
             return this;
         }
 
+        public Builder shadowrootColor(int shadowrootColor) {
+            this.shadowrootColor = shadowrootColor;
+            return this;
+        }
+
         public BiomeColoring build() {
-            return new BiomeColoring(grassColor, waterColor);
+            return new BiomeColoring(grassColor, waterColor, shadowrootColor);
         }
     }
 }

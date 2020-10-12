@@ -34,6 +34,11 @@ public class BiomeMixin implements IMidnightBiome {
     }
 
     @Override
+    public int getShadowrootColor(double x, double z) {
+        return getColoring().getShadowrootColor();
+    }
+
+    @Override
     public double getTerrainHeight() {
         return getTerrainFactors().getHeight();
     }

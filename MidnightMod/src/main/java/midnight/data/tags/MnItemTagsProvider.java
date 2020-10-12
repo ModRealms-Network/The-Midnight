@@ -39,14 +39,14 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
         return tagToBuilder.computeIfAbsent(namedTag.getId(), id -> new ITag.Builder());
     }
 
-    protected void copy(ITag.INamedTag<Block> p_240521_1_, ITag.INamedTag<Item> p_240521_2_) {
-        ITag.Builder itemBuilder = getBuilder(p_240521_2_);
-        ITag.Builder blockBuilder = builderGetter.apply(p_240521_1_);
+    protected void copy(ITag.INamedTag<Block> blockTag, ITag.INamedTag<Item> itemTag) {
+        ITag.Builder itemBuilder = getBuilder(itemTag);
+        ITag.Builder blockBuilder = builderGetter.apply(blockTag);
         blockBuilder.streamEntries().forEach(itemBuilder::add);
     }
 
     @Override
     public String getName() {
-        return "Midnight - ItemTags";
+        return "Midnight - Item tags";
     }
 }

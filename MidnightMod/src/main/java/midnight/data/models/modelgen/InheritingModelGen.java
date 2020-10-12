@@ -137,16 +137,16 @@ public class InheritingModelGen implements IModelGen {
                    .texture("overlay", overlay);
     }
 
-    public static InheritingModelGen hangingLeaves(String inner, String outer) {
+    public static InheritingModelGen hangingLeavesRoot(String inner, String outer) {
         return new InheritingModelGen("midnight:block/hanging_leaves")
                    .texture("inner", inner)
                    .texture("outer", outer);
     }
 
-    public static InheritingModelGen hangingLeavesTip(String inner, String tip) {
-        return new InheritingModelGen("midnight:block/hanging_leaves_tip")
+    public static InheritingModelGen hangingLeavesEnd(String inner, String end) {
+        return new InheritingModelGen("midnight:block/hanging_leaves_end")
                    .texture("inner", inner)
-                   .texture("tip", tip);
+                   .texture("end", end);
     }
 
     public static InheritingModelGen generated(String... layers) {

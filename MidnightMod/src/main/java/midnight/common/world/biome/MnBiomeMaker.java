@@ -53,7 +53,8 @@ public final class MnBiomeMaker {
                    .temperatureModifier(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
-                           .grassColor(0x8F54A1).waterColor(0x2C0266)
+                           .grassColor(0x8F54A1)
+                           .waterColor(0x2C0266)
                            .build()
                    )
                    .terrainFactors(
@@ -97,7 +98,8 @@ public final class MnBiomeMaker {
                    .temperatureModifier(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
-                           .grassColor(0x5B527D).waterColor(0x302859)
+                           .grassColor(0x5B527D)
+                           .waterColor(0x302859)
                            .build()
                    )
                    .terrainFactors(
@@ -141,7 +143,8 @@ public final class MnBiomeMaker {
                    .temperatureModifier(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
-                           .grassColor(0x765E8A).waterColor(0x422D54)
+                           .grassColor(0x765E8A)
+                           .waterColor(0x422D54)
                            .build()
                    )
                    .terrainFactors(

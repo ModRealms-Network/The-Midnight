@@ -20,7 +20,7 @@ public class HangingVinesBlock extends MnPlantBlock {
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
         BlockPos abovePos = pos.up();
-        return this.isValidGround(world.getBlockState(abovePos), world, abovePos);
+        return isValidGround(world.getBlockState(abovePos), world, abovePos);
     }
 
     @Override

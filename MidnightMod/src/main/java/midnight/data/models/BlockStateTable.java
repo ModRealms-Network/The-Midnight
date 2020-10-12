@@ -50,8 +50,8 @@ public final class BlockStateTable {
 
         register(MnBlocks.SHADOWROOT_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
         register(MnBlocks.STRIPPED_SHADOWROOT_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
-        register(MnBlocks.SHADOWROOT, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
-        register(MnBlocks.STRIPPED_SHADOWROOT, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.SHADOWROOT_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side", "_wood"))));
+        register(MnBlocks.STRIPPED_SHADOWROOT_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side", "_wood"))));
         register(MnBlocks.SHADOWROOT_LEAVES, block -> simple(name(block, "block/%s"), leaves(name(block, "block/%s"))));
         register(MnBlocks.SHADOWROOT_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.SHADOWROOT_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
@@ -59,10 +59,10 @@ public final class BlockStateTable {
 
         register(MnBlocks.DARK_WILLOW_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
         register(MnBlocks.STRIPPED_DARK_WILLOW_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
-        register(MnBlocks.DARK_WILLOW, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
-        register(MnBlocks.STRIPPED_DARK_WILLOW, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side"))));
+        register(MnBlocks.DARK_WILLOW_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side", "_wood"))));
+        register(MnBlocks.STRIPPED_DARK_WILLOW_WOOD, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_log_side", "_wood"))));
         register(MnBlocks.DARK_WILLOW_LEAVES, block -> simple(name(block, "block/%s"), leaves(name(block, "block/%s"))));
-        register(MnBlocks.DARK_WILLOW_HANGING_LEAVES, block -> hangingPlant(name(block, "block/%s_tip"), hangingLeavesTip(name(block, "block/%s_inner"), name(block, "block/%s_tip")), name(block, "block/%s"), hangingLeaves(name(block, "block/%s_inner"), name(block, "block/%s_outer"))));
+        register(MnBlocks.HANGING_DARK_WILLOW_LEAVES, block -> hangingPlant(name(block, "block/%s_end"), hangingLeavesEnd(name(block, "block/%s_inner"), name(block, "block/%s_end")), name(block, "block/%s"), hangingLeavesRoot(name(block, "block/%s_inner"), name(block, "block/%s_outer"))));
         register(MnBlocks.DARK_WILLOW_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_WILLOW_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
 
@@ -72,10 +72,9 @@ public final class BlockStateTable {
         return VariantBlockStateGen.create(ModelInfo.create(name, model));
     }
 
-    private static IBlockStateGen hangingPlant(String tipName, IModelGen tipModel, String name, IModelGen model) {
-        return VariantBlockStateGen.create(
-            "is_tip=true", ModelInfo.create(tipName, tipModel))
-                                   .variant("is_tip=false", ModelInfo.create(name, model));
+    private static IBlockStateGen hangingPlant(String endName, IModelGen endModel, String rootName, IModelGen rootModel) {
+        return VariantBlockStateGen.create("end=true", ModelInfo.create(endName, endModel))
+                                   .variant("end=false", ModelInfo.create(rootName, rootModel));
     }
 
     private static IBlockStateGen rotateY(String name, IModelGen model) {
@@ -128,6 +127,17 @@ public final class BlockStateTable {
         assert id != null;
 
         return String.format("%s:%s", id.getNamespace(), String.format(nameFormat, id.getPath()));
+    }
+
+    private static String name(Block block, String nameFormat, String removeSuffix) {
+        ResourceLocation id = block.getRegistryName();
+        assert id != null;
+
+        String pth = id.getPath();
+        if(pth.endsWith(removeSuffix))
+            pth = pth.substring(0, pth.length() - removeSuffix.length());
+
+        return String.format("%s:%s", id.getNamespace(), String.format(nameFormat, pth));
     }
 
     private static String name(Block block) {

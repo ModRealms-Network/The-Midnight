@@ -24,24 +24,24 @@ public class MnRecipeProvider extends RecipeProvider {
 
         generic4x4("dead_wood_4x4", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD, 3);
         generic4x4("stripped_dead_wood_4x4", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.STRIPPED_DEAD_WOOD, 3);
-        generic4x4("dead_wood_planks_from_wood_4x4", MnBlocks.DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
-        generic4x4("dead_wood_planks_from_log_4x4", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
-        generic4x4("dead_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
-        generic4x4("dead_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        shapeless("dead_wood_planks_from_wood", MnBlocks.DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        shapeless("dead_wood_planks_from_log", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        shapeless("dead_wood_planks_from_stripped_wood", MnBlocks.STRIPPED_DEAD_WOOD, MnBlocks.DEAD_WOOD_PLANKS, 4);
+        shapeless("dead_wood_planks_from_stripped_log", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD_PLANKS, 4);
 
-        generic4x4("shadowroot_wood_4x4", MnBlocks.SHADOWROOT_LOG, MnBlocks.SHADOWROOT, 3);
-        generic4x4("stripped_shadowroot_wood_4x4", MnBlocks.STRIPPED_SHADOWROOT_LOG, MnBlocks.STRIPPED_SHADOWROOT, 3);
-        generic4x4("shadowroot_wood_planks_from_wood_4x4", MnBlocks.SHADOWROOT, MnBlocks.SHADOWROOT_PLANKS, 4);
-        generic4x4("shadowroot_wood_planks_from_log_4x4", MnBlocks.SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
-        generic4x4("shadowroot_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_SHADOWROOT, MnBlocks.SHADOWROOT_PLANKS, 4);
-        generic4x4("shadowroot_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
+        generic4x4("shadowroot_wood_4x4", MnBlocks.SHADOWROOT_LOG, MnBlocks.SHADOWROOT_WOOD, 3);
+        generic4x4("stripped_shadowroot_wood_4x4", MnBlocks.STRIPPED_SHADOWROOT_LOG, MnBlocks.STRIPPED_SHADOWROOT_WOOD, 3);
+        shapeless("shadowroot_planks_from_wood", MnBlocks.SHADOWROOT_WOOD, MnBlocks.SHADOWROOT_PLANKS, 4);
+        shapeless("shadowroot_planks_from_log", MnBlocks.SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
+        shapeless("shadowroot_planks_from_stripped_wood", MnBlocks.STRIPPED_SHADOWROOT_WOOD, MnBlocks.SHADOWROOT_PLANKS, 4);
+        shapeless("shadowroot_planks_from_stripped_log", MnBlocks.STRIPPED_SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
 
-        generic4x4("dark_willow_wood_4x4", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW, 3);
-        generic4x4("stripped_dark_willow_wood_4x4", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.STRIPPED_DARK_WILLOW, 3);
-        generic4x4("dark_willow_wood_planks_from_wood_4x4", MnBlocks.DARK_WILLOW, MnBlocks.DARK_WILLOW_PLANKS, 4);
-        generic4x4("dark_willow_wood_planks_from_log_4x4", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
-        generic4x4("dark_willow_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_DARK_WILLOW, MnBlocks.DARK_WILLOW_PLANKS, 4);
-        generic4x4("dark_willow_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        generic4x4("dark_willow_wood_4x4", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_WOOD, 3);
+        generic4x4("stripped_dark_willow_wood_4x4", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.STRIPPED_DARK_WILLOW_WOOD, 3);
+        shapeless("dark_willow_planks_from_wood", MnBlocks.DARK_WILLOW_WOOD, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        shapeless("dark_willow_planks_from_log", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        shapeless("dark_willow_planks_from_stripped_wood", MnBlocks.STRIPPED_DARK_WILLOW_WOOD, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        shapeless("dark_willow_planks_from_stripped_log", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
     }
 
     private void generic4x4(String id, IItemProvider from, IItemProvider to, int count) {
@@ -140,6 +140,6 @@ public class MnRecipeProvider extends RecipeProvider {
 
     @Override
     public String getName() {
-        return "Midnight/Recipes";
+        return "Midnight - Recipes";
     }
 }

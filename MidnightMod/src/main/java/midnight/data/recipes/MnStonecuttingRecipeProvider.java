@@ -124,6 +124,6 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
 
     @Override
     public String getName() {
-        return "Midnight/StonecuttingRecipes";
+        return "Midnight - Stonecutting recipes";
     }
 }

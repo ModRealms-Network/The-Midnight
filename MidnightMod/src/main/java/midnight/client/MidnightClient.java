@@ -19,6 +19,7 @@ import net.minecraftforge.api.distmarker.Dist;
 public class MidnightClient extends Midnight {
     private final BiomeColorCache darkWaterColorCache = new BiomeColorCache();
     private final BiomeColorCache nightGrassColorCache = new BiomeColorCache();
+    private final BiomeColorCache shadowrootColorCache = new BiomeColorCache();
 
     @Override
     public void init() {
@@ -39,6 +40,10 @@ public class MidnightClient extends Midnight {
 
     public BiomeColorCache getNightGrassColorCache() {
         return nightGrassColorCache;
+    }
+
+    public BiomeColorCache getShadowrootColorCache() {
+        return shadowrootColorCache;
     }
 
     /**

@@ -68,18 +68,18 @@ public final class MnBlocks {
 
     public static final Block SHADOWROOT_LOG = inj();
     public static final Block STRIPPED_SHADOWROOT_LOG = inj();
-    public static final Block SHADOWROOT = inj();
-    public static final Block STRIPPED_SHADOWROOT = inj();
+    public static final Block SHADOWROOT_WOOD = inj();
+    public static final Block STRIPPED_SHADOWROOT_WOOD = inj();
     public static final Block SHADOWROOT_LEAVES = inj();
     public static final Block SHADOWROOT_PLANKS = inj();
     public static final Block SHADOWROOT_SAPLING = inj();
 
     public static final Block DARK_WILLOW_LOG = inj();
     public static final Block STRIPPED_DARK_WILLOW_LOG = inj();
-    public static final Block DARK_WILLOW = inj();
-    public static final Block STRIPPED_DARK_WILLOW = inj();
+    public static final Block DARK_WILLOW_WOOD = inj();
+    public static final Block STRIPPED_DARK_WILLOW_WOOD = inj();
     public static final Block DARK_WILLOW_LEAVES = inj();
-    public static final Block DARK_WILLOW_HANGING_LEAVES = inj();
+    public static final Block HANGING_DARK_WILLOW_LEAVES = inj();
     public static final Block DARK_WILLOW_PLANKS = inj();
     public static final Block DARK_WILLOW_SAPLING = inj();
 
@@ -112,22 +112,22 @@ public final class MnBlocks {
             wood("dead_wood_planks", MaterialColor.FOLIAGE),
             plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14),
 
-            log("shadowroot_log", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT_LOG),
-            log("stripped_shadowroot_log", MaterialColor.FOLIAGE),
-            log("shadowroot", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT),
-            log("stripped_shadowroot", MaterialColor.FOLIAGE),
-            leaves("shadowroot_leaves", MaterialColor.FOLIAGE),
-            wood("shadowroot_planks", MaterialColor.FOLIAGE),
-            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14),
+            log("shadowroot_log", MaterialColor.PURPLE, () -> STRIPPED_SHADOWROOT_LOG),
+            log("stripped_shadowroot_log", MaterialColor.PURPLE),
+            log("shadowroot_wood", MaterialColor.PURPLE, () -> STRIPPED_SHADOWROOT_WOOD),
+            log("stripped_shadowroot_wood", MaterialColor.PURPLE),
+            leaves("shadowroot_leaves", MaterialColor.PURPLE),
+            wood("shadowroot_planks", MaterialColor.PURPLE),
+            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).setPlantHitbox(14, 14),
 
-            log("dark_willow_log", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT_LOG),
-            log("stripped_dark_willow_log", MaterialColor.FOLIAGE),
-            log("dark_willow", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT),
-            log("stripped_dark_willow", MaterialColor.FOLIAGE),
-            leaves("dark_willow_leaves", MaterialColor.FOLIAGE),
-            hangingLeaves("dark_willow_hanging_leaves", MaterialColor.FOLIAGE),
-            wood("dark_willow_planks", MaterialColor.FOLIAGE),
-            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
+            log("dark_willow_log", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_LOG),
+            log("stripped_dark_willow_log", MaterialColor.BLUE),
+            log("dark_willow_wood", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_WOOD),
+            log("stripped_dark_willow_wood", MaterialColor.BLUE),
+            leaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA),
+            hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(14, 16),
+            wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
+            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(14, 14)
         );
     }
 
@@ -160,18 +160,18 @@ public final class MnBlocks {
 
             item(SHADOWROOT_LOG, MnItemGroups.BLOCKS),
             item(STRIPPED_SHADOWROOT_LOG, MnItemGroups.BLOCKS),
-            item(SHADOWROOT, MnItemGroups.BLOCKS),
-            item(STRIPPED_SHADOWROOT, MnItemGroups.BLOCKS),
+            item(SHADOWROOT_WOOD, MnItemGroups.BLOCKS),
+            item(STRIPPED_SHADOWROOT_WOOD, MnItemGroups.BLOCKS),
             item(SHADOWROOT_LEAVES, MnItemGroups.BLOCKS),
             item(SHADOWROOT_PLANKS, MnItemGroups.BLOCKS),
             item(SHADOWROOT_SAPLING, MnItemGroups.BLOCKS),
 
             item(DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
             item(STRIPPED_DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW, MnItemGroups.BLOCKS),
-            item(STRIPPED_DARK_WILLOW, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW_WOOD, MnItemGroups.BLOCKS),
+            item(STRIPPED_DARK_WILLOW_WOOD, MnItemGroups.BLOCKS),
             item(DARK_WILLOW_LEAVES, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW_HANGING_LEAVES, MnItemGroups.BLOCKS),
+            item(HANGING_DARK_WILLOW_LEAVES, MnItemGroups.BLOCKS),
             item(DARK_WILLOW_PLANKS, MnItemGroups.BLOCKS),
             item(DARK_WILLOW_SAPLING, MnItemGroups.BLOCKS)
         );
@@ -191,11 +191,11 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(DEAD_SAPLING, RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(SHADOWROOT_LEAVES, RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(SHADOWROOT_SAPLING, RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(SHADOWROOT_SAPLING, RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(DARK_WILLOW_LEAVES, RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(DARK_WILLOW_HANGING_LEAVES, RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(DARK_WILLOW_SAPLING, RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(HANGING_DARK_WILLOW_LEAVES, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DARK_WILLOW_SAPLING, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -229,13 +229,13 @@ public final class MnBlocks {
 
         blockColors.register(
             (state, world, pos, tint) -> {
-                if(pos == null || world == null) return 0x272139;
-                return MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
+                if(pos == null || world == null) return 0x3A3154;
+                return MidnightClient.get().getShadowrootColorCache().getColor(pos, MnBiomeColors.SHADOWROOT);
             },
             SHADOWROOT_LEAVES
         );
         itemColors.register(
-            (stack, tint) -> 0x272139,
+            (stack, tint) -> 0x3A3154,
             SHADOWROOT_LEAVES
         );
     }
@@ -370,17 +370,17 @@ public final class MnBlocks {
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
-                                    .hardnessAndResistance(0.2F)
+                                    .hardnessAndResistance(0.2f)
         ));
     }
 
-    private static Block hangingLeaves(String id, MaterialColor color) {
+    private static HangingLeavesBlock hangingLeaves(String id, MaterialColor color) {
         return block(id, new HangingLeavesBlock(
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
-                                    .hardnessAndResistance(0.2F)
-        )).setHitbox(Block.makeCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0));
+                                    .hardnessAndResistance(0.1f)
+        ));
     }
 
     private static Block log(String id, MaterialColor color, Supplier<Block> stripped) {
