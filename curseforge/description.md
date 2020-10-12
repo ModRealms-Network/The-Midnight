@@ -54,7 +54,7 @@ If you are a contributor on this list and want your name to link to a different 
 [gegy1000](https://github.com/gegy1000) - Former Lead Programmer  
 [Martacus](https://github.com/Martacus) - Former Programmer  
 [arthurbambous](https://github.com/arthurbambou) - Former Programmer  
-[Corail31](https://github.com/Corail31) - FormerProgrammer  
+[Corail31](https://github.com/Corail31) - Former Programmer  
 [Endergized](https://github.com/Endergy) - Former Texturer  
 [Five (Paradiscal)](https://github.com/fivelol) - Former Texturer  
 [MCVinnyq](https://github.com/MCVinnyq) - Former Texturer, Former Modeler  
