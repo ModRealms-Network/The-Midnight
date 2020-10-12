@@ -74,6 +74,15 @@ public final class MnBlocks {
     public static final Block SHADOWROOT_PLANKS = inj();
     public static final Block SHADOWROOT_SAPLING = inj();
 
+    public static final Block DARK_WILLOW_LOG = inj();
+    public static final Block STRIPPED_DARK_WILLOW_LOG = inj();
+    public static final Block DARK_WILLOW = inj();
+    public static final Block STRIPPED_DARK_WILLOW = inj();
+    public static final Block DARK_WILLOW_LEAVES = inj();
+    public static final Block DARK_WILLOW_HANGING_LEAVES = inj();
+    public static final Block DARK_WILLOW_PLANKS = inj();
+    public static final Block DARK_WILLOW_SAPLING = inj();
+
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
@@ -109,7 +118,16 @@ public final class MnBlocks {
             log("stripped_shadowroot", MaterialColor.FOLIAGE),
             leaves("shadowroot_leaves", MaterialColor.FOLIAGE),
             wood("shadowroot_planks", MaterialColor.FOLIAGE),
-            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
+            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14),
+
+            log("dark_willow_log", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT_LOG),
+            log("stripped_dark_willow_log", MaterialColor.FOLIAGE),
+            log("dark_willow", MaterialColor.FOLIAGE, () -> STRIPPED_SHADOWROOT),
+            log("stripped_dark_willow", MaterialColor.FOLIAGE),
+            leaves("dark_willow_leaves", MaterialColor.FOLIAGE),
+            hangingLeaves("dark_willow_hanging_leaves", MaterialColor.FOLIAGE),
+            wood("dark_willow_planks", MaterialColor.FOLIAGE),
+            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14)
         );
     }
 
@@ -146,7 +164,16 @@ public final class MnBlocks {
             item(STRIPPED_SHADOWROOT, MnItemGroups.BLOCKS),
             item(SHADOWROOT_LEAVES, MnItemGroups.BLOCKS),
             item(SHADOWROOT_PLANKS, MnItemGroups.BLOCKS),
-            item(SHADOWROOT_SAPLING, MnItemGroups.BLOCKS)
+            item(SHADOWROOT_SAPLING, MnItemGroups.BLOCKS),
+
+            item(DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
+            item(STRIPPED_DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW, MnItemGroups.BLOCKS),
+            item(STRIPPED_DARK_WILLOW, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW_LEAVES, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW_HANGING_LEAVES, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW_PLANKS, MnItemGroups.BLOCKS),
+            item(DARK_WILLOW_SAPLING, MnItemGroups.BLOCKS)
         );
     }
 
@@ -165,6 +192,10 @@ public final class MnBlocks {
 
         RenderTypeLookup.setRenderLayer(SHADOWROOT_LEAVES, RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(SHADOWROOT_SAPLING, RenderType.getCutoutMipped());
+
+        RenderTypeLookup.setRenderLayer(DARK_WILLOW_LEAVES, RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(DARK_WILLOW_HANGING_LEAVES, RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(DARK_WILLOW_SAPLING, RenderType.getCutoutMipped());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -341,6 +372,15 @@ public final class MnBlocks {
                                     .sound(SoundType.PLANT)
                                     .hardnessAndResistance(0.2F)
         ));
+    }
+
+    private static Block hangingLeaves(String id, MaterialColor color) {
+        return block(id, new HangingLeavesBlock(
+            AbstractBlock.Properties.create(Material.LEAVES, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance(0.2F)
+        )).setHitbox(Block.makeCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0));
     }
 
     private static Block log(String id, MaterialColor color, Supplier<Block> stripped) {

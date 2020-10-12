@@ -40,7 +40,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
         );
         getOrCreateTagBuilder(BlockTags.PLANKS).replace(false).add(
             MnBlocks.DEAD_WOOD_PLANKS,
-            MnBlocks.SHADOWROOT_PLANKS
+            MnBlocks.SHADOWROOT_PLANKS,
+            MnBlocks.DARK_WILLOW_PLANKS
         );
     }
 

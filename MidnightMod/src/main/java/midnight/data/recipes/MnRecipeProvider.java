@@ -35,6 +35,13 @@ public class MnRecipeProvider extends RecipeProvider {
         generic4x4("shadowroot_wood_planks_from_log_4x4", MnBlocks.SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
         generic4x4("shadowroot_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_SHADOWROOT, MnBlocks.SHADOWROOT_PLANKS, 4);
         generic4x4("shadowroot_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_SHADOWROOT_LOG, MnBlocks.SHADOWROOT_PLANKS, 4);
+
+        generic4x4("dark_willow_wood_4x4", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW, 3);
+        generic4x4("stripped_dark_willow_wood_4x4", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.STRIPPED_DARK_WILLOW, 3);
+        generic4x4("dark_willow_wood_planks_from_wood_4x4", MnBlocks.DARK_WILLOW, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        generic4x4("dark_willow_wood_planks_from_log_4x4", MnBlocks.DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        generic4x4("dark_willow_wood_planks_from_stripped_wood_4x4", MnBlocks.STRIPPED_DARK_WILLOW, MnBlocks.DARK_WILLOW_PLANKS, 4);
+        generic4x4("dark_willow_wood_planks_from_stripped_log_4x4", MnBlocks.STRIPPED_DARK_WILLOW_LOG, MnBlocks.DARK_WILLOW_PLANKS, 4);
     }
 
     private void generic4x4(String id, IItemProvider from, IItemProvider to, int count) {
