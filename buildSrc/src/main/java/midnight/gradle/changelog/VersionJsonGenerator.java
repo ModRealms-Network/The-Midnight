@@ -46,7 +46,7 @@ public class VersionJsonGenerator {
         if (addChangelog.getDescription() == null) {
             return String.format("%s - %s", addChangelog.getVersionNumber(), addChangelog.getVersionName());
         }
-        return String.format("%s - %s: %s", addChangelog.getVersionNumber(), addChangelog.getVersionName(), addChangelog.getDescription());
+        return String.format("%s - %s: %s For more information, check out the changelog on CurseForge or GitHub Releases!", addChangelog.getVersionNumber(), addChangelog.getVersionName(), addChangelog.getDescription());
     }
 
     public void saveTo(File file) throws IOException {

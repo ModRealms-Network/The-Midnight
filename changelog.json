@@ -2,13 +2,16 @@
   "version": {
     "number": "0.6.0",
     "name": "The Midnight: Rewritten",
-    "minecraft": "1.15.2",
+    "minecraft": "1.16.3",
     "stable": false
   },
   "description": [
-    "The Midnight, rewritten from the ground up for better stability and performance."
+    "The Midnight, rewritten from the ground up for better stability, performance, and enjoyability."
   ],
   "changelog": [
-    "Introduced the Midnight API."
+    "The Midnight jars are now signed. See The Midnight's new license for more information.",
+    "Updated Minecraft to 1.16.3",
+    "Updated Minecraft Forge to 34.1.0",
+    "Introduced the Midnight API for creating addons for the mod."
   ]
 }
