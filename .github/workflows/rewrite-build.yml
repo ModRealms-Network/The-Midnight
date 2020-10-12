@@ -219,9 +219,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-serverTest-windows-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-serverTest-
+            ${{ runner.os }}-gradle-serverTest-windows-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -274,9 +274,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-serverTest-macos-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-serverTest-
+            ${{ runner.os }}-gradle-serverTest-macos-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -328,9 +328,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-serverTest-ubuntu-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-serverTest-
+            ${{ runner.os }}-gradle-serverTest-ubuntu-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1

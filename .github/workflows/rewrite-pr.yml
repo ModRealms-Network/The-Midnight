@@ -21,7 +21,7 @@ on:
 
 jobs:
   build:
-    name: Build (Unsigned)
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -191,9 +191,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-PR-serverTest-windows-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-PR-serverTest-
+            ${{ runner.os }}-gradle-PR-serverTest-windows-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -244,9 +244,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-PR-serverTest-macos-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-PR-serverTest-
+            ${{ runner.os }}-gradle-PR-serverTest-macos-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -296,9 +296,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-PR-serverTest-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-PR-serverTest-ubuntu-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-PR-serverTest-
+            ${{ runner.os }}-gradle-PR-serverTest-ubuntu-
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
