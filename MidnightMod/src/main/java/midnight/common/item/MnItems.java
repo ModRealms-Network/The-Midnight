@@ -1,6 +1,8 @@
 package midnight.common.item;
 
 import midnight.common.Midnight;
+import midnight.common.item.group.MnItemCategory;
+import midnight.common.item.group.MnItemGroup;
 import midnight.core.util.IRegistry;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -24,25 +26,26 @@ public final class MnItems {
 
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
-            item("dark_stick", MnItemGroups.MISC)
+            item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 
-    private static Item item(String id, Item item) {
+    private static Item item(String id, MnItemCategory cat, Item item) {
         item.setRegistryName(Midnight.resLoc(id));
+        cat.add(item);
         return item;
     }
 
-    private static Item item(String id, Item.Properties properties) {
-        return item(id, new Item(properties));
+    private static Item item(String id, MnItemCategory cat, Item.Properties properties) {
+        return item(id, cat, new Item(properties));
     }
 
-    private static Item item(String id, ItemGroup group) {
-        return item(id, new Item.Properties().group(group));
+    private static Item item(String id, MnItemCategory cat, ItemGroup group) {
+        return item(id, cat, new Item.Properties().group(group));
     }
 
-    private static Item edible(String id, ItemGroup group, Food food) {
-        return item(id, new Item.Properties().group(group).food(food));
+    private static Item edible(String id, MnItemCategory cat, ItemGroup group, Food food) {
+        return item(id, cat, new Item.Properties().group(group).food(food));
     }
 
     @Nonnull

@@ -3,7 +3,8 @@ package midnight.common.block;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.block.fluid.MnFluids;
-import midnight.common.item.MnItemGroups;
+import midnight.common.item.group.MnItemCategory;
+import midnight.common.item.group.MnItemGroup;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
 import midnight.core.util.IRegistry;
@@ -134,47 +135,47 @@ public final class MnBlocks {
 
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
-            item(NIGHT_STONE, MnItemGroups.BLOCKS),
-            item(NIGHT_BEDROCK, MnItemGroups.BLOCKS),
-            item(TRENCHSTONE, MnItemGroups.BLOCKS),
+            item(NIGHT_STONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(NIGHT_BEDROCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(TRENCHSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
 
-            item(NIGHT_DIRT, MnItemGroups.BLOCKS),
-            item(COARSE_NIGHT_DIRT, MnItemGroups.BLOCKS),
-            item(NIGHT_GRASS_BLOCK, MnItemGroups.BLOCKS),
-            item(DECEITFUL_PEAT, MnItemGroups.BLOCKS),
-            item(DECEITFUL_MUD, MnItemGroups.BLOCKS),
-            item(STRANGE_SAND, MnItemGroups.BLOCKS),
+            item(NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(COARSE_NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(NIGHT_GRASS_BLOCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(DECEITFUL_PEAT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(DECEITFUL_MUD, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(STRANGE_SAND, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
 
-            item(NIGHT_GRASS, MnItemGroups.DECOR),
-            item(TALL_NIGHT_GRASS, MnItemGroups.DECOR),
+            item(NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
-            item(GHOST_PLANT_STEM, MnItemGroups.BLOCKS),
-            item(GHOST_PLANT_LEAF, MnItemGroups.BLOCKS),
-            item(GHOST_PLANT, MnItemGroups.DECOR),
+            item(GHOST_PLANT_STEM, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
+            item(GHOST_PLANT_LEAF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
+            item(GHOST_PLANT, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
-            item(DEAD_WOOD_LOG, MnItemGroups.BLOCKS),
-            item(STRIPPED_DEAD_WOOD_LOG, MnItemGroups.BLOCKS),
-            item(DEAD_WOOD, MnItemGroups.BLOCKS),
-            item(STRIPPED_DEAD_WOOD, MnItemGroups.BLOCKS),
-            item(DEAD_WOOD_PLANKS, MnItemGroups.BLOCKS),
-            item(DEAD_SAPLING, MnItemGroups.BLOCKS),
+            item(DEAD_WOOD_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_DEAD_WOOD_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(DEAD_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_DEAD_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(DEAD_WOOD_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+            item(DEAD_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
 
-            item(SHADOWROOT_LOG, MnItemGroups.BLOCKS),
-            item(STRIPPED_SHADOWROOT_LOG, MnItemGroups.BLOCKS),
-            item(SHADOWROOT_WOOD, MnItemGroups.BLOCKS),
-            item(STRIPPED_SHADOWROOT_WOOD, MnItemGroups.BLOCKS),
-            item(SHADOWROOT_LEAVES, MnItemGroups.BLOCKS),
-            item(SHADOWROOT_PLANKS, MnItemGroups.BLOCKS),
-            item(SHADOWROOT_SAPLING, MnItemGroups.BLOCKS),
+            item(SHADOWROOT_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_SHADOWROOT_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(SHADOWROOT_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_SHADOWROOT_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(SHADOWROOT_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
+            item(SHADOWROOT_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+            item(SHADOWROOT_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
 
-            item(DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
-            item(STRIPPED_DARK_WILLOW_LOG, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW_WOOD, MnItemGroups.BLOCKS),
-            item(STRIPPED_DARK_WILLOW_WOOD, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW_LEAVES, MnItemGroups.BLOCKS),
-            item(HANGING_DARK_WILLOW_LEAVES, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW_PLANKS, MnItemGroups.BLOCKS),
-            item(DARK_WILLOW_SAPLING, MnItemGroups.BLOCKS)
+            item(DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(DARK_WILLOW_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(STRIPPED_DARK_WILLOW_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
+            item(DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
+            item(HANGING_DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
+            item(DARK_WILLOW_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+            item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR)
         );
     }
 
@@ -247,16 +248,17 @@ public final class MnBlocks {
     private MnBlocks() {
     }
 
-    private static BlockItem item(Block block, Item.Properties props) {
+    private static BlockItem item(Block block, MnItemCategory cat, Item.Properties props) {
         ResourceLocation id = block.getRegistryName();
         assert id != null;
         BlockItem item = new BlockItem(block, props);
         item.setRegistryName(id);
+        cat.add(item);
         return item;
     }
 
-    private static BlockItem item(Block block, ItemGroup group) {
-        return item(block, new Item.Properties().group(group));
+    private static BlockItem item(Block block, MnItemCategory cat, ItemGroup group) {
+        return item(block, cat, new Item.Properties().group(group));
     }
 
     private static <B extends Block> B block(String id, B block) {
