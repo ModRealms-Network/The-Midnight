@@ -29,7 +29,7 @@ If you are a contributor on this list and want your name to link to a different 
 ### The Midnight Development Team
 
 [Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
-[Shadew](https://github.com/ShadewRG) - Lead Programmer  
+[Shadew](https://shadew.net/) - Lead Programmer  
 [Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer, Musician  
 [Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician  
 [123wdog](https://www.curseforge.com/members/123wdog/) - Lead Modeler
@@ -47,7 +47,7 @@ If you are a contributor on this list and want your name to link to a different 
 [Endergized](https://github.com/Endergy) - Former Texturer  
 [Five (Paradiscal)](https://github.com/fivelol) - Former Texturer  
 [MCVinnyq](https://github.com/MCVinnyq) - Former Texturer, Former Modeler  
-[ZombieEnderman5](https://github.com/ZombieEnderman5) - Contributer  
-[veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir) - Contributer  
+[ZombieEnderman5](https://github.com/ZombieEnderman5) - Contributor  
+[veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir) - Contributor  
 [Terenx](https://github.com/Terenx) - Contributor  
 [KingPhygieBoo](https://gitlab.com/KingPhygieBoo) - Contributor
