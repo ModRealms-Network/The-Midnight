@@ -1,5 +1,6 @@
 package midnight.data.tags;
 
+import midnight.common.block.MnBlockTags;
 import midnight.common.block.MnBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
@@ -37,6 +38,33 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.STRANGE_SAND,
             MnBlocks.COARSE_NIGHT_DIRT,
             MnBlocks.GHOST_PLANT
+        );
+        getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(
+            MnBlocks.DARK_WILLOW_LOG,
+            MnBlocks.DARK_WILLOW_WOOD,
+            MnBlocks.STRIPPED_DARK_WILLOW_LOG,
+            MnBlocks.STRIPPED_DARK_WILLOW_WOOD
+        );
+        getOrCreateTagBuilder(MnBlockTags.SHADOWROOT_LOGS).replace(false).add(
+            MnBlocks.SHADOWROOT_LOG,
+            MnBlocks.SHADOWROOT_WOOD,
+            MnBlocks.STRIPPED_SHADOWROOT_LOG,
+            MnBlocks.STRIPPED_SHADOWROOT_WOOD
+        );
+        getOrCreateTagBuilder(MnBlockTags.DEAD_WOOD_LOGS).replace(false).add(
+            MnBlocks.DEAD_WOOD_LOG,
+            MnBlocks.DEAD_WOOD,
+            MnBlocks.STRIPPED_DEAD_WOOD_LOG,
+            MnBlocks.STRIPPED_DEAD_WOOD
+        );
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+            .replace(false)
+            .addTag(MnBlockTags.DARK_WILLOW_LOGS)
+            .addTag(MnBlockTags.SHADOWROOT_LOGS)
+            .addTag(MnBlockTags.DEAD_WOOD_LOGS);
+        getOrCreateTagBuilder(BlockTags.LEAVES).replace(false).add(
+            MnBlocks.DARK_WILLOW_LEAVES,
+            MnBlocks.SHADOWROOT_LEAVES
         );
         getOrCreateTagBuilder(BlockTags.PLANKS).replace(false).add(
             MnBlocks.DEAD_WOOD_PLANKS,

@@ -5,19 +5,26 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
 import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 public class HangingLeavesBlock extends HangingVinesBlock {
     public static final BooleanProperty END = BooleanProperty.create("end");
     public static final BooleanProperty ROOT = BooleanProperty.create("root");
 
-    public HangingLeavesBlock(Properties properties) {
+    private final Supplier<Block> leavesBlock;
+    private final ITag.INamedTag<Block> logBlockTag;
+
+    public HangingLeavesBlock(Properties properties, Supplier<Block> leavesBlock, ITag.INamedTag<Block> logBlockTag) {
         super(properties);
+        this.leavesBlock = leavesBlock;
+        this.logBlockTag = logBlockTag;
         setDefaultState(
             getStateContainer().getBaseState()
                                .with(ROOT, true)
@@ -51,7 +58,7 @@ public class HangingLeavesBlock extends HangingVinesBlock {
         if(state.getBlock() == this) {
             return state.get(ROOT);
         }
-        return super.isValidGround(state, world, pos);
+        return state.isIn(leavesBlock.get()) || state.isIn(logBlockTag);
     }
 
     @Override

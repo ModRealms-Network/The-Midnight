@@ -1,5 +1,7 @@
 package midnight.data.tags;
 
+import midnight.common.block.MnBlockTags;
+import midnight.common.item.MnItemTags;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
@@ -25,6 +27,11 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     @Override
     protected void registerTags() {
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
+        copy(MnBlockTags.SHADOWROOT_LOGS, MnItemTags.SHADOWROOT_LOGS);
+        copy(MnBlockTags.DARK_WILLOW_LOGS, MnItemTags.DARK_WILLOW_LOGS);
+        copy(MnBlockTags.DEAD_WOOD_LOGS, MnItemTags.DEAD_WOOD_LOGS);
+        copy(BlockTags.LOGS, ItemTags.LOGS);
+        copy(BlockTags.LEAVES, ItemTags.LEAVES);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
@@ -39,6 +46,14 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
         return tagToBuilder.computeIfAbsent(namedTag.getId(), id -> new ITag.Builder());
     }
 
+    /**
+     * Many block tags exist as item tags too, and those item tags usually have the same values as the block tags. This
+     * function copies all entries from a block tag builder into an item tag builder.
+     *
+     * @param blockTag The block tag to copy from
+     * @param itemTag  The item tag to copy to
+     * @since 0.6.0
+     */
     protected void copy(ITag.INamedTag<Block> blockTag, ITag.INamedTag<Item> itemTag) {
         ITag.Builder itemBuilder = getBuilder(itemTag);
         ITag.Builder blockBuilder = builderGetter.apply(blockTag);

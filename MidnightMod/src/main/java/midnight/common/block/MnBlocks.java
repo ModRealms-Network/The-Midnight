@@ -19,6 +19,7 @@ import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -125,7 +126,7 @@ public final class MnBlocks {
             log("dark_willow_wood", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_WOOD),
             log("stripped_dark_willow_wood", MaterialColor.BLUE),
             leaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA),
-            hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(14, 16),
+            hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> DARK_WILLOW_LEAVES, MnBlockTags.DARK_WILLOW_LOGS).setPlantHitbox(14, 16),
             wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
             plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(12, 12)
         );
@@ -374,12 +375,13 @@ public final class MnBlocks {
         ));
     }
 
-    private static HangingLeavesBlock hangingLeaves(String id, MaterialColor color) {
+    private static HangingLeavesBlock hangingLeaves(String id, MaterialColor color, Supplier<Block> leaves, ITag.INamedTag<Block> logs) {
         return block(id, new HangingLeavesBlock(
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
                                     .sound(SoundType.CROP) // Make them sound a bit less leafier
-                                    .hardnessAndResistance(0.1f)
+                                    .hardnessAndResistance(0.1f),
+            leaves, logs
         ));
     }
 
