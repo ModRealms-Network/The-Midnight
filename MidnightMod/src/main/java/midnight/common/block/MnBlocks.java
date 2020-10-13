@@ -99,18 +99,18 @@ public final class MnBlocks {
             water("dark_water", () -> MnFluids.DARK_WATER),
 
             smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_NIGHT_GRASS).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XYZ),
-            tallPlant("tall_night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XYZ),
+            tallPlant("tall_night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XYZ),
 
             giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new),
             giantGhostPlant("ghost_plant_leaf", GhostPlantBlock::new),
-            emissivePlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            emissivePlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XZ),
 
             log("dead_wood_log", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD_LOG),
             log("stripped_dead_wood_log", MaterialColor.FOLIAGE),
             log("dead_wood", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD),
             log("stripped_dead_wood", MaterialColor.FOLIAGE),
             wood("dead_wood_planks", MaterialColor.FOLIAGE),
-            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(14, 14),
+            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).setPlantHitbox(12, 12),
 
             log("shadowroot_log", MaterialColor.PURPLE, () -> STRIPPED_SHADOWROOT_LOG),
             log("stripped_shadowroot_log", MaterialColor.PURPLE),
@@ -118,7 +118,7 @@ public final class MnBlocks {
             log("stripped_shadowroot_wood", MaterialColor.PURPLE),
             leaves("shadowroot_leaves", MaterialColor.PURPLE),
             wood("shadowroot_planks", MaterialColor.PURPLE),
-            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).setPlantHitbox(14, 14),
+            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).setPlantHitbox(11, 13),
 
             log("dark_willow_log", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_LOG),
             log("stripped_dark_willow_log", MaterialColor.BLUE),
@@ -127,7 +127,7 @@ public final class MnBlocks {
             leaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA),
             hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(14, 16),
             wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
-            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(14, 14)
+            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(12, 12)
         );
     }
 
