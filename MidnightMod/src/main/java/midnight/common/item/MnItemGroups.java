@@ -5,7 +5,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
 /**
- * This class holds all the item groups for the Midnight's creative tabs.
+ * This class holds all the item groups for the Midnight's creative tabs, and for categorizing recipes in folders during
+ * data generation.
  *
  * @author Shadew
  * @version 0.6.0
@@ -22,6 +23,12 @@ public final class MnItemGroups {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(MnBlocks.NIGHT_GRASS);
+        }
+    };
+    public static final ItemGroup MISC = new ItemGroup("midnight.misc") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(MnItems.DARK_STICK);
         }
     };
 

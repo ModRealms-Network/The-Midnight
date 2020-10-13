@@ -2,6 +2,7 @@ package midnight.data.recipes;
 
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
+import midnight.common.item.MnItems;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -21,6 +22,10 @@ public class MnRecipeProvider extends RecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         this.consumer = consumer;
+
+        generic1x2("dark_stick_from_dead_wood", MnBlocks.DEAD_WOOD_PLANKS, MnItems.DARK_STICK, 4);
+        generic1x2("dark_stick_from_dark_willow", MnBlocks.DARK_WILLOW_PLANKS, MnItems.DARK_STICK, 4);
+        generic1x2("dark_stick_from_shadowroot", MnBlocks.SHADOWROOT_PLANKS, MnItems.DARK_STICK, 4);
 
         generic4x4("dead_wood_4x4", MnBlocks.DEAD_WOOD_LOG, MnBlocks.DEAD_WOOD, 3);
         generic4x4("stripped_dead_wood_4x4", MnBlocks.STRIPPED_DEAD_WOOD_LOG, MnBlocks.STRIPPED_DEAD_WOOD, 3);

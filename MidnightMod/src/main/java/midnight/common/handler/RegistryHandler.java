@@ -2,6 +2,7 @@ package midnight.common.handler;
 
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.item.MnItems;
 import midnight.common.sound.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
@@ -33,15 +34,10 @@ public final class RegistryHandler {
         MnBlocks.registerBlocks(IRegistry.forge(event.getRegistry()));
     }
 
-      // TODO Dimensions
-//    @SubscribeEvent
-//    public static void registerDimensions(RegistryEvent.Register<ModDimension> event) {
-//        MnDimensions.registerDimensions(event.getRegistry());
-//    }
-
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         MnBlocks.registerItems(IRegistry.forge(event.getRegistry()));
+        MnItems.registerItems(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent

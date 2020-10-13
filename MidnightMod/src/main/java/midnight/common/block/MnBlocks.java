@@ -371,6 +371,8 @@ public final class MnBlocks {
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
+                                    .harvestTool(ToolType.HOE)
+                                    .suffocates((state, world, pos) -> false)
                                     .hardnessAndResistance(0.2f)
         ));
     }
@@ -380,6 +382,8 @@ public final class MnBlocks {
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
+                                    .harvestTool(ToolType.HOE)
+                                    .suffocates((state, world, pos) -> false)
                                     .hardnessAndResistance(0.2f),
             hanging
         ));
@@ -389,6 +393,7 @@ public final class MnBlocks {
         return block(id, new HangingLeavesBlock(
             AbstractBlock.Properties.create(Material.LEAVES, color)
                                     .nonOpaque()
+                                    .harvestTool(ToolType.HOE)
                                     .sound(SoundType.CROP) // Make them sound a bit less leafier
                                     .hardnessAndResistance(0.1f),
             leaves, logs

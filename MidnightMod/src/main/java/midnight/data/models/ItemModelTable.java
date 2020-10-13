@@ -1,6 +1,7 @@
 package midnight.data.models;
 
 import midnight.common.block.MnBlocks;
+import midnight.common.item.MnItems;
 import midnight.data.models.modelgen.IModelGen;
 import net.minecraft.item.Item;
 import net.minecraft.util.IItemProvider;
@@ -58,6 +59,8 @@ public final class ItemModelTable {
         register(MnBlocks.HANGING_DARK_WILLOW_LEAVES, item -> generated(name(item, "block/%s_item")));
         register(MnBlocks.DARK_WILLOW_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_WILLOW_SAPLING, item -> generated(name(item, "block/%s")));
+
+        register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
     }
 
 
