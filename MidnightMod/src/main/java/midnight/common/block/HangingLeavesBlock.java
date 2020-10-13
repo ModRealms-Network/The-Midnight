@@ -2,6 +2,7 @@ package midnight.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.IGrowable;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -10,11 +11,14 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 import java.util.function.Supplier;
 
-public class HangingLeavesBlock extends HangingVinesBlock {
+public class HangingLeavesBlock extends HangingVinesBlock implements IGrowable {
     public static final BooleanProperty END = BooleanProperty.create("end");
     public static final BooleanProperty ROOT = BooleanProperty.create("root");
 
@@ -64,5 +68,23 @@ public class HangingLeavesBlock extends HangingVinesBlock {
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(END, ROOT);
+    }
+
+    @Override
+    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
+        if(!state.get(ROOT) || !state.get(END)) return false;
+        BlockPos down = pos.down();
+        BlockState below = world.getBlockState(down);
+        return below.isAir(world, down);
+    }
+
+    @Override
+    public boolean canUseBonemeal(World world, Random rng, BlockPos pos, BlockState state) {
+        return state.get(ROOT) && state.get(END);
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
+        world.setBlockState(pos.down(), state.with(ROOT, false).with(END, true));
     }
 }
