@@ -8,19 +8,19 @@
 
 **Minecraft 1.12.2 - 1.14.4:** To get to the dimension, you will need to find a glowing, red rift. These will spawn randomly during the night both above ground and in caves. Rifts are often accompanied by unfriendly figures known as rifters.
 
-**Minecraft 1.15.2:** To get to the dimension, you will need to find a red heap of mass in the overworld. At night time, the portal will activate, and you will be able to traverse into The Midnight. Though before you go into The Midnight, make sure to be prepared! The Midnight does not welcome newcomers.
+**Minecraft 1.15.2:** To get to the dimension, you will need to find a red heap of mass in the overworld. At night time, the portal will activate, and you will be able to traverse into The Midnight. Though before you go into The Midnight, make sure to be prepared! The Midnight does not welcome newcomers.
 
 ## Issues and Compatibility
 
-If you have found any issues with our mod, you can click the "Issues" tab at the top of this page to go to our issue tracker.  
-Although you may report issues on the latest version of The Midnight, do note that our focus has shifted onto the rewrite, so the bugs may not be fixed in the 1.15.2 version of The Midnight, and instead accounted for in the rewrite.  
+If you have found any issues with our mod, you can click the "Issues" tab at the top of this page to go to our issue tracker.  
+Although you may report issues on the latest version of The Midnight, do note that our focus has shifted onto the rewrite, so the bugs may not be fixed in the 1.15.2 version of The Midnight, and instead accounted for in the rewrite.  
 Please note that if your issue is a duplicate of anyone else's, an active developer may remove your issue in order to remove excess clutter.
 
 ## Where can you find us?
 
 If you want to discuss the mod, come visit us in the Cryptic Mushroom Official [Discord server](https://discord.gg/Rdc86yA)!  
-We have other mods we like to work on, too! You can view them by visiting our [GitHub organization page](https://github.com/Cryptic-Mushroom) and [Cipher Zero X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
-If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
+We have other mods we like to work on, too! You can view them by visiting our [GitHub organization page](https://github.com/Cryptic-Mushroom) and [Cipher Zero X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
+If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
 [Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!
 
 ## FAQ (Will be updated soon)
