@@ -8,9 +8,7 @@ on:
     branches:
       - rewrite
     paths-ignore:
-      - '.github/FUNDING.yml'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/workflows/rewrite-pr.yml'
+      - '.github/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
@@ -21,8 +19,6 @@ on:
       - '.gitattributes'
     tags-ignore:
       - '*.*'
-  release:
-    types: [prereleased, released]
   schedule:
     - cron: '0 12 * * 2,6'
 
