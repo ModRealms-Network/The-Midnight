@@ -1,11 +1,14 @@
 package midnight.data.models;
 
 import midnight.common.block.MnBlocks;
+import midnight.common.block.ShroomCapBlock;
 import midnight.data.models.modelgen.IModelGen;
 import midnight.data.models.stategen.IBlockStateGen;
 import midnight.data.models.stategen.ModelInfo;
 import midnight.data.models.stategen.VariantBlockStateGen;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.state.StateContainer;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.function.BiConsumer;
@@ -66,6 +69,13 @@ public final class BlockStateTable {
         register(MnBlocks.DARK_WILLOW_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_WILLOW_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
 
+        register(MnBlocks.SHROOM_AIR, block -> none());
+
+        register(MnBlocks.NIGHTSHROOM_CAP, block -> shroomCap(block, name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_inner")));
+    }
+
+    private static IBlockStateGen none() {
+        return VariantBlockStateGen.create(ModelInfo.create("midnight:block/nomodel"));
     }
 
     private static IBlockStateGen simple(String name, IModelGen model) {
@@ -118,6 +128,33 @@ public final class BlockStateTable {
                                    .variant("axis=x", ModelInfo.create(name, model).rotate(90, 90));
     }
 
+    private static IBlockStateGen shroomCap(Block block, String name, String capTex, String innerTex) {
+        VariantBlockStateGen gen = new VariantBlockStateGen();
+        StateContainer<Block, BlockState> states = block.getStateContainer();
+
+        // Yay data generation - skips us writing 64 different variants in a JSON file
+        for (BlockState state : states.getValidStates()) {
+            String up = state.get(ShroomCapBlock.UP) ? capTex : innerTex;
+            String down = state.get(ShroomCapBlock.DOWN) ? capTex : innerTex;
+            String north = state.get(ShroomCapBlock.NORTH) ? capTex : innerTex;
+            String east = state.get(ShroomCapBlock.EAST) ? capTex : innerTex;
+            String south = state.get(ShroomCapBlock.SOUTH) ? capTex : innerTex;
+            String west = state.get(ShroomCapBlock.WEST) ? capTex : innerTex;
+
+            String side = "";
+            if (!state.get(ShroomCapBlock.UP)) side += "u";
+            if (!state.get(ShroomCapBlock.DOWN)) side += "d";
+            if (!state.get(ShroomCapBlock.NORTH)) side += "n";
+            if (!state.get(ShroomCapBlock.EAST)) side += "e";
+            if (!state.get(ShroomCapBlock.SOUTH)) side += "s";
+            if (!state.get(ShroomCapBlock.WEST)) side += "w";
+            if (!side.isEmpty()) side = "_" + side;
+
+            gen.variant(state, ModelInfo.create(name + side, cube(north, east, south, west, up, down).texture("particle", innerTex)));
+        }
+        return gen;
+    }
+
     private static void register(Block block, Function<Block, IBlockStateGen> genFactory) {
         consumer.accept(block, genFactory.apply(block));
     }
@@ -134,7 +171,7 @@ public final class BlockStateTable {
         assert id != null;
 
         String pth = id.getPath();
-        if(pth.endsWith(removeSuffix))
+        if (pth.endsWith(removeSuffix))
             pth = pth.substring(0, pth.length() - removeSuffix.length());
 
         return String.format("%s:%s", id.getNamespace(), String.format(nameFormat, pth));

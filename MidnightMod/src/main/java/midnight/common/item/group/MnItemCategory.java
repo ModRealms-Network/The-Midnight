@@ -13,6 +13,8 @@ public class MnItemCategory {
     public static final MnItemCategory SEDIMENTAL = new MnItemCategory();
     public static final MnItemCategory LOGS = new MnItemCategory();
     public static final MnItemCategory LEAVES = new MnItemCategory();
+    public static final MnItemCategory SHROOM_CAPS = new MnItemCategory();
+    public static final MnItemCategory SHROOM_STEMS = new MnItemCategory();
     public static final MnItemCategory SAPLINGS = new MnItemCategory();
     public static final MnItemCategory PLANKS = new MnItemCategory();
     public static final MnItemCategory COMMON_PLANTS = new MnItemCategory();

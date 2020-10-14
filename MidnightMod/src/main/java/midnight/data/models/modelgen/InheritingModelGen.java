@@ -38,8 +38,8 @@ public class InheritingModelGen implements IModelGen {
             JsonObject textures = new JsonObject();
             for (Pair<String, String> ref : textureRef) {
                 textures.addProperty(
-                        ref.getFirst().replace("{{name}}", name.toString()),
-                        ref.getSecond().replace("{{name}}", name.toString())
+                    ref.getFirst().replace("{{name}}", name.toString()),
+                    ref.getSecond().replace("{{name}}", name.toString())
                 );
             }
             root.add("textures", textures);
@@ -47,68 +47,228 @@ public class InheritingModelGen implements IModelGen {
         return root;
     }
 
-    public static InheritingModelGen inherit() {
-        return new InheritingModelGen("{{name}}");
-    }
-
+    /**
+     * Inherits the specified parent model in a child model.
+     * <pre>
+     * {
+     *     "parent": "..."
+     * }
+     * </pre>
+     *
+     * @param parent The parent model name
+     */
     public static InheritingModelGen inherit(String parent) {
         return new InheritingModelGen(parent);
     }
 
+    /**
+     * Generates a full block with the same texture on all sides
+     * <pre>
+     * {
+     *     "parent": "block/cube_all",
+     *     "textures": {
+     *         "all": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param texture The texture
+     */
     public static InheritingModelGen cubeAll(String texture) {
         return new InheritingModelGen("block/cube_all")
                    .texture("all", texture);
     }
 
+    /**
+     * Generates a full block with the same texture on all sides, allowing for foliage coloring in i.e. leaves
+     * <pre>
+     * {
+     *     "parent": "block/leaves",
+     *     "textures": {
+     *         "all": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param texture The texture
+     */
     public static InheritingModelGen leaves(String texture) {
         return new InheritingModelGen("block/leaves")
                    .texture("all", texture);
     }
 
+    /**
+     * Generates a full block with the same texture on all sides, but mirroring the texture
+     * <pre>
+     * {
+     *     "parent": "block/cube_mirrored_all",
+     *     "textures": {
+     *         "all": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param texture The texture
+     */
     public static InheritingModelGen cubeMirroredAll(String texture) {
         return new InheritingModelGen("block/cube_mirrored_all")
                    .texture("all", texture);
     }
 
+    /**
+     * Generates a full block with a texture on top and bottom (end), and another texture on other sides (side).
+     * <pre>
+     * {
+     *     "parent": "block/cube_column",
+     *     "textures": {
+     *         "end": "...",
+     *         "side": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param end  The end texture
+     * @param side The side texture
+     */
     public static InheritingModelGen cubeColumn(String end, String side) {
         return new InheritingModelGen("block/cube_column")
                    .texture("end", end)
                    .texture("side", side);
     }
 
+    /**
+     * Generates a full block with a texture on north and south (end), and another texture on other sides (side).
+     * <pre>
+     * {
+     *     "parent": "block/cube_column_horizontal",
+     *     "textures": {
+     *         "end": "...",
+     *         "side": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param end  The end texture
+     * @param side The side texture
+     */
     public static InheritingModelGen cubeColumnHoriz(String end, String side) {
         return new InheritingModelGen("block/cube_column_horizontal")
-                .texture("end", end)
-                .texture("side", side);
+                   .texture("end", end)
+                   .texture("side", side);
     }
 
+    /**
+     * Generates a full block with a texture on top (top), one on bottom (bottom), and a texture on other sides (side).
+     * <pre>
+     * {
+     *     "parent": "block/cube_bottom_top",
+     *     "textures": {
+     *         "bottom": "...",
+     *         "top": "...",
+     *         "side": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param bottom The bottom texture
+     * @param top    The top texture
+     * @param side   The side texture
+     */
     public static InheritingModelGen cubeBottomTop(String bottom, String top, String side) {
         return new InheritingModelGen("block/cube_bottom_top")
-                .texture("bottom", bottom)
-                .texture("top", top)
-                .texture("side", side);
+                   .texture("bottom", bottom)
+                   .texture("top", top)
+                   .texture("side", side);
     }
 
+    /**
+     * Generates a full block with a separate texture on each side.
+     * <pre>
+     * {
+     *     "parent": "block/cube",
+     *     "textures": {
+     *         "north": "...",
+     *         "east": "...",
+     *         "south": "...",
+     *         "west": "...",
+     *         "up": "...",
+     *         "down": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param north The north texture
+     * @param east  The east texture
+     * @param south The south texture
+     * @param west  The west texture
+     * @param up    The up texture
+     * @param down  The down texture
+     */
     public static InheritingModelGen cube(String north, String east, String south, String west, String up, String down) {
         return new InheritingModelGen("block/cube")
-                .texture("north", north)
-                .texture("east", east)
-                .texture("south", south)
-                .texture("west", west)
-                .texture("up", up)
-                .texture("down", down);
+                   .texture("north", north)
+                   .texture("east", east)
+                   .texture("south", south)
+                   .texture("west", west)
+                   .texture("up", up)
+                   .texture("down", down);
     }
 
+    /**
+     * Generates a full block with a separate texture on each side, mirroring the textures.
+     * <pre>
+     * {
+     *     "parent": "block/cube_mirrored",
+     *     "textures": {
+     *         "north": "...",
+     *         "east": "...",
+     *         "south": "...",
+     *         "west": "...",
+     *         "up": "...",
+     *         "down": "..."
+     *     }
+     * }
+     * </pre>
+     *
+     * @param north The north texture
+     * @param east  The east texture
+     * @param south The south texture
+     * @param west  The west texture
+     * @param up    The up texture
+     * @param down  The down texture
+     */
     public static InheritingModelGen cubeMirrored(String north, String east, String south, String west, String up, String down) {
         return new InheritingModelGen("block/cube_mirrored")
-                .texture("north", north)
-                .texture("east", east)
-                .texture("south", south)
-                .texture("west", west)
-                .texture("up", up)
-                .texture("down", down);
+                   .texture("north", north)
+                   .texture("east", east)
+                   .texture("south", south)
+                   .texture("west", west)
+                   .texture("up", up)
+                   .texture("down", down);
     }
 
+    /**
+     * Generates a full block with a texture on the north side, texture on horizontal sides, and separate textures on
+     * top and bottom.
+     * <pre>
+     * {
+     *     "parent": "block/cube",
+     *     "textures": {
+     *         "north": "{front}",
+     *         "east": "{side}",
+     *         "south": "{side}",
+     *         "west": "{side}",
+     *         "up": "{top}",
+     *         "down": "{bottom}"
+     *     }
+     * }
+     * </pre>
+     *
+     * @param front  The front (north) texture
+     * @param side   The side (east, south, west) texture
+     * @param top    The top (up) texture
+     * @param bottom The bottom (down) texture
+     */
     public static InheritingModelGen cubeFrontSided(String front, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
                    .texture("north", front)
@@ -119,6 +279,29 @@ public class InheritingModelGen implements IModelGen {
                    .texture("down", bottom);
     }
 
+    /**
+     * Generates a full block with a texture on the north side, a texture on the south side, a shared texture on east
+     * and west side, and separate textures on top and bottom.
+     * <pre>
+     * {
+     *     "parent": "block/cube",
+     *     "textures": {
+     *         "north": "{front}",
+     *         "east": "{side}",
+     *         "south": "{back}",
+     *         "west": "{side}",
+     *         "up": "{top}",
+     *         "down": "{bottom}"
+     *     }
+     * }
+     * </pre>
+     *
+     * @param front  The front (north) texture
+     * @param back   The back (south) texture
+     * @param side   The side (east, west) texture
+     * @param top    The top (up) texture
+     * @param bottom The bottom (down) texture
+     */
     public static InheritingModelGen cubeFrontBackSided(String front, String back, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
                    .texture("north", front)
@@ -151,7 +334,7 @@ public class InheritingModelGen implements IModelGen {
 
     public static InheritingModelGen generated(String... layers) {
         InheritingModelGen gen = new InheritingModelGen("item/generated");
-        for(int i = 0, l = layers.length; i < l; i++) {
+        for (int i = 0, l = layers.length; i < l; i++) {
             gen.texture("layer" + i, layers[i]);
         }
         return gen;

@@ -60,6 +60,8 @@ public final class ItemModelTable {
         register(MnBlocks.DARK_WILLOW_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_WILLOW_SAPLING, item -> generated(name(item, "block/%s")));
 
+        register(MnBlocks.NIGHTSHROOM_CAP, item -> inherit(name(item, "block/%s")));
+
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
     }
 

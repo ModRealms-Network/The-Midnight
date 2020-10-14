@@ -28,7 +28,7 @@
           <package name="javax" withSubpackages="true" static="false" />
           <package name="java" withSubpackages="true" static="false" />
           <emptyLine />
-          <package name="import net.rgsw" withSubpackages="true" static="false" />
+          <package name="net.shadew" withSubpackages="true" static="false" />
           <emptyLine />
           <package name="" withSubpackages="true" static="true" />
         </value>
@@ -81,6 +81,7 @@
       <option name="WHILE_ON_NEW_LINE" value="true" />
       <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+      <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
       <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
       <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
       <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
@@ -111,13 +112,6 @@
       <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
       <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
       <option name="SPACE_WITHIN_BRACES" value="true" />
-      <option name="SPACE_BEFORE_IF_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_WHILE_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_FOR_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_TRY_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_CATCH_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_SWITCH_PARENTHESES" value="false" />
-      <option name="SPACE_BEFORE_SYNCHRONIZED_PARENTHESES" value="false" />
       <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
       <option name="CALL_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
       <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
@@ -135,8 +129,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JSON">
-      <option name="KEEP_BLANK_LINES_IN_CODE" value="2" />
-      <option name="SPACE_WITHIN_BRACKETS" value="true" />
+      <option name="KEEP_BLANK_LINES_IN_CODE" value="10" />
       <option name="SPACE_WITHIN_BRACES" value="true" />
       <indentOptions>
         <option name="CONTINUATION_INDENT_SIZE" value="4" />

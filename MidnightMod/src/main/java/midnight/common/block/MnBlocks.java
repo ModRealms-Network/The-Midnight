@@ -85,6 +85,10 @@ public final class MnBlocks {
     public static final Block DARK_WILLOW_PLANKS = inj();
     public static final Block DARK_WILLOW_SAPLING = inj();
 
+    public static final Block SHROOM_AIR = inj();
+
+    public static final Block NIGHTSHROOM_CAP = inj();
+
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
@@ -129,7 +133,11 @@ public final class MnBlocks {
             growsHangingLeaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> HANGING_DARK_WILLOW_LEAVES),
             hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> DARK_WILLOW_LEAVES, MnBlockTags.DARK_WILLOW_LOGS).setPlantHitbox(14, 16),
             wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
-            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(12, 14)
+            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).setPlantHitbox(12, 14),
+
+            shroomAir("shroom_air"),
+
+            shroomCap("nightshroom_cap", MaterialColor.BLUE)
         );
     }
 
@@ -175,7 +183,9 @@ public final class MnBlocks {
             item(DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
             item(HANGING_DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
             item(DARK_WILLOW_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR)
+            item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
+
+            item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.DECOR)
         );
     }
 
@@ -406,6 +416,7 @@ public final class MnBlocks {
         return block(id, new StripableRotatedPillarBlock(
             AbstractBlock.Properties.create(Material.WOOD, color)
                                     .sound(SoundType.WOOD)
+                                    .harvestTool(ToolType.AXE)
                                     .hardnessAndResistance(2f),
             stripped
         ));
@@ -415,6 +426,7 @@ public final class MnBlocks {
         return block(id, new RotatedPillarBlock(
             AbstractBlock.Properties.create(Material.WOOD, color)
                                     .sound(SoundType.WOOD)
+                                    .harvestTool(ToolType.AXE)
                                     .hardnessAndResistance(2f)
         ));
     }
@@ -423,7 +435,26 @@ public final class MnBlocks {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.WOOD, color)
                                     .sound(SoundType.WOOD)
+                                    .harvestTool(ToolType.AXE)
                                     .hardnessAndResistance(2f)
+        ));
+    }
+
+    private static Block shroomAir(String id) {
+        return block(id, new ShroomAirBlock(
+            AbstractBlock.Properties.create(Material.AIR, MaterialColor.AIR)
+                                    .nonOpaque()
+                                    .suffocates((state, world, pos) -> false)
+                                    .luminance(state -> 15)
+                                    .noDrops()
+        ));
+    }
+
+    private static Block shroomCap(String id, MaterialColor color) {
+        return block(id, new ShroomCapBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .harvestTool(ToolType.HOE)
+                                    .sound(SoundType.WART_BLOCK)
         ));
     }
 

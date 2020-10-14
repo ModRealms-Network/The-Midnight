@@ -54,6 +54,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_PLANKS);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
+        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_CAP);
         registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES)); // TODO Stick should be dark stick later
         registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
