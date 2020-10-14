@@ -26,8 +26,11 @@ public class ShroomCapBlock extends Block {
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
 
-    public ShroomCapBlock(Properties props) {
+    private final int sporeColor;
+
+    public ShroomCapBlock(Properties props, int sporeColor) {
         super(props);
+        this.sporeColor = sporeColor;
 
         setDefaultState(
             getStateContainer().getBaseState()
@@ -126,6 +129,10 @@ public class ShroomCapBlock extends Block {
             case LEFT_RIGHT: return state.with(EAST, w).with(WEST, e);
         }
         throw new IllegalStateException("Universe broke once again");
+    }
+
+    public int getSporeColor() {
+        return sporeColor;
     }
 
     public static BooleanProperty getProp(Direction dir) {

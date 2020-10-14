@@ -1,6 +1,9 @@
 package midnight.common.block;
 
+import midnight.common.misc.MnParticleTypes;
+import midnight.core.util.ColorUtil;
 import net.minecraft.block.AirBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
@@ -10,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -44,6 +48,33 @@ public class ShroomAirBlock extends AirBlock {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState state, World world, BlockPos pos, Random rng) {
-        // TODO Spore particles go here
+        // Add little spories for nearby shroom caps
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (Direction dir : Direction.values()) {
+            BlockState adjState = world.getBlockState(pos.offset(dir));
+            Block adj = adjState.getBlock();
+            if (adj instanceof ShroomCapBlock) {
+                colors.add(((ShroomCapBlock) adj).getSporeColor());
+            }
+        }
+
+        if (!colors.isEmpty()) {
+            if (rng.nextInt(30) < 4) {
+                int count = rng.nextInt(2) + 1;
+                for (int i = 0; i < count; i++) {
+                    int col = colors.get(rng.nextInt(colors.size()));
+
+                    double r = ColorUtil.redd(col);
+                    double g = ColorUtil.greend(col);
+                    double b = ColorUtil.blued(col);
+
+                    double x = pos.getX() + 0.5 + (rng.nextDouble() - rng.nextDouble() + rng.nextDouble() - rng.nextDouble()) / 2;
+                    double y = pos.getY() + 0.5 + (rng.nextDouble() - rng.nextDouble() + rng.nextDouble() - rng.nextDouble()) / 2;
+                    double z = pos.getZ() + 0.5 + (rng.nextDouble() - rng.nextDouble() + rng.nextDouble() - rng.nextDouble()) / 2;
+
+                    world.addParticle(MnParticleTypes.SPORE, x, y, z, r, g, b);
+                }
+            }
+        }
     }
 }

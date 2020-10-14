@@ -137,7 +137,7 @@ public final class MnBlocks {
 
             shroomAir("shroom_air"),
 
-            shroomCap("nightshroom_cap", MaterialColor.BLUE)
+            shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0)
         );
     }
 
@@ -450,11 +450,12 @@ public final class MnBlocks {
         ));
     }
 
-    private static Block shroomCap(String id, MaterialColor color) {
+    private static Block shroomCap(String id, MaterialColor color, int sporeColor) {
         return block(id, new ShroomCapBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
                                     .harvestTool(ToolType.HOE)
-                                    .sound(SoundType.WART_BLOCK)
+                                    .sound(SoundType.WART_BLOCK),
+            sporeColor
         ));
     }
 
