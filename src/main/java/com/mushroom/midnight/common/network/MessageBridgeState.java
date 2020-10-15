@@ -44,7 +44,11 @@ public class MessageBridgeState implements IMessage {
                     BridgeManager trackerHandler = GlobalBridgeManager.getClient();
                     RiftBridge bridge = trackerHandler.getBridge(message.bridgeId);
                     if (bridge != null) {
-                        bridge.handleState(message.data);
+                        if(message != null && ctx != null){
+                            if(message.data != null){
+                                bridge.handleState(message.data);
+                            }
+                        }
                     }
                     message.data.release();
                 });
