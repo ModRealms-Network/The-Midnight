@@ -38,7 +38,7 @@ public final class BlockStateTable {
         register(MnBlocks.NIGHT_GRASS, block -> simple(name(block, "block/%s"), tintedCross(name(block, "block/%s"))));
         register(MnBlocks.TALL_NIGHT_GRASS, block -> doublePlant(name(block, "block/%s_lower"), tintedCross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), tintedCross(name(block, "block/%s_upper"))));
 
-        register(MnBlocks.DARK_WATER, block -> simple(name(block, "block/%s"), IModelGen.EMPTY));
+        register(MnBlocks.DARK_WATER, block -> none());
 
         register(MnBlocks.GHOST_PLANT, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.GHOST_PLANT_LEAF, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
@@ -72,6 +72,7 @@ public final class BlockStateTable {
         register(MnBlocks.SHROOM_AIR, block -> none());
 
         register(MnBlocks.NIGHTSHROOM_CAP, block -> shroomCap(block, name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_inner")));
+        register(MnBlocks.NIGHTSHROOM_STEM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {

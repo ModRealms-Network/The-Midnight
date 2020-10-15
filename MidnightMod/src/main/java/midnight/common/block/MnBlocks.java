@@ -88,6 +88,7 @@ public final class MnBlocks {
     public static final Block SHROOM_AIR = inj();
 
     public static final Block NIGHTSHROOM_CAP = inj();
+    public static final Block NIGHTSHROOM_STEM = inj();
 
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
@@ -137,7 +138,8 @@ public final class MnBlocks {
 
             shroomAir("shroom_air"),
 
-            shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0)
+            shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0),
+            stem("nightshroom_stem", MaterialColor.BLUE)
         );
     }
 
@@ -185,7 +187,8 @@ public final class MnBlocks {
             item(DARK_WILLOW_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
 
-            item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.DECOR)
+            item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS)
         );
     }
 
@@ -426,6 +429,15 @@ public final class MnBlocks {
         return block(id, new RotatedPillarBlock(
             AbstractBlock.Properties.create(Material.WOOD, color)
                                     .sound(SoundType.WOOD)
+                                    .harvestTool(ToolType.AXE)
+                                    .hardnessAndResistance(2f)
+        ));
+    }
+
+    private static Block stem(String id, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .sound(SoundType.NETHER_STEM)
                                     .harvestTool(ToolType.AXE)
                                     .hardnessAndResistance(2f)
         ));

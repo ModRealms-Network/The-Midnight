@@ -26,13 +26,13 @@ public class MnItemGroup extends ItemGroup {
     public static final MnItemGroup BLOCKS = new MnItemGroup("blocks", () -> MnBlocks.NIGHT_GRASS_BLOCK).categories(
         MnItemCategory.SEDIMENTAL,
         MnItemCategory.LOGS,
-        MnItemCategory.PLANKS,
         MnItemCategory.SHROOM_STEMS,
+        MnItemCategory.SHROOM_CAPS,
+        MnItemCategory.PLANKS,
         MnItemCategory.UNCATEGORIZED
     );
     public static final MnItemGroup DECOR = new MnItemGroup("decor", () -> MnBlocks.NIGHT_GRASS).categories(
         MnItemCategory.LEAVES,
-        MnItemCategory.SHROOM_CAPS,
         MnItemCategory.SAPLINGS,
         MnItemCategory.COMMON_PLANTS,
         MnItemCategory.UNCATEGORIZED
