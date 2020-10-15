@@ -147,17 +147,21 @@ public class RiftBridge {
     }
 
     public void handleState(ByteBuf buffer) {
-        BitFlags flags = new BitFlags(buffer.readByte());
+        if(buffer.readableBytes() >= 1) {
+            BitFlags flags = new BitFlags(buffer.readByte());
 
-        this.open.set(flags.getBit(0));
-        this.unstable.set(flags.getBit(1));
-        this.used = flags.getBit(2);
+            this.open.set(flags.getBit(0));
+            this.unstable.set(flags.getBit(1));
+            this.used = flags.getBit(2);
+        }
 
-        long packedTimers = buffer.readUnsignedInt();
+        if(buffer.readableBytes() >= 4){
+            long packedTimers = buffer.readUnsignedInt();
 
-        this.ticks = (int) ((packedTimers >> 16) & 0xFFFF);
-        this.open.setTimer((int) ((packedTimers >> 8) & 0xFF));
-        this.unstable.setTimer((int) (packedTimers & 0xFF));
+            this.ticks = (int) ((packedTimers >> 16) & 0xFFFF);
+            this.open.setTimer((int) ((packedTimers >> 8) & 0xFF));
+            this.unstable.setTimer((int) (packedTimers & 0xFF));
+        }
     }
 
     public void clearDirt() {
