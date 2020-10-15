@@ -59,7 +59,7 @@ public class ShroomAirBlock extends AirBlock {
         }
 
         if (!colors.isEmpty()) {
-            if (rng.nextInt(30) < 4) {
+            if (rng.nextInt(39) < 4) {
                 int count = rng.nextInt(2) + 1;
                 for (int i = 0; i < count; i++) {
                     int col = colors.get(rng.nextInt(colors.size()));
